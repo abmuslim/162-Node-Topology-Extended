@@ -4,7 +4,7 @@
 cd "$(dirname "$0")/.."
 
 echo "🛑 Destroying Containerlab topology..."
-sudo clab destroy -t 226nodes_ovs.yml
+sudo clab destroy -t 162nodes_ovs.yml
 
 echo "🔍 Checking for remaining OVS interfaces..."
 
