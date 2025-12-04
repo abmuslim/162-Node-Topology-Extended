@@ -150,7 +150,7 @@ docker ps
 
 ```
 
-### Destroying the running lab
+### Destroying the Running Topology
 ```bash
 # Execute the script
 ./scripts/cleanup.sh
