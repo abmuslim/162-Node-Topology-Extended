@@ -117,8 +117,8 @@ The nodes declared as switches, routers and end nodes are marked in green, yello
 | `162nodes_ovs.yml`| The main topology configuration | 
 | `ip-mapping.txt`| IP address mapping for end nodes | 
 | `latency_list.txt`| Custom latency values across the network | 
-| `scripts/cleanup.sh`| Cleanup/Destroy the topology | 
-| `scripts/create_ovs_bridges.sh`| Create Open vSwitch bridges | 
+| `scripts/cleanup.sh`| Cleanup/Destroy the topology & leftover ovs bridge instances | 
+| `scripts/create_ovs_bridges.sh`| Create Open vSwitch bridges (One time setup)| 
 | `scripts/init.sh`| Sets the container’s network configuration according to `ip-mapping.txt` | 
 | `scripts/latency_allocation.sh`| Allocation of he deays specified in `latency_list.txt` | 
 
@@ -134,16 +134,30 @@ git clone https://github.com/hlnanayakkara/162Topology.git
 cd 162Topology
 
 # Create the open vSwitch bridges (Switches)
-cd scripts/
-./create_ovs_bridges.sh
-cd ..
+./scripts/create_ovs_bridges.sh
 
 # Deploy the containerlab topology
-sudo clab deploy --reconfigure -t 226nodes_ovs.yml 
+sudo clab deploy --reconfigure -t 162nodes_ovs.yml 
 
 # Verify deployment
 docker ps
-``` 
+```
+
+### Opional: Injecting Delays (Custom Latencies)
+```bash
+# Execute the script
+./scripts/latency_allocation.sh
+
+```
+
+### Destroy the running lab
+```bash
+# Execute the script
+./scripts/cleanup.sh
+
+```
+
+
 
 
 
