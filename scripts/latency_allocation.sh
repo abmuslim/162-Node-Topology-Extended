@@ -1,6 +1,9 @@
 #!/bin/bash
 
-LATENCY_FILE="../latency_list.txt"
+# Move to the project root (one level above scripts/)
+cd "$(dirname "$0")/.."
+
+LATENCY_FILE="latency_list.txt"
 QUEUE_LENGTH=5000
 
 reset_container_latency() {
