@@ -115,12 +115,38 @@ The nodes declared as switches, routers and end nodes are marked in green, yello
 | Name | Purpose |                            
 |---------|--------|
 | `162nodes_ovs.yml`| The main topology configuration | 
-| `ip-mapping.txt`| IP address allocaion for end nodes | 
+| `ip-mapping.txt`| IP address mapping for end nodes | 
 | `latency_list.txt`| Custom latency values across the network | 
-| `scripts/cleanup.sh`| cleanup/Destroy the topology | 
+| `scripts/cleanup.sh`| Cleanup/Destroy the topology | 
 | `scripts/create_ovs_bridges.sh`| Create Open vSwitch bridges | 
 | `scripts/init.sh`| Sets the container’s network configuration according to `ip-mapping.txt` | 
 | `scripts/latency_allocation.sh`| Allocation of he deays specified in `latency_list.txt` | 
+
+## Quick Start
+### Prerequisites
+- Containerlab installed [ref: https://containerlab.dev/install/]
+- Open vSwitch installed [ref: https://www.openvswitch.org/]
+
+### Deploying the Topology
+```bash
+# Clone the repository
+git clone https://github.com/hlnanayakkara/162Topology.git
+cd 162Topology
+
+# Create the open vSwitch bridges (Switches)
+cd scripts/
+./create_ovs_bridges.sh
+cd ..
+
+# Deploy the containerlab topology
+sudo clab deploy --reconfigure -t 226nodes_ovs.yml 
+
+# Verify deployment
+docker ps
+``` 
+
+
+
 
 
 
