@@ -103,6 +103,28 @@ The nodes declared as switches, routers and end nodes are marked in green, yello
 
 **Note:** The first usable IP in each subnet (IP ending with .1) is reserved as the respective default gateway. For each subnet, the first node receives the address ending in .10. Every following node is assigned the next sequential address (.11, .12, and so on) within the same subnet.
 
+## Components
+| Node | Kind | Version | Image |                                    
+|---------|--------|---------|---------|
+| Router| linux | 10.2.1| quay.io/frrouting/frr:10.2.1 | 
+| Switch| ovs-bridge | 3.3.0 | - | 
+| End Node| linux | 24.04 | harsha258/ubuntu-for-serf:latest | 
+
+## Configuration Files
+
+| Name | Purpose |                            
+|---------|--------|
+| `162nodes_ovs.yml`| The main topology configuration | 
+| `ip-mapping.txt`| IP address allocaion for end nodes | 
+| `latency_list.txt`| Custom latency values across the network | 
+| `scripts/cleanup.sh`| cleanup/Destroy the topology | 
+| `scripts/create_ovs_bridges.sh`| Create Open vSwitch bridges | 
+| `scripts/init.sh`| Sets the container’s network configuration according to `ip-mapping.txt` | 
+| `scripts/latency_allocation.sh`| Allocation of he deays specified in `latency_list.txt` | 
+
+
+
+
 
 
 
