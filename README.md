@@ -17,14 +17,14 @@ The nodes declared as switches, routers and end nodes are marked in green, yello
 ### Network Segments
 | Segment | Subnet | Gateway | Router | Switch | Nodes |                                          
 |---------|--------|---------|---------|---------|-------------|
-| **net_1** | 10.0.1.0/24 | 10.0.1.1 | R1 | S1-S4 | Serf1-Serf14 | 
-| **net_2** | 10.0.2.0/24 | 10.0.2.1 | R1 | S5 | Serf15 |
-| **net_3** | 10.0.3.0/24 | 10.0.3.1 | R1 | - | Serf16 |
-| **net_4** | 10.0.4.0/24 | 10.0.4.1 | R1 | - | Serf17 | 
-| **net_5** | 10.0.5.0/24 | 10.0.5.1 | R2 | - | Serf18 | 
-| **net_6** | 10.0.6.0/24 | 10.0.6.1 | R2 | - | Serf19 | 
-| **net_7** | 10.0.7.0/24 | 10.0.7.1 | R4 | S9 | Serf20, Serf21 | 
-| **net_8** | 10.0.8.0/24 | 10.0.8.1 | R4 | S6 | Serf22-Serf25 |
+| **net_1** | 10.0.1.0/24 | 10.0.1.1 | R1 | S1-S4 | serf1-serf14 | 
+| **net_2** | 10.0.2.0/24 | 10.0.2.1 | R1 | S5 | serf15 |
+| **net_3** | 10.0.3.0/24 | 10.0.3.1 | R1 | - | serf16 |
+| **net_4** | 10.0.4.0/24 | 10.0.4.1 | R1 | - | serf17 | 
+| **net_5** | 10.0.5.0/24 | 10.0.5.1 | R2 | - | serf18 | 
+| **net_6** | 10.0.6.0/24 | 10.0.6.1 | R2 | - | serf19 | 
+| **net_7** | 10.0.7.0/24 | 10.0.7.1 | R4 | S9 | serf20, serf21 | 
+| **net_8** | 10.0.8.0/24 | 10.0.8.1 | R4 | S6 | serf22-serf25 |
 | **net_9** | 10.0.9.0/24 | 10.0.9.1 | R4 | S7 | serf26 |
 | **net_10** | 10.0.10.0/24 | 10.0.10.1 | R4 | S8 | serf27-serf29 | 
 | **net_11** | 10.0.11.0/24 | 10.0.11.1 | R4 | - | serf30 | 
@@ -100,6 +100,8 @@ The nodes declared as switches, routers and end nodes are marked in green, yello
 | **net_81** | 10.0.81.0/24 | 10.0.81.1 | R27 | - | serf160 | 
 | **net_82** | 10.0.82.0/24 | 10.0.82.1 | R27 | - | serf161 | 
 | **net_83** | 10.0.83.0/24 | 10.0.83.1 | R27 | S37 | serf162 | 
+
+**Note:** The first usable IP in each subnet (IP ending with .1) is reserved as the respective default gateway. For each subnet, the first node receives the address ending in .10. Every following node is assigned the next sequential address (.11, .12, and so on) within the same subnet.
 
 
 
