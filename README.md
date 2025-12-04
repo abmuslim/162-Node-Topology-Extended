@@ -150,7 +150,7 @@ docker ps
 
 ```
 
-### Destroy the running lab
+### Destroying the running lab
 ```bash
 # Execute the script
 ./scripts/cleanup.sh
