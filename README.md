@@ -37,8 +37,6 @@ The nodes are marked in the topology diagram:
 
 > **Note:** First IP (.1) is the router gateway. Nodes start at .10 and increment (.11, .12, etc.)
 
-See full network segment table in [Network-Segments.md](Network-Segments.md) or original repository.
-
 ---
 
 ## Components
@@ -252,7 +250,7 @@ done
 
 - **Base Topology**: hlnanayakkara/162Topology
 - **K3s Configuration**: Based on 50-Node-Topology extended version
-- **Extended Version**: Hamidhrf
+- **Extended Version**: Hamidreza Fathollahzadeh (FH Dortmund)
 
 ---
 
