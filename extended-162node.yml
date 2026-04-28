@@ -280,7 +280,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -398,7 +398,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -487,7 +487,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10096:9090
@@ -517,7 +517,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -635,7 +635,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -753,7 +753,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -842,7 +842,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10099:9090
@@ -872,7 +872,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -990,7 +990,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -1108,7 +1108,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -1197,7 +1197,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10102:9090
@@ -1227,7 +1227,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -1345,7 +1345,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -1463,7 +1463,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -1552,7 +1552,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10105:9090
@@ -1582,7 +1582,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -1700,7 +1700,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -1818,7 +1818,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -1936,7 +1936,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -2025,7 +2025,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10109:9090
@@ -2055,7 +2055,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -2173,7 +2173,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -2291,7 +2291,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -2380,7 +2380,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10112:9090
@@ -2410,7 +2410,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -2528,7 +2528,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -2646,7 +2646,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -2735,7 +2735,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10115:9090
@@ -2765,7 +2765,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -2883,7 +2883,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -3001,7 +3001,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -3090,7 +3090,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10118:9090
@@ -3120,7 +3120,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -3238,7 +3238,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -3356,7 +3356,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -3474,7 +3474,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -3592,7 +3592,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -3681,7 +3681,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10123:9090
@@ -3711,7 +3711,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -3829,7 +3829,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -3947,7 +3947,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -4036,7 +4036,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10126:9090
@@ -4066,7 +4066,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -4184,7 +4184,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -4302,7 +4302,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -4391,7 +4391,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10129:9090
@@ -4421,7 +4421,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -4539,7 +4539,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -4657,7 +4657,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -4746,7 +4746,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10132:9090
@@ -4776,7 +4776,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -4894,7 +4894,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -5012,7 +5012,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -5130,7 +5130,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -5248,7 +5248,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -5337,7 +5337,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10137:9090
@@ -5367,7 +5367,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -5485,7 +5485,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -5603,7 +5603,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -5692,7 +5692,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10140:9090
@@ -5722,7 +5722,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -5840,7 +5840,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -5958,7 +5958,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -6047,7 +6047,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10143:9090
@@ -6077,7 +6077,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -6195,7 +6195,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -6313,7 +6313,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -6402,7 +6402,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10146:9090
@@ -6432,7 +6432,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -6550,7 +6550,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -6668,7 +6668,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -6786,7 +6786,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -6904,7 +6904,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -6993,7 +6993,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10151:9090
@@ -7023,7 +7023,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -7141,7 +7141,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -7259,7 +7259,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -7348,7 +7348,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10154:9090
@@ -7378,7 +7378,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -7496,7 +7496,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -7614,7 +7614,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -7703,7 +7703,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10157:9090
@@ -7733,7 +7733,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -7851,7 +7851,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -7969,7 +7969,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -8058,7 +8058,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10160:9090
@@ -8088,7 +8088,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -8206,7 +8206,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -8324,7 +8324,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -8442,7 +8442,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -8560,7 +8560,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -8649,7 +8649,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10165:9090
@@ -8679,7 +8679,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -8797,7 +8797,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -8915,7 +8915,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -9004,7 +9004,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10168:9090
@@ -9034,7 +9034,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -9152,7 +9152,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -9270,7 +9270,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -9359,7 +9359,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10171:9090
@@ -9389,7 +9389,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -9507,7 +9507,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -9625,7 +9625,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -9714,7 +9714,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10174:9090
@@ -9744,7 +9744,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -9862,7 +9862,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -9980,7 +9980,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -10098,7 +10098,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -10216,7 +10216,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -10305,7 +10305,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10179:9090
@@ -10335,7 +10335,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -10453,7 +10453,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -10571,7 +10571,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -10660,7 +10660,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10182:9090
@@ -10690,7 +10690,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -10808,7 +10808,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -10926,7 +10926,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -11015,7 +11015,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10185:9090
@@ -11045,7 +11045,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -11163,7 +11163,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -11281,7 +11281,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -11370,7 +11370,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10188:9090
@@ -11400,7 +11400,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -11518,7 +11518,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -11636,7 +11636,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -11754,7 +11754,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -11872,7 +11872,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -11961,7 +11961,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10193:9090
@@ -11991,7 +11991,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -12109,7 +12109,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -12227,7 +12227,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -12316,7 +12316,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10196:9090
@@ -12346,7 +12346,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -12464,7 +12464,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -12582,7 +12582,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -12671,7 +12671,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10199:9090
@@ -12701,7 +12701,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -12819,7 +12819,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -12937,7 +12937,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -13026,7 +13026,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10202:9090
@@ -13056,7 +13056,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -13174,7 +13174,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -13292,7 +13292,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -13410,7 +13410,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -13528,7 +13528,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -13617,7 +13617,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10207:9090
@@ -13647,7 +13647,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -13765,7 +13765,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -13883,7 +13883,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -13972,7 +13972,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10210:9090
@@ -14002,7 +14002,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -14120,7 +14120,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -14238,7 +14238,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -14327,7 +14327,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10213:9090
@@ -14357,7 +14357,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -14475,7 +14475,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -14593,7 +14593,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -14682,7 +14682,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10216:9090
@@ -14712,7 +14712,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -14830,7 +14830,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -14948,7 +14948,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -15066,7 +15066,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -15184,7 +15184,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -15273,7 +15273,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10221:9090
@@ -15303,7 +15303,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -15421,7 +15421,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -15539,7 +15539,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -15628,7 +15628,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10224:9090
@@ -15658,7 +15658,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -15776,7 +15776,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -15894,7 +15894,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -15983,7 +15983,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10227:9090
@@ -16013,7 +16013,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -16131,7 +16131,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -16249,7 +16249,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -16338,7 +16338,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10230:9090
@@ -16368,7 +16368,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -16486,7 +16486,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -16604,7 +16604,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -16722,7 +16722,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -16840,7 +16840,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -16929,7 +16929,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10235:9090
@@ -16959,7 +16959,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -17077,7 +17077,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -17195,7 +17195,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -17284,7 +17284,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10238:9090
@@ -17314,7 +17314,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -17432,7 +17432,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -17550,7 +17550,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -17639,7 +17639,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10241:9090
@@ -17669,7 +17669,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -17787,7 +17787,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -17905,7 +17905,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -17994,7 +17994,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10244:9090
@@ -18024,7 +18024,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -18142,7 +18142,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -18260,7 +18260,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -18378,7 +18378,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -18496,7 +18496,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -18585,7 +18585,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10249:9090
@@ -18615,7 +18615,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -18733,7 +18733,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -18822,7 +18822,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10251:9090
@@ -18852,7 +18852,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -18970,7 +18970,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -19059,7 +19059,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10253:9090
@@ -19089,7 +19089,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -19207,7 +19207,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -19296,7 +19296,7 @@ topology:
         - /sys/fs/cgroup:/sys/fs/cgroup:rw
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
-        - /home/user/topology/162-Node-Topology-Extended/k3s_images:ro
+        - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
       ports:
         - 10255:9090
@@ -19326,7 +19326,7 @@ topology:
             ip link set eth1 mtu 1400
 
             # Small randomized delay
-            sleep $((RANDOM % 10 + 5))
+            sleep $((RANDOM % 20 + 50))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
