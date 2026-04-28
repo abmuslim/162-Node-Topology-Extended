@@ -252,8 +252,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10094:9090
       cmd: >
           bash -c '
             set -e
@@ -370,8 +368,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10095:9090
       cmd: >
           bash -c '
             set -e
@@ -489,8 +485,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10096:9090
       cmd: >
           bash -c '
             set -e
@@ -607,8 +601,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10097:9090
       cmd: >
           bash -c '
             set -e
@@ -725,8 +717,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10098:9090
       cmd: >
           bash -c '
             set -e
@@ -844,8 +834,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10099:9090
       cmd: >
           bash -c '
             set -e
@@ -962,8 +950,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10100:9090
       cmd: >
           bash -c '
             set -e
@@ -1080,8 +1066,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10101:9090
       cmd: >
           bash -c '
             set -e
@@ -1199,8 +1183,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10102:9090
       cmd: >
           bash -c '
             set -e
@@ -1317,8 +1299,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10103:9090
       cmd: >
           bash -c '
             set -e
@@ -1435,8 +1415,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10104:9090
       cmd: >
           bash -c '
             set -e
@@ -1554,8 +1532,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10105:9090
       cmd: >
           bash -c '
             set -e
@@ -1672,8 +1648,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10106:9090
       cmd: >
           bash -c '
             set -e
@@ -1790,8 +1764,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10107:9090
       cmd: >
           bash -c '
             set -e
@@ -1908,8 +1880,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10108:9090
       cmd: >
           bash -c '
             set -e
@@ -2027,8 +1997,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10109:9090
       cmd: >
           bash -c '
             set -e
@@ -2145,8 +2113,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10110:9090
       cmd: >
           bash -c '
             set -e
@@ -2263,8 +2229,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10111:9090
       cmd: >
           bash -c '
             set -e
@@ -2382,8 +2346,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10112:9090
       cmd: >
           bash -c '
             set -e
@@ -2500,8 +2462,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10113:9090
       cmd: >
           bash -c '
             set -e
@@ -2618,8 +2578,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10114:9090
       cmd: >
           bash -c '
             set -e
@@ -2737,8 +2695,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10115:9090
       cmd: >
           bash -c '
             set -e
@@ -2855,8 +2811,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10116:9090
       cmd: >
           bash -c '
             set -e
@@ -2973,8 +2927,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10117:9090
       cmd: >
           bash -c '
             set -e
@@ -3092,8 +3044,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10118:9090
       cmd: >
           bash -c '
             set -e
@@ -3210,8 +3160,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10119:9090
       cmd: >
           bash -c '
             set -e
@@ -3328,8 +3276,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10120:9090
       cmd: >
           bash -c '
             set -e
@@ -3446,8 +3392,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10121:9090
       cmd: >
           bash -c '
             set -e
@@ -3564,8 +3508,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10122:9090
       cmd: >
           bash -c '
             set -e
@@ -3683,8 +3625,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10123:9090
       cmd: >
           bash -c '
             set -e
@@ -3801,8 +3741,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10124:9090
       cmd: >
           bash -c '
             set -e
@@ -3919,8 +3857,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10125:9090
       cmd: >
           bash -c '
             set -e
@@ -4038,8 +3974,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10126:9090
       cmd: >
           bash -c '
             set -e
@@ -4156,8 +4090,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10127:9090
       cmd: >
           bash -c '
             set -e
@@ -4274,8 +4206,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10128:9090
       cmd: >
           bash -c '
             set -e
@@ -4393,8 +4323,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10129:9090
       cmd: >
           bash -c '
             set -e
@@ -4511,8 +4439,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10130:9090
       cmd: >
           bash -c '
             set -e
@@ -4629,8 +4555,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10131:9090
       cmd: >
           bash -c '
             set -e
@@ -4748,8 +4672,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10132:9090
       cmd: >
           bash -c '
             set -e
@@ -4866,8 +4788,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10133:9090
       cmd: >
           bash -c '
             set -e
@@ -4984,8 +4904,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10134:9090
       cmd: >
           bash -c '
             set -e
@@ -5102,8 +5020,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10135:9090
       cmd: >
           bash -c '
             set -e
@@ -5220,8 +5136,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10136:9090
       cmd: >
           bash -c '
             set -e
@@ -5339,8 +5253,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10137:9090
       cmd: >
           bash -c '
             set -e
@@ -5457,8 +5369,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10138:9090
       cmd: >
           bash -c '
             set -e
@@ -5575,8 +5485,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10139:9090
       cmd: >
           bash -c '
             set -e
@@ -5694,8 +5602,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10140:9090
       cmd: >
           bash -c '
             set -e
@@ -5812,8 +5718,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10141:9090
       cmd: >
           bash -c '
             set -e
@@ -5930,8 +5834,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10142:9090
       cmd: >
           bash -c '
             set -e
@@ -6049,8 +5951,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10143:9090
       cmd: >
           bash -c '
             set -e
@@ -6167,8 +6067,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10144:9090
       cmd: >
           bash -c '
             set -e
@@ -6285,8 +6183,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10145:9090
       cmd: >
           bash -c '
             set -e
@@ -6404,8 +6300,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10146:9090
       cmd: >
           bash -c '
             set -e
@@ -6522,8 +6416,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10147:9090
       cmd: >
           bash -c '
             set -e
@@ -6640,8 +6532,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10148:9090
       cmd: >
           bash -c '
             set -e
@@ -6758,8 +6648,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10149:9090
       cmd: >
           bash -c '
             set -e
@@ -6876,8 +6764,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10150:9090
       cmd: >
           bash -c '
             set -e
@@ -6995,8 +6881,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10151:9090
       cmd: >
           bash -c '
             set -e
@@ -7113,8 +6997,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10152:9090
       cmd: >
           bash -c '
             set -e
@@ -7231,8 +7113,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10153:9090
       cmd: >
           bash -c '
             set -e
@@ -7350,8 +7230,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10154:9090
       cmd: >
           bash -c '
             set -e
@@ -7468,8 +7346,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10155:9090
       cmd: >
           bash -c '
             set -e
@@ -7586,8 +7462,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10156:9090
       cmd: >
           bash -c '
             set -e
@@ -7705,8 +7579,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10157:9090
       cmd: >
           bash -c '
             set -e
@@ -7823,8 +7695,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10158:9090
       cmd: >
           bash -c '
             set -e
@@ -7941,8 +7811,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10159:9090
       cmd: >
           bash -c '
             set -e
@@ -8060,8 +7928,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10160:9090
       cmd: >
           bash -c '
             set -e
@@ -8178,8 +8044,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10161:9090
       cmd: >
           bash -c '
             set -e
@@ -8296,8 +8160,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10162:9090
       cmd: >
           bash -c '
             set -e
@@ -8414,8 +8276,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10163:9090
       cmd: >
           bash -c '
             set -e
@@ -8532,8 +8392,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10164:9090
       cmd: >
           bash -c '
             set -e
@@ -8651,8 +8509,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10165:9090
       cmd: >
           bash -c '
             set -e
@@ -8769,8 +8625,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10166:9090
       cmd: >
           bash -c '
             set -e
@@ -8887,8 +8741,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10167:9090
       cmd: >
           bash -c '
             set -e
@@ -9006,8 +8858,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10168:9090
       cmd: >
           bash -c '
             set -e
@@ -9124,8 +8974,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10169:9090
       cmd: >
           bash -c '
             set -e
@@ -9242,8 +9090,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10170:9090
       cmd: >
           bash -c '
             set -e
@@ -9361,8 +9207,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10171:9090
       cmd: >
           bash -c '
             set -e
@@ -9479,8 +9323,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10172:9090
       cmd: >
           bash -c '
             set -e
@@ -9597,8 +9439,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10173:9090
       cmd: >
           bash -c '
             set -e
@@ -9716,8 +9556,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10174:9090
       cmd: >
           bash -c '
             set -e
@@ -9834,8 +9672,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10175:9090
       cmd: >
           bash -c '
             set -e
@@ -9952,8 +9788,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10176:9090
       cmd: >
           bash -c '
             set -e
@@ -10070,8 +9904,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10177:9090
       cmd: >
           bash -c '
             set -e
@@ -10188,8 +10020,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10178:9090
       cmd: >
           bash -c '
             set -e
@@ -10307,8 +10137,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10179:9090
       cmd: >
           bash -c '
             set -e
@@ -10425,8 +10253,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10180:9090
       cmd: >
           bash -c '
             set -e
@@ -10543,8 +10369,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10181:9090
       cmd: >
           bash -c '
             set -e
@@ -10662,8 +10486,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10182:9090
       cmd: >
           bash -c '
             set -e
@@ -10780,8 +10602,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10183:9090
       cmd: >
           bash -c '
             set -e
@@ -10898,8 +10718,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10184:9090
       cmd: >
           bash -c '
             set -e
@@ -11017,8 +10835,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10185:9090
       cmd: >
           bash -c '
             set -e
@@ -11135,8 +10951,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10186:9090
       cmd: >
           bash -c '
             set -e
@@ -11253,8 +11067,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10187:9090
       cmd: >
           bash -c '
             set -e
@@ -11372,8 +11184,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10188:9090
       cmd: >
           bash -c '
             set -e
@@ -11490,8 +11300,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10189:9090
       cmd: >
           bash -c '
             set -e
@@ -11608,8 +11416,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10190:9090
       cmd: >
           bash -c '
             set -e
@@ -11726,8 +11532,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10191:9090
       cmd: >
           bash -c '
             set -e
@@ -11844,8 +11648,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10192:9090
       cmd: >
           bash -c '
             set -e
@@ -11963,8 +11765,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10193:9090
       cmd: >
           bash -c '
             set -e
@@ -12081,8 +11881,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10194:9090
       cmd: >
           bash -c '
             set -e
@@ -12199,8 +11997,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10195:9090
       cmd: >
           bash -c '
             set -e
@@ -12318,8 +12114,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10196:9090
       cmd: >
           bash -c '
             set -e
@@ -12436,8 +12230,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10197:9090
       cmd: >
           bash -c '
             set -e
@@ -12554,8 +12346,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10198:9090
       cmd: >
           bash -c '
             set -e
@@ -12673,8 +12463,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10199:9090
       cmd: >
           bash -c '
             set -e
@@ -12791,8 +12579,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10200:9090
       cmd: >
           bash -c '
             set -e
@@ -12909,8 +12695,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10201:9090
       cmd: >
           bash -c '
             set -e
@@ -13028,8 +12812,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10202:9090
       cmd: >
           bash -c '
             set -e
@@ -13146,8 +12928,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10203:9090
       cmd: >
           bash -c '
             set -e
@@ -13264,8 +13044,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10204:9090
       cmd: >
           bash -c '
             set -e
@@ -13382,8 +13160,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10205:9090
       cmd: >
           bash -c '
             set -e
@@ -13500,8 +13276,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10206:9090
       cmd: >
           bash -c '
             set -e
@@ -13619,8 +13393,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10207:9090
       cmd: >
           bash -c '
             set -e
@@ -13737,8 +13509,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10208:9090
       cmd: >
           bash -c '
             set -e
@@ -13855,8 +13625,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10209:9090
       cmd: >
           bash -c '
             set -e
@@ -13974,8 +13742,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10210:9090
       cmd: >
           bash -c '
             set -e
@@ -14092,8 +13858,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10211:9090
       cmd: >
           bash -c '
             set -e
@@ -14210,8 +13974,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10212:9090
       cmd: >
           bash -c '
             set -e
@@ -14329,8 +14091,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10213:9090
       cmd: >
           bash -c '
             set -e
@@ -14447,8 +14207,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10214:9090
       cmd: >
           bash -c '
             set -e
@@ -14565,8 +14323,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10215:9090
       cmd: >
           bash -c '
             set -e
@@ -14684,8 +14440,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10216:9090
       cmd: >
           bash -c '
             set -e
@@ -14802,8 +14556,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10217:9090
       cmd: >
           bash -c '
             set -e
@@ -14920,8 +14672,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10218:9090
       cmd: >
           bash -c '
             set -e
@@ -15038,8 +14788,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10219:9090
       cmd: >
           bash -c '
             set -e
@@ -15156,8 +14904,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10220:9090
       cmd: >
           bash -c '
             set -e
@@ -15275,8 +15021,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10221:9090
       cmd: >
           bash -c '
             set -e
@@ -15393,8 +15137,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10222:9090
       cmd: >
           bash -c '
             set -e
@@ -15511,8 +15253,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10223:9090
       cmd: >
           bash -c '
             set -e
@@ -15630,8 +15370,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10224:9090
       cmd: >
           bash -c '
             set -e
@@ -15748,8 +15486,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10225:9090
       cmd: >
           bash -c '
             set -e
@@ -15866,8 +15602,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10226:9090
       cmd: >
           bash -c '
             set -e
@@ -15985,8 +15719,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10227:9090
       cmd: >
           bash -c '
             set -e
@@ -16103,8 +15835,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10228:9090
       cmd: >
           bash -c '
             set -e
@@ -16221,8 +15951,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10229:9090
       cmd: >
           bash -c '
             set -e
@@ -16340,8 +16068,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10230:9090
       cmd: >
           bash -c '
             set -e
@@ -16458,8 +16184,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10231:9090
       cmd: >
           bash -c '
             set -e
@@ -16576,8 +16300,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10232:9090
       cmd: >
           bash -c '
             set -e
@@ -16694,8 +16416,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10233:9090
       cmd: >
           bash -c '
             set -e
@@ -16812,8 +16532,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10234:9090
       cmd: >
           bash -c '
             set -e
@@ -16931,8 +16649,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10235:9090
       cmd: >
           bash -c '
             set -e
@@ -17049,8 +16765,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10236:9090
       cmd: >
           bash -c '
             set -e
@@ -17167,8 +16881,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10237:9090
       cmd: >
           bash -c '
             set -e
@@ -17286,8 +16998,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10238:9090
       cmd: >
           bash -c '
             set -e
@@ -17404,8 +17114,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10239:9090
       cmd: >
           bash -c '
             set -e
@@ -17522,8 +17230,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10240:9090
       cmd: >
           bash -c '
             set -e
@@ -17641,8 +17347,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10241:9090
       cmd: >
           bash -c '
             set -e
@@ -17759,8 +17463,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10242:9090
       cmd: >
           bash -c '
             set -e
@@ -17877,8 +17579,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10243:9090
       cmd: >
           bash -c '
             set -e
@@ -17996,8 +17696,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10244:9090
       cmd: >
           bash -c '
             set -e
@@ -18114,8 +17812,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10245:9090
       cmd: >
           bash -c '
             set -e
@@ -18232,8 +17928,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10246:9090
       cmd: >
           bash -c '
             set -e
@@ -18350,8 +18044,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10247:9090
       cmd: >
           bash -c '
             set -e
@@ -18468,8 +18160,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10248:9090
       cmd: >
           bash -c '
             set -e
@@ -18587,8 +18277,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10249:9090
       cmd: >
           bash -c '
             set -e
@@ -18705,8 +18393,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10250:9090
       cmd: >
           bash -c '
             set -e
@@ -18824,8 +18510,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10251:9090
       cmd: >
           bash -c '
             set -e
@@ -18942,8 +18626,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10252:9090
       cmd: >
           bash -c '
             set -e
@@ -19061,8 +18743,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10253:9090
       cmd: >
           bash -c '
             set -e
@@ -19179,8 +18859,6 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
 
-      ports:
-        - 10254:9090
       cmd: >
           bash -c '
             set -e
@@ -19298,8 +18976,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
 
-      ports:
-        - 10255:9090
       cmd: >
           bash -c '
             set -e
