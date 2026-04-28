@@ -1,65 +1,284 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # =============================================================================
-# set_latency.sh — Apply structured latencies to the 162-node nebula topology
+# set_latency_nebula.sh — Apply randomized link latencies to the 162-node
+# nebula topology.
 #
-# Design rules (same philosophy as 25-node century topology):
-#   - serf ↔ switch/router (intra-cluster links): LOW  0.3ms – 2.5ms
-#   - router ↔ switch (cluster head uplinks):     MID  1.0ms – 5.0ms
-#   - switch ↔ switch (aggregation):              MID  1.0ms – 5.0ms
-#   - router ↔ router (inter-cluster backbone):   HIGH 2.0ms – 10.0ms
+# Link classes:
+#   - serf <-> switch : 1.0ms - 5.0ms
+#   - serf <-> router : 1.0ms - 5.0ms
+#   - switch <-> switch: 20.0ms - 40.0ms
+#   - switch <-> router: 40.0ms - 70.0ms
+#   - router <-> router: 80.0ms - 120.0ms
 #
-# All values are ONE-WAY delays (applied on each endpoint's egress).
-# The existing latency_list.txt contained raw Serf RTT measurements (not a
-# designed policy), so this script replaces it with structured values.
+# Assumptions:
+#   - direct serf <-> router links are treated like access links
+#   - switch <-> switch links are treated like switch <-> router uplinks
+#
+# The script reads links from the topology file and applies a fresh random
+# one-way delay to each endpoint's egress on every run.
 #
 # Usage:
-#   ./set_latency.sh          — apply all latencies
-#   ./set_latency.sh reset    — remove all netem qdiscs
+#   ./set_latency_nebula.sh
+#   ./set_latency_nebula.sh dry-run
+#   ./set_latency_nebula.sh reset
+#
+# Optional environment variables:
+#   TOPOLOGY_FILE=extended-162node.yml
+#   QUEUE_LENGTH=5000
+#   LATENCY_SEED=1234
 # =============================================================================
 
-set -e
-RESET=false
-[[ "${1:-}" == "reset" ]] && RESET=true
-QUEUE_LENGTH=5000
+set -euo pipefail
 
-# ---------------------------------------------------------------------------
-# Helpers
-# ---------------------------------------------------------------------------
-set_container() {
-  local node="$1" iface="$2" delay="$3"
-  if $RESET; then
-    echo "  [RESET] $node:$iface"
-    docker exec "$node" tc qdisc del dev "$iface" root 2>/dev/null || true
-  else
-    echo "  [SET]   $node:$iface → ${delay}ms"
-    docker exec "$node" ip link set "$iface" txqueuelen $QUEUE_LENGTH 2>/dev/null || true
-    docker exec "$node" tc qdisc del dev "$iface" root 2>/dev/null || true
-    docker exec "$node" tc qdisc add dev "$iface" root netem delay "${delay}ms" limit $QUEUE_LENGTH
+TOPOLOGY_FILE="${TOPOLOGY_FILE:-extended-162node.yml}"
+QUEUE_LENGTH="${QUEUE_LENGTH:-5000}"
+RESET=false
+DRY_RUN=false
+
+for arg in "$@"; do
+  case "$arg" in
+    reset)
+      RESET=true
+      ;;
+    dry-run|--dry-run)
+      DRY_RUN=true
+      ;;
+    *)
+      echo "Unknown argument: $arg" >&2
+      echo "Usage: $0 [reset] [dry-run]" >&2
+      exit 1
+      ;;
+  esac
+done
+
+if [[ ! -f "$TOPOLOGY_FILE" ]]; then
+  echo "Topology file not found: $TOPOLOGY_FILE" >&2
+  exit 1
+fi
+
+if [[ -n "${LATENCY_SEED:-}" ]]; then
+  RANDOM=$LATENCY_SEED
+fi
+
+topology_name="$(awk '/^name:/ {print $2; exit}' "$TOPOLOGY_FILE")"
+topology_name="${topology_name%\"}"
+topology_name="${topology_name#\"}"
+
+if [[ -z "$topology_name" ]]; then
+  echo "Unable to read topology name from $TOPOLOGY_FILE" >&2
+  exit 1
+fi
+
+container_prefix="clab-${topology_name}-"
+
+ACCESS_MIN_TENTHS=10
+ACCESS_MAX_TENTHS=50
+SWITCH_SWITCH_MIN_TENTHS=200
+SWITCH_SWITCH_MAX_TENTHS=400
+SWITCH_ROUTER_MIN_TENTHS=400
+SWITCH_ROUTER_MAX_TENTHS=700
+BACKBONE_MIN_TENTHS=800
+BACKBONE_MAX_TENTHS=1200
+
+declare -A link_counts=(
+  ["access"]=0
+  ["switch_switch"]=0
+  ["switch_router"]=0
+  ["backbone"]=0
+)
+
+random_tenths() {
+  local min_tenths="$1"
+  local max_tenths="$2"
+  echo $((RANDOM % (max_tenths - min_tenths + 1) + min_tenths))
+}
+
+format_ms() {
+  local tenths="$1"
+  printf "%d.%01d" $((tenths / 10)) $((tenths % 10))
+}
+
+kind_for_node() {
+  case "$1" in
+    serf*)
+      echo "serf"
+      ;;
+    switch*)
+      echo "switch"
+      ;;
+    router*)
+      echo "router"
+      ;;
+    *)
+      echo "other"
+      ;;
+  esac
+}
+
+classify_link() {
+  local kind_a="$1"
+  local kind_b="$2"
+
+  if [[ ( "$kind_a" == "serf" && "$kind_b" == "switch" ) || \
+        ( "$kind_a" == "switch" && "$kind_b" == "serf" ) || \
+        ( "$kind_a" == "serf" && "$kind_b" == "router" ) || \
+        ( "$kind_a" == "router" && "$kind_b" == "serf" ) ]]; then
+    echo "access"
+    return
   fi
+
+  if [[ "$kind_a" == "switch" && "$kind_b" == "switch" ]]; then
+    echo "switch_switch"
+    return
+  fi
+
+  if [[ ( "$kind_a" == "switch" && "$kind_b" == "router" ) || \
+        ( "$kind_a" == "router" && "$kind_b" == "switch" ) ]]; then
+    echo "switch_router"
+    return
+  fi
+
+  if [[ "$kind_a" == "router" && "$kind_b" == "router" ]]; then
+    echo "backbone"
+    return
+  fi
+
+  echo "other"
+}
+
+pick_delay_ms() {
+  local link_class="$1"
+  local tenths
+
+  case "$link_class" in
+    access)
+      tenths="$(random_tenths "$ACCESS_MIN_TENTHS" "$ACCESS_MAX_TENTHS")"
+      ;;
+    switch_switch)
+      tenths="$(random_tenths "$SWITCH_SWITCH_MIN_TENTHS" "$SWITCH_SWITCH_MAX_TENTHS")"
+      ;;
+    switch_router)
+      tenths="$(random_tenths "$SWITCH_ROUTER_MIN_TENTHS" "$SWITCH_ROUTER_MAX_TENTHS")"
+      ;;
+    backbone)
+      tenths="$(random_tenths "$BACKBONE_MIN_TENTHS" "$BACKBONE_MAX_TENTHS")"
+      ;;
+    *)
+      echo "Unsupported link class: $link_class" >&2
+      exit 1
+      ;;
+  esac
+
+  format_ms "$tenths"
+}
+
+reset_container() {
+  local node="$1"
+  local iface="$2"
+
+  if $DRY_RUN; then
+    echo "    [DRY-RUN][RESET][container] ${node}:${iface}"
+    return
+  fi
+
+  echo "    [RESET][container] ${node}:${iface}"
+  docker exec "$node" tc qdisc del dev "$iface" root 2>/dev/null || true
+}
+
+set_container() {
+  local node="$1"
+  local iface="$2"
+  local delay_ms="$3"
+
+  if $DRY_RUN; then
+    echo "    [DRY-RUN][SET][container] ${node}:${iface} -> ${delay_ms}ms"
+    return
+  fi
+
+  echo "    [SET][container] ${node}:${iface} -> ${delay_ms}ms"
+  docker exec "$node" ip link set "$iface" txqueuelen "$QUEUE_LENGTH" 2>/dev/null || true
+  docker exec "$node" tc qdisc del dev "$iface" root 2>/dev/null || true
+  docker exec "$node" tc qdisc add dev "$iface" root netem delay "${delay_ms}ms" limit "$QUEUE_LENGTH"
+}
+
+reset_switch() {
+  local iface="$1"
+
+  if $DRY_RUN; then
+    echo "    [DRY-RUN][RESET][switch] ${iface}"
+    return
+  fi
+
+  echo "    [RESET][switch] ${iface}"
+  sudo tc qdisc del dev "$iface" root 2>/dev/null || true
 }
 
 set_switch() {
-  local iface="$1" delay="$2"
-  if $RESET; then
-    echo "  [RESET] switch iface $iface"
-    sudo tc qdisc del dev "$iface" root 2>/dev/null || true
-  else
-    echo "  [SET]   switch iface $iface → ${delay}ms"
-    sudo ip link set dev "$iface" txqueuelen $QUEUE_LENGTH 2>/dev/null || true
-    sudo tc qdisc del dev "$iface" root 2>/dev/null || true
-    sudo tc qdisc add dev "$iface" root netem delay "${delay}ms" limit $QUEUE_LENGTH 2>/dev/null || \
-    sudo tc qdisc change dev "$iface" root netem delay "${delay}ms" limit $QUEUE_LENGTH
+  local iface="$1"
+  local delay_ms="$2"
+
+  if $DRY_RUN; then
+    echo "    [DRY-RUN][SET][switch] ${iface} -> ${delay_ms}ms"
+    return
   fi
+
+  echo "    [SET][switch] ${iface} -> ${delay_ms}ms"
+  sudo ip link set dev "$iface" txqueuelen "$QUEUE_LENGTH" 2>/dev/null || true
+  sudo tc qdisc del dev "$iface" root 2>/dev/null || true
+  sudo tc qdisc add dev "$iface" root netem delay "${delay_ms}ms" limit "$QUEUE_LENGTH" 2>/dev/null || \
+    sudo tc qdisc change dev "$iface" root netem delay "${delay_ms}ms" limit "$QUEUE_LENGTH"
 }
 
+apply_endpoint_delay() {
+  local endpoint="$1"
+  local delay_ms="${2:-}"
+  local node="${endpoint%%:*}"
+  local iface="${endpoint#*:}"
+  local node_kind
+
+  node_kind="$(kind_for_node "$node")"
+
+  case "$node_kind" in
+    serf|router)
+      local container_name="${container_prefix}${node}"
+      if $RESET; then
+        reset_container "$container_name" "$iface"
+      else
+        set_container "$container_name" "$iface" "$delay_ms"
+      fi
+      ;;
+    switch)
+      if $RESET; then
+        reset_switch "$iface"
+      else
+        set_switch "$iface" "$delay_ms"
+      fi
+      ;;
+    *)
+      echo "Unknown endpoint type in ${endpoint}" >&2
+      exit 1
+      ;;
+  esac
+}
+
+echo "=================================================="
 if $RESET; then
-  echo "=================================================="
-  echo " Resetting ALL latencies — nebula 162-node topo"
-  echo "=================================================="
+  echo " Resetting randomized latencies — ${topology_name}"
 else
-  echo "=================================================="
-  echo " Applying structured latencies — nebula 162-node"
-  echo "=================================================="
+  echo " Applying randomized latencies — ${topology_name}"
+fi
+echo "=================================================="
+echo "Topology file : ${TOPOLOGY_FILE}"
+echo "Container pref: ${container_prefix}"
+echo "Queue length  : ${QUEUE_LENGTH}"
+echo "Mode          : $( $RESET && echo reset || echo apply )$( $DRY_RUN && echo ' + dry-run' || true )"
+
+if ! $RESET; then
+  echo "Ranges        : access 1.0-5.0ms, switch↔switch 20.0-40.0ms, switch↔router 40.0-70.0ms, backbone 80.0-120.0ms (one-way)"
+fi
+
+if [[ -n "${LATENCY_SEED:-}" ]]; then
+  echo "Seed          : ${LATENCY_SEED}"
 fi
 
 # ===========================================================================
@@ -474,18 +693,64 @@ set_container "clab-nebula-router22" eth1  "10.00" ;  set_container "clab-nebula
 set_container "clab-nebula-router20" eth5  "10.00" ;  set_container "clab-nebula-router23" eth1  "10.00"
 
 echo ""
-if $RESET; then
-  echo "All latencies reset."
+
+total_links=0
+
+while IFS= read -r line; do
+  [[ "$line" != *"endpoints:"* ]] && continue
+
+  if [[ $line =~ \[[[:space:]]*\"([^\"]+)\"[[:space:]]*,[[:space:]]*\"([^\"]+)\"[[:space:]]*\] ]]; then
+    endpoint_a="${BASH_REMATCH[1]}"
+    endpoint_b="${BASH_REMATCH[2]}"
+
+    kind_a="$(kind_for_node "${endpoint_a%%:*}")"
+    kind_b="$(kind_for_node "${endpoint_b%%:*}")"
+    link_class="$(classify_link "$kind_a" "$kind_b")"
+
+    if [[ "$link_class" == "other" ]]; then
+      echo "Unable to classify link: ${endpoint_a} <-> ${endpoint_b}" >&2
+      exit 1
+    fi
+
+    total_links=$((total_links + 1))
+    link_counts["$link_class"]=$((link_counts["$link_class"] + 1))
+
+    if $RESET; then
+      echo "[${link_class}] ${endpoint_a} <-> ${endpoint_b}"
+      apply_endpoint_delay "$endpoint_a"
+      apply_endpoint_delay "$endpoint_b"
+    else
+      delay_ms="$(pick_delay_ms "$link_class")"
+      echo "[${link_class}] ${endpoint_a} <-> ${endpoint_b} => ${delay_ms}ms"
+      apply_endpoint_delay "$endpoint_a" "$delay_ms"
+      apply_endpoint_delay "$endpoint_b" "$delay_ms"
+    fi
+  fi
+done < "$TOPOLOGY_FILE"
+
+echo ""
+echo "Summary:"
+echo "  total links : ${total_links}"
+echo "  access      : ${link_counts[access]}"
+echo "  switch↔switch: ${link_counts[switch_switch]}"
+echo "  switch↔router: ${link_counts[switch_router]}"
+echo "  backbone    : ${link_counts[backbone]}"
+
+echo ""
+
+if $DRY_RUN; then
+  if $RESET; then
+    echo "Dry-run complete. No qdiscs were reset."
+  else
+    echo "Dry-run complete. No qdiscs were changed."
+    echo "Re-run without dry-run to apply this policy."
+  fi
+elif $RESET; then
+  echo "All matching qdiscs were reset."
 else
-  echo "All latencies applied."
-  echo ""
-  echo "  Summary:"
-  echo "    serf↔switch/router (intra-cluster): 0.27 – 2.50ms"
-  echo "    router↔switch (uplinks):            1.0  – 7.5ms"
-  echo "    router↔router (backbone):           0.03 – 10.0ms"
-  echo ""
-  echo "  Verify:"
-  echo "    docker exec clab-nebula-serf1  ping -c5 <serf2-ip>    # low RTT"
-  echo "    docker exec clab-nebula-serf1  ping -c5 <serf130-ip>  # high RTT"
-  echo "    docker exec clab-nebula-router20 tc qdisc show"
+  echo "All randomized latencies were applied."
+  echo "Re-run the script to generate a fresh random latency layout."
+  if [[ -n "${LATENCY_SEED:-}" ]]; then
+    echo "Re-use LATENCY_SEED=${LATENCY_SEED} to reproduce the same sequence."
+  fi
 fi
