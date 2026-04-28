@@ -80,9 +80,10 @@ set_container "clab-nebula-serf6"   eth1  "0.44"
 set_container "clab-nebula-serf7"   eth1  "0.47"
 set_container "clab-nebula-serf8"   eth1  "0.68"
 
-# switch3: serf9,10
+# switch3: serf9,10,11
 set_container "clab-nebula-serf9"   eth1  "0.27"
 set_container "clab-nebula-serf10"  eth1  "0.33"
+set_container "clab-nebula-serf11"  eth1  "0.41"
 
 # switch4: serf12,13,14
 set_container "clab-nebula-serf12"  eth1  "0.70"
@@ -114,6 +115,9 @@ set_container "clab-nebula-serf42"  eth1  "2.14"
 set_container "clab-nebula-serf43"  eth1  "1.02"
 set_container "clab-nebula-serf44"  eth1  "0.42"
 set_container "clab-nebula-serf45"  eth1  "0.45"
+
+# switch13: serf46
+set_container "clab-nebula-serf46"  eth1  "0.52"
 
 # switch14: serf47
 set_container "clab-nebula-serf47"  eth1  "0.51"
@@ -240,6 +244,9 @@ set_container "clab-nebula-serf23"  eth1  "2.17"
 set_container "clab-nebula-serf24"  eth1  "1.99"
 set_container "clab-nebula-serf25"  eth1  "1.00"
 
+# switch7: serf26
+set_container "clab-nebula-serf26"  eth1  "0.45"
+
 # switch8: serf27,28,29
 set_container "clab-nebula-serf27"  eth1  "1.88"
 set_container "clab-nebula-serf28"  eth1  "2.50"   # capped from 15.6ms raw
@@ -255,13 +262,18 @@ echo "--- serf ↔ router direct intra-cluster links ---"
 set_container "clab-nebula-serf16"  eth1  "0.59"
 set_container "clab-nebula-serf17"  eth1  "0.50"
 
+# router2: serf18,19
+set_container "clab-nebula-serf18"  eth1  "0.46"
+set_container "clab-nebula-serf19"  eth1  "0.46"
+
 # router4: serf30,31,32
 set_container "clab-nebula-serf30"  eth1  "0.39"
 set_container "clab-nebula-serf31"  eth1  "0.41"
 set_container "clab-nebula-serf32"  eth1  "0.47"
 
-# router5: serf48,50
+# router5: serf48,49,50
 set_container "clab-nebula-serf48"  eth1  "0.75"
+set_container "clab-nebula-serf49"  eth1  "0.75"
 set_container "clab-nebula-serf50"  eth1  "0.40"
 
 # router3: serf52,53,54,55,56
@@ -337,6 +349,8 @@ echo "--- router ↔ switch uplink interfaces (host-side) ---"
 
 # These are the OVS port interfaces exposed on the host by containerlab.
 # Format: ovs<N>p<port>  (the port connected to the router)
+set_switch "ovs4p1"   "1.37"    # router1 ↔ switch4
+set_switch "ovs5p1"   "1.68"    # router1 ↔ switch5
 set_switch "ovs6p1"   "1.44"    # router4 ↔ switch6
 set_switch "ovs7p1"   "1.86"    # router4 ↔ switch7
 set_switch "ovs8p1"   "1.73"    # router4 ↔ switch8
@@ -345,6 +359,7 @@ set_switch "ovs10p1"  "1.80"    # router6 ↔ switch10
 set_switch "ovs11p1"  "1.46"    # router6 ↔ switch11
 set_switch "ovs12p1"  "1.72"    # router5 ↔ switch12
 set_switch "ovs13p1"  "2.36"    # router5 ↔ switch13
+set_switch "ovs14p1"  "1.50"    # router5 ↔ switch14
 set_switch "ovs15p1"  "1.43"    # router3 ↔ switch15
 set_switch "ovs16p1"  "1.59"    # router8 ↔ switch16
 set_switch "ovs17p1"  "2.21"    # router8 ↔ switch17
@@ -359,7 +374,10 @@ set_switch "ovs25p1"  "3.93"    # switch24 ↔ switch25 (aggregation)
 set_switch "ovs25p2"  "0.78"    # switch26 ↔ switch25
 set_switch "ovs26p1"  "0.78"    # switch26 ↔ switch25 (other side)
 set_switch "ovs27p1"  "1.64"    # router22 ↔ switch27
+set_switch "ovs26p1"  "1.64"    # router16 ↔ switch26 (was only set for switch25↔switch26 side)
 set_switch "ovs28p1"  "4.81"    # router20 ↔ switch28
+set_switch "ovs32p1"  "3.50"    # router20 ↔ switch32
+set_switch "ovs33p1"  "5.09"    # router20 ↔ switch33
 set_switch "ovs29p1"  "6.59"    # router21 ↔ switch29
 set_switch "ovs30p1"  "7.35"    # router21 ↔ switch30
 set_switch "ovs30p2"  "7.46"    # switch31 ↔ switch30
@@ -374,6 +392,8 @@ set_switch "ovs36p2"  "3.62"    # router27 ↔ switch36
 set_switch "ovs37p1"  "3.38"    # router27 ↔ switch37
 
 # Also set the router-side interfaces (inside containers)
+set_container "clab-nebula-router1"  eth3  "1.68"   # router1 ↔ switch5
+set_container "clab-nebula-router1"  eth4  "1.37"   # router1 ↔ switch4
 set_container "clab-nebula-router4"  eth4  "1.44"
 set_container "clab-nebula-router4"  eth5  "1.86"
 set_container "clab-nebula-router4"  eth6  "1.73"
@@ -382,6 +402,7 @@ set_container "clab-nebula-router6"  eth3  "1.80"
 set_container "clab-nebula-router6"  eth4  "1.46"
 set_container "clab-nebula-router5"  eth3  "1.72"
 set_container "clab-nebula-router5"  eth4  "2.36"
+set_container "clab-nebula-router5"  eth5  "1.50"   # router5 ↔ switch14
 set_container "clab-nebula-router3"  eth3  "1.43"
 set_container "clab-nebula-router8"  eth6  "1.59"
 set_container "clab-nebula-router8"  eth7  "2.21"
@@ -392,8 +413,11 @@ set_container "clab-nebula-router13" eth5  "2.00"
 set_container "clab-nebula-router13" eth6  "3.15"
 set_container "clab-nebula-router10" eth3  "1.55"
 set_container "clab-nebula-router16" eth2  "2.78"
+set_container "clab-nebula-router16" eth3  "1.64"   # router16 ↔ switch26
 set_container "clab-nebula-router22" eth2  "1.64"
 set_container "clab-nebula-router20" eth7  "4.81"
+set_container "clab-nebula-router20" eth8  "3.50"   # router20 ↔ switch32
+set_container "clab-nebula-router20" eth9  "5.09"   # router20 ↔ switch33
 set_container "clab-nebula-router21" eth2  "6.59"
 set_container "clab-nebula-router21" eth3  "7.35"
 set_container "clab-nebula-router26" eth1  "1.02"
