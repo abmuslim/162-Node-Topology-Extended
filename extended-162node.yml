@@ -280,7 +280,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -398,7 +398,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -517,7 +517,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -635,7 +635,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -753,7 +753,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -872,7 +872,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -990,7 +990,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -1108,7 +1108,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -1227,7 +1227,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -1345,7 +1345,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -1463,7 +1463,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -1582,7 +1582,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -1700,7 +1700,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -1818,7 +1818,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -1936,7 +1936,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -2055,7 +2055,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -2173,7 +2173,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -2291,7 +2291,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -2410,7 +2410,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -2528,7 +2528,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -2646,7 +2646,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -2765,7 +2765,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -2883,7 +2883,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -3001,7 +3001,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -3120,7 +3120,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -3238,7 +3238,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -3356,7 +3356,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -3474,7 +3474,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -3592,7 +3592,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -3711,7 +3711,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -3829,7 +3829,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -3947,7 +3947,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -4066,7 +4066,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -4184,7 +4184,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -4302,7 +4302,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -4421,7 +4421,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -4539,7 +4539,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -4657,7 +4657,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -4776,7 +4776,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -4894,7 +4894,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -5012,7 +5012,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -5130,7 +5130,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -5248,7 +5248,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -5367,7 +5367,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -5485,7 +5485,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -5603,7 +5603,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -5722,7 +5722,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -5840,7 +5840,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -5958,7 +5958,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -6077,7 +6077,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -6195,7 +6195,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -6313,7 +6313,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -6432,7 +6432,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -6550,7 +6550,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -6668,7 +6668,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -6786,7 +6786,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -6904,7 +6904,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -7023,7 +7023,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -7141,7 +7141,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -7259,7 +7259,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -7378,7 +7378,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -7496,7 +7496,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -7614,7 +7614,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -7733,7 +7733,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -7851,7 +7851,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -7969,7 +7969,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -8088,7 +8088,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -8206,7 +8206,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -8324,7 +8324,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -8442,7 +8442,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -8560,7 +8560,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -8679,7 +8679,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -8797,7 +8797,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -8915,7 +8915,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -9034,7 +9034,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -9152,7 +9152,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -9270,7 +9270,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -9389,7 +9389,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -9507,7 +9507,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -9625,7 +9625,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -9744,7 +9744,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -9862,7 +9862,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -9980,7 +9980,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -10098,7 +10098,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -10216,7 +10216,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -10335,7 +10335,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -10453,7 +10453,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -10571,7 +10571,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -10690,7 +10690,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -10808,7 +10808,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -10926,7 +10926,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -11045,7 +11045,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -11163,7 +11163,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -11281,7 +11281,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -11400,7 +11400,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -11518,7 +11518,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -11636,7 +11636,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -11754,7 +11754,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -11872,7 +11872,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -11991,7 +11991,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -12109,7 +12109,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -12227,7 +12227,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -12346,7 +12346,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -12464,7 +12464,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -12582,7 +12582,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -12701,7 +12701,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -12819,7 +12819,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -12937,7 +12937,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -13056,7 +13056,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -13174,7 +13174,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -13292,7 +13292,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -13410,7 +13410,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -13528,7 +13528,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -13647,7 +13647,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -13765,7 +13765,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -13883,7 +13883,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -14002,7 +14002,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -14120,7 +14120,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -14238,7 +14238,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -14357,7 +14357,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -14475,7 +14475,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -14593,7 +14593,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -14712,7 +14712,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -14830,7 +14830,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -14948,7 +14948,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -15066,7 +15066,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -15184,7 +15184,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -15303,7 +15303,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -15421,7 +15421,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -15539,7 +15539,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -15658,7 +15658,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -15776,7 +15776,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -15894,7 +15894,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -16013,7 +16013,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -16131,7 +16131,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -16249,7 +16249,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -16368,7 +16368,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -16486,7 +16486,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -16604,7 +16604,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -16722,7 +16722,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -16840,7 +16840,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -16959,7 +16959,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -17077,7 +17077,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -17195,7 +17195,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -17314,7 +17314,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -17432,7 +17432,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -17550,7 +17550,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -17669,7 +17669,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -17787,7 +17787,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -17905,7 +17905,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -18024,7 +18024,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -18142,7 +18142,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -18260,7 +18260,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -18378,7 +18378,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -18496,7 +18496,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -18615,7 +18615,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -18733,7 +18733,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -18852,7 +18852,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -18970,7 +18970,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -19089,7 +19089,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -19207,7 +19207,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -19326,7 +19326,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 300 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
