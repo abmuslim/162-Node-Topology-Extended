@@ -80,163 +80,163 @@ topology:
     #---------------------------------Routers (FRR)---------------------------------
     router1:
       kind: linux
-      image: quay.io/frrouting/frr:10.2.1
+      image: frrouting/frr:v7.5.1
       binds:
         - router1/daemons:/etc/frr/daemons
         - router1/frr.conf:/etc/frr/frr.conf
     router2:
       kind: linux
-      image: quay.io/frrouting/frr:10.2.1
+      image: frrouting/frr:v7.5.1
       binds:
         - router2/daemons:/etc/frr/daemons
         - router2/frr.conf:/etc/frr/frr.conf
     router3:
       kind: linux
-      image: quay.io/frrouting/frr:10.2.1
+      image: frrouting/frr:v7.5.1
       binds:
         - router3/daemons:/etc/frr/daemons
         - router3/frr.conf:/etc/frr/frr.conf
     router4:
       kind: linux
-      image: quay.io/frrouting/frr:10.2.1
+      image: frrouting/frr:v7.5.1
       binds:
         - router4/daemons:/etc/frr/daemons
         - router4/frr.conf:/etc/frr/frr.conf
     router5:
       kind: linux
-      image: quay.io/frrouting/frr:10.2.1
+      image: frrouting/frr:v7.5.1
       binds:
         - router5/daemons:/etc/frr/daemons
         - router5/frr.conf:/etc/frr/frr.conf
     router6:
       kind: linux
-      image: quay.io/frrouting/frr:10.2.1
+      image: frrouting/frr:v7.5.1
       binds:
         - router6/daemons:/etc/frr/daemons
         - router6/frr.conf:/etc/frr/frr.conf
     router7:
       kind: linux
-      image: quay.io/frrouting/frr:10.2.1
+      image: frrouting/frr:v7.5.1
       binds:
         - router7/daemons:/etc/frr/daemons
         - router7/frr.conf:/etc/frr/frr.conf
     router8:
       kind: linux
-      image: quay.io/frrouting/frr:10.2.1
+      image: frrouting/frr:v7.5.1
       binds:
         - router8/daemons:/etc/frr/daemons
         - router8/frr.conf:/etc/frr/frr.conf
     router9:
       kind: linux
-      image: quay.io/frrouting/frr:10.2.1
+      image: frrouting/frr:v7.5.1
       binds:
         - router9/daemons:/etc/frr/daemons
         - router9/frr.conf:/etc/frr/frr.conf
     router10:
       kind: linux
-      image: quay.io/frrouting/frr:10.2.1
+      image: frrouting/frr:v7.5.1
       binds:
         - router10/daemons:/etc/frr/daemons
         - router10/frr.conf:/etc/frr/frr.conf
     router11:
       kind: linux
-      image: quay.io/frrouting/frr:10.2.1
+      image: frrouting/frr:v7.5.1
       binds:
         - router11/daemons:/etc/frr/daemons
         - router11/frr.conf:/etc/frr/frr.conf
     router12:
       kind: linux
-      image: quay.io/frrouting/frr:10.2.1
+      image: frrouting/frr:v7.5.1
       binds:
         - router12/daemons:/etc/frr/daemons
         - router12/frr.conf:/etc/frr/frr.conf
     router13:
       kind: linux
-      image: quay.io/frrouting/frr:10.2.1
+      image: frrouting/frr:v7.5.1
       binds:
         - router13/daemons:/etc/frr/daemons
         - router13/frr.conf:/etc/frr/frr.conf
     router14:
       kind: linux
-      image: quay.io/frrouting/frr:10.2.1
+      image: frrouting/frr:v7.5.1
       binds:
         - router14/daemons:/etc/frr/daemons
         - router14/frr.conf:/etc/frr/frr.conf
     router15:
       kind: linux
-      image: quay.io/frrouting/frr:10.2.1
+      image: frrouting/frr:v7.5.1
       binds:
         - router15/daemons:/etc/frr/daemons
         - router15/frr.conf:/etc/frr/frr.conf
     router16:
       kind: linux
-      image: quay.io/frrouting/frr:10.2.1
+      image: frrouting/frr:v7.5.1
       binds:
         - router16/daemons:/etc/frr/daemons
         - router16/frr.conf:/etc/frr/frr.conf
     router17:
       kind: linux
-      image: quay.io/frrouting/frr:10.2.1
+      image: frrouting/frr:v7.5.1
       binds:
         - router17/daemons:/etc/frr/daemons
         - router17/frr.conf:/etc/frr/frr.conf
     router18:
       kind: linux
-      image: quay.io/frrouting/frr:10.2.1
+      image: frrouting/frr:v7.5.1
       binds:
         - router18/daemons:/etc/frr/daemons
         - router18/frr.conf:/etc/frr/frr.conf
     router19:
       kind: linux
-      image: quay.io/frrouting/frr:10.2.1
+      image: frrouting/frr:v7.5.1
       binds:
         - router19/daemons:/etc/frr/daemons
         - router19/frr.conf:/etc/frr/frr.conf
     router20:
       kind: linux
-      image: quay.io/frrouting/frr:10.2.1
+      image: frrouting/frr:v7.5.1
       binds:
         - router20/daemons:/etc/frr/daemons
         - router20/frr.conf:/etc/frr/frr.conf
     router21:
       kind: linux
-      image: quay.io/frrouting/frr:10.2.1
+      image: frrouting/frr:v7.5.1
       binds:
         - router21/daemons:/etc/frr/daemons
         - router21/frr.conf:/etc/frr/frr.conf
     router22:
       kind: linux
-      image: quay.io/frrouting/frr:10.2.1
+      image: frrouting/frr:v7.5.1
       binds:
         - router22/daemons:/etc/frr/daemons
         - router22/frr.conf:/etc/frr/frr.conf
     router23:
       kind: linux
-      image: quay.io/frrouting/frr:10.2.1
+      image: frrouting/frr:v7.5.1
       binds:
         - router23/daemons:/etc/frr/daemons
         - router23/frr.conf:/etc/frr/frr.conf
     router24:
       kind: linux
-      image: quay.io/frrouting/frr:10.2.1
+      image: frrouting/frr:v7.5.1
       binds:
         - router24/daemons:/etc/frr/daemons
         - router24/frr.conf:/etc/frr/frr.conf
     router25:
       kind: linux
-      image: quay.io/frrouting/frr:10.2.1
+      image: frrouting/frr:v7.5.1
       binds:
         - router25/daemons:/etc/frr/daemons
         - router25/frr.conf:/etc/frr/frr.conf
     router26:
       kind: linux
-      image: quay.io/frrouting/frr:10.2.1
+      image: frrouting/frr:v7.5.1
       binds:
         - router26/daemons:/etc/frr/daemons
         - router26/frr.conf:/etc/frr/frr.conf
     router27:
       kind: linux
-      image: quay.io/frrouting/frr:10.2.1
+      image: frrouting/frr:v7.5.1
       binds:
         - router27/daemons:/etc/frr/daemons
         - router27/frr.conf:/etc/frr/frr.conf
