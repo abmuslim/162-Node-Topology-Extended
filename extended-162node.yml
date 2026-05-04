@@ -12810,73 +12810,73 @@ topology:
             sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
-            echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            k3s server \
-              --node-name serf106 \
-              --disable traefik \
-              --disable servicelb \
-              --disable local-storage \
-              --disable metrics-server \
-              --disable-cloud-controller \
-              --disable-network-policy \
-              --disable-helm-controller \
-              --snapshotter native \
-              --tls-san 10.0.57.10 \
-              --kubelet-arg=cgroup-root=/ \
-              --kubelet-arg=cgroups-per-qos=false \
-              --kubelet-arg=enforce-node-allocatable= \
-              --v=0 &
+            # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
+            # k3s server \
+              # --node-name serf106 \
+              # --disable traefik \
+              # --disable servicelb \
+              # --disable local-storage \
+              # --disable metrics-server \
+              # --disable-cloud-controller \
+              # --disable-network-policy \
+              # --disable-helm-controller \
+              # --snapshotter native \
+              # --tls-san 10.0.57.10 \
+              # --kubelet-arg=cgroup-root=/ \
+              # --kubelet-arg=cgroups-per-qos=false \
+              # --kubelet-arg=enforce-node-allocatable= \
+              # --v=0 &
 
-            sleep 20
-            chmod 666 /etc/rancher/k3s/k3s.yaml
-            export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+            # sleep 20
+            # chmod 666 /etc/rancher/k3s/k3s.yaml
+            # export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
-            echo "[INIT] Waiting for containerd to be ready..."
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                echo "  containerd not yet ready, retrying..."
-                sleep 3
-            done
-            echo "Containerd is ready."
+            # echo "[INIT] Waiting for containerd to be ready..."
+            # until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
+                # echo "  containerd not yet ready, retrying..."
+                # sleep 3
+            # done
+            # echo "Containerd is ready."
 
-            echo "[INIT] Importing cached images..."
-            for f in /opt/k3s-images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
-            done
+            # echo "[INIT] Importing cached images..."
+            # for f in /opt/k3s-images/*.tar; do
+                # echo "Loading $f ..."
+                # /usr/local/bin/k3s ctr images import "$f" || true
+            # done
 
-            k3s kubectl apply -f /tmp/namespace.yaml
-            k3s kubectl apply -f /tmp/rbac.yaml
-            k3s kubectl apply -f /tmp/deployment.yaml
-            k3s kubectl apply -f /tmp/ram_price.yaml
-            k3s kubectl apply -f /tmp/storage_price.yaml
-            k3s kubectl apply -f /tmp/vcpu_price.yaml
-            k3s kubectl apply -f /tmp/vgpu_price.yaml
-            k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+            # k3s kubectl apply -f /tmp/namespace.yaml
+            # k3s kubectl apply -f /tmp/rbac.yaml
+            # k3s kubectl apply -f /tmp/deployment.yaml
+            # k3s kubectl apply -f /tmp/ram_price.yaml
+            # k3s kubectl apply -f /tmp/storage_price.yaml
+            # k3s kubectl apply -f /tmp/vcpu_price.yaml
+            # k3s kubectl apply -f /tmp/vgpu_price.yaml
+            # k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
  
 
-            mkdir -p ~/.kube
-            cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
-            chown $(whoami):$(whoami) ~/.kube/config
-            chmod 600 ~/.kube/config
+            # mkdir -p ~/.kube
+            # cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+            # chown $(whoami):$(whoami) ~/.kube/config
+            # chmod 600 ~/.kube/config
 
-            echo "[READY] K3s cluster is up and running on $(hostname)."
+            # echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            # pip install kubernetes
             # Install KWOK
-            echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            # echo "[KWOK] Installing KWOK controller..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
             
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            # echo "[KWOK] Waiting for KWOK controller to be ready..."
+            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
             
-            echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            # echo "[KWOK] Applying stage-fast configuration..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
             
-            echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            # echo "[KWOK] Applying metrics-usage configuration..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
             
-            echo "[KWOK] Installation complete!"
+            # echo "[KWOK] Installation complete!"
             
             while true; do
                 sync
@@ -13168,73 +13168,73 @@ topology:
             sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
-            echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            k3s server \
-              --node-name serf109 \
-              --disable traefik \
-              --disable servicelb \
-              --disable local-storage \
-              --disable metrics-server \
-              --disable-cloud-controller \
-              --disable-network-policy \
-              --disable-helm-controller \
-              --snapshotter native \
-              --tls-san 10.0.60.10 \
-              --kubelet-arg=cgroup-root=/ \
-              --kubelet-arg=cgroups-per-qos=false \
-              --kubelet-arg=enforce-node-allocatable= \
-              --v=0 &
+            # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
+            # k3s server \
+              # --node-name serf109 \
+              # --disable traefik \
+              # --disable servicelb \
+              # --disable local-storage \
+              # --disable metrics-server \
+              # --disable-cloud-controller \
+              # --disable-network-policy \
+              # --disable-helm-controller \
+              # --snapshotter native \
+              # --tls-san 10.0.60.10 \
+              # --kubelet-arg=cgroup-root=/ \
+              # --kubelet-arg=cgroups-per-qos=false \
+              # --kubelet-arg=enforce-node-allocatable= \
+              # --v=0 &
 
-            sleep 20
-            chmod 666 /etc/rancher/k3s/k3s.yaml
-            export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+            # sleep 20
+            # chmod 666 /etc/rancher/k3s/k3s.yaml
+            # export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
-            echo "[INIT] Waiting for containerd to be ready..."
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                echo "  containerd not yet ready, retrying..."
-                sleep 3
-            done
-            echo "Containerd is ready."
+            # echo "[INIT] Waiting for containerd to be ready..."
+            # until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
+                # echo "  containerd not yet ready, retrying..."
+                # sleep 3
+            # done
+            # echo "Containerd is ready."
 
-            echo "[INIT] Importing cached images..."
-            for f in /opt/k3s-images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
-            done
+            # echo "[INIT] Importing cached images..."
+            # for f in /opt/k3s-images/*.tar; do
+                # echo "Loading $f ..."
+                # /usr/local/bin/k3s ctr images import "$f" || true
+            # done
 
-            k3s kubectl apply -f /tmp/namespace.yaml
-            k3s kubectl apply -f /tmp/rbac.yaml
-            k3s kubectl apply -f /tmp/deployment.yaml
-            k3s kubectl apply -f /tmp/ram_price.yaml
-            k3s kubectl apply -f /tmp/storage_price.yaml
-            k3s kubectl apply -f /tmp/vcpu_price.yaml
-            k3s kubectl apply -f /tmp/vgpu_price.yaml
-            k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+            # k3s kubectl apply -f /tmp/namespace.yaml
+            # k3s kubectl apply -f /tmp/rbac.yaml
+            # k3s kubectl apply -f /tmp/deployment.yaml
+            # k3s kubectl apply -f /tmp/ram_price.yaml
+            # k3s kubectl apply -f /tmp/storage_price.yaml
+            # k3s kubectl apply -f /tmp/vcpu_price.yaml
+            # k3s kubectl apply -f /tmp/vgpu_price.yaml
+            # k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
  
 
-            mkdir -p ~/.kube
-            cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
-            chown $(whoami):$(whoami) ~/.kube/config
-            chmod 600 ~/.kube/config
+            # mkdir -p ~/.kube
+            # cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+            # chown $(whoami):$(whoami) ~/.kube/config
+            # chmod 600 ~/.kube/config
 
-            echo "[READY] K3s cluster is up and running on $(hostname)."
+            # echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            # pip install kubernetes
             # Install KWOK
-            echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            # echo "[KWOK] Installing KWOK controller..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
             
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            # echo "[KWOK] Waiting for KWOK controller to be ready..."
+            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
             
-            echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            # echo "[KWOK] Applying stage-fast configuration..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
             
-            echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            # echo "[KWOK] Applying metrics-usage configuration..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
             
-            echo "[KWOK] Installation complete!"
+            # echo "[KWOK] Installation complete!"
             
             while true; do
                 sync
@@ -13764,73 +13764,73 @@ topology:
             sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
-            echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            k3s server \
-              --node-name serf114 \
-              --disable traefik \
-              --disable servicelb \
-              --disable local-storage \
-              --disable metrics-server \
-              --disable-cloud-controller \
-              --disable-network-policy \
-              --disable-helm-controller \
-              --snapshotter native \
-              --tls-san 10.0.63.12 \
-              --kubelet-arg=cgroup-root=/ \
-              --kubelet-arg=cgroups-per-qos=false \
-              --kubelet-arg=enforce-node-allocatable= \
-              --v=0 &
+            # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
+            # k3s server \
+              # --node-name serf114 \
+              # --disable traefik \
+              # --disable servicelb \
+              # --disable local-storage \
+              # --disable metrics-server \
+              # --disable-cloud-controller \
+              # --disable-network-policy \
+              # --disable-helm-controller \
+              # --snapshotter native \
+              # --tls-san 10.0.63.12 \
+              # --kubelet-arg=cgroup-root=/ \
+              # --kubelet-arg=cgroups-per-qos=false \
+              # --kubelet-arg=enforce-node-allocatable= \
+              # --v=0 &
 
-            sleep 20
-            chmod 666 /etc/rancher/k3s/k3s.yaml
-            export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+            # sleep 20
+            # chmod 666 /etc/rancher/k3s/k3s.yaml
+            # export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
-            echo "[INIT] Waiting for containerd to be ready..."
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                echo "  containerd not yet ready, retrying..."
-                sleep 3
-            done
-            echo "Containerd is ready."
+            # echo "[INIT] Waiting for containerd to be ready..."
+            # until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
+                # echo "  containerd not yet ready, retrying..."
+                # sleep 3
+            # done
+            # echo "Containerd is ready."
 
-            echo "[INIT] Importing cached images..."
-            for f in /opt/k3s-images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
-            done
+            # echo "[INIT] Importing cached images..."
+            # for f in /opt/k3s-images/*.tar; do
+                # echo "Loading $f ..."
+                # /usr/local/bin/k3s ctr images import "$f" || true
+            # done
 
-            k3s kubectl apply -f /tmp/namespace.yaml
-            k3s kubectl apply -f /tmp/rbac.yaml
-            k3s kubectl apply -f /tmp/deployment.yaml
-            k3s kubectl apply -f /tmp/ram_price.yaml
-            k3s kubectl apply -f /tmp/storage_price.yaml
-            k3s kubectl apply -f /tmp/vcpu_price.yaml
-            k3s kubectl apply -f /tmp/vgpu_price.yaml
-            k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+            # k3s kubectl apply -f /tmp/namespace.yaml
+            # k3s kubectl apply -f /tmp/rbac.yaml
+            # k3s kubectl apply -f /tmp/deployment.yaml
+            # k3s kubectl apply -f /tmp/ram_price.yaml
+            # k3s kubectl apply -f /tmp/storage_price.yaml
+            # k3s kubectl apply -f /tmp/vcpu_price.yaml
+            # k3s kubectl apply -f /tmp/vgpu_price.yaml
+            # k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
  
 
-            mkdir -p ~/.kube
-            cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
-            chown $(whoami):$(whoami) ~/.kube/config
-            chmod 600 ~/.kube/config
+            # mkdir -p ~/.kube
+            # cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+            # chown $(whoami):$(whoami) ~/.kube/config
+            # chmod 600 ~/.kube/config
 
-            echo "[READY] K3s cluster is up and running on $(hostname)."
+            # echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            # pip install kubernetes
             # Install KWOK
-            echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            # echo "[KWOK] Installing KWOK controller..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
             
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            # echo "[KWOK] Waiting for KWOK controller to be ready..."
+            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
             
-            echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            # echo "[KWOK] Applying stage-fast configuration..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
             
-            echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            # echo "[KWOK] Applying metrics-usage configuration..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
             
-            echo "[KWOK] Installation complete!"
+            # echo "[KWOK] Installation complete!"
             
             while true; do
                 sync
@@ -14122,73 +14122,73 @@ topology:
             sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
-            echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            k3s server \
-              --node-name serf117 \
-              --disable traefik \
-              --disable servicelb \
-              --disable local-storage \
-              --disable metrics-server \
-              --disable-cloud-controller \
-              --disable-network-policy \
-              --disable-helm-controller \
-              --snapshotter native \
-              --tls-san 10.0.65.10 \
-              --kubelet-arg=cgroup-root=/ \
-              --kubelet-arg=cgroups-per-qos=false \
-              --kubelet-arg=enforce-node-allocatable= \
-              --v=0 &
+            # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
+            # k3s server \
+              # --node-name serf117 \
+              # --disable traefik \
+              # --disable servicelb \
+              # --disable local-storage \
+              # --disable metrics-server \
+              # --disable-cloud-controller \
+              # --disable-network-policy \
+              # --disable-helm-controller \
+              # --snapshotter native \
+              # --tls-san 10.0.65.10 \
+              # --kubelet-arg=cgroup-root=/ \
+              # --kubelet-arg=cgroups-per-qos=false \
+              # --kubelet-arg=enforce-node-allocatable= \
+              # --v=0 &
 
-            sleep 20
-            chmod 666 /etc/rancher/k3s/k3s.yaml
-            export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+            # sleep 20
+            # chmod 666 /etc/rancher/k3s/k3s.yaml
+            # export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
-            echo "[INIT] Waiting for containerd to be ready..."
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                echo "  containerd not yet ready, retrying..."
-                sleep 3
-            done
-            echo "Containerd is ready."
+            # echo "[INIT] Waiting for containerd to be ready..."
+            # until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
+                # echo "  containerd not yet ready, retrying..."
+                # sleep 3
+            # done
+            # echo "Containerd is ready."
 
-            echo "[INIT] Importing cached images..."
-            for f in /opt/k3s-images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
-            done
+            # echo "[INIT] Importing cached images..."
+            # for f in /opt/k3s-images/*.tar; do
+                # echo "Loading $f ..."
+                # /usr/local/bin/k3s ctr images import "$f" || true
+            # done
 
-            k3s kubectl apply -f /tmp/namespace.yaml
-            k3s kubectl apply -f /tmp/rbac.yaml
-            k3s kubectl apply -f /tmp/deployment.yaml
-            k3s kubectl apply -f /tmp/ram_price.yaml
-            k3s kubectl apply -f /tmp/storage_price.yaml
-            k3s kubectl apply -f /tmp/vcpu_price.yaml
-            k3s kubectl apply -f /tmp/vgpu_price.yaml
-            k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+            # k3s kubectl apply -f /tmp/namespace.yaml
+            # k3s kubectl apply -f /tmp/rbac.yaml
+            # k3s kubectl apply -f /tmp/deployment.yaml
+            # k3s kubectl apply -f /tmp/ram_price.yaml
+            # k3s kubectl apply -f /tmp/storage_price.yaml
+            # k3s kubectl apply -f /tmp/vcpu_price.yaml
+            # k3s kubectl apply -f /tmp/vgpu_price.yaml
+            # k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
  
 
-            mkdir -p ~/.kube
-            cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
-            chown $(whoami):$(whoami) ~/.kube/config
-            chmod 600 ~/.kube/config
+            # mkdir -p ~/.kube
+            # cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+            # chown $(whoami):$(whoami) ~/.kube/config
+            # chmod 600 ~/.kube/config
 
-            echo "[READY] K3s cluster is up and running on $(hostname)."
+            # echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            # pip install kubernetes
             # Install KWOK
-            echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            # echo "[KWOK] Installing KWOK controller..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
             
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            # echo "[KWOK] Waiting for KWOK controller to be ready..."
+            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
             
-            echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            # echo "[KWOK] Applying stage-fast configuration..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
             
-            echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            # echo "[KWOK] Applying metrics-usage configuration..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
             
-            echo "[KWOK] Installation complete!"
+            # echo "[KWOK] Installation complete!"
             
             while true; do
                 sync
@@ -14480,73 +14480,73 @@ topology:
             sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
-            echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            k3s server \
-              --node-name serf120 \
-              --disable traefik \
-              --disable servicelb \
-              --disable local-storage \
-              --disable metrics-server \
-              --disable-cloud-controller \
-              --disable-network-policy \
-              --disable-helm-controller \
-              --snapshotter native \
-              --tls-san 10.0.65.13 \
-              --kubelet-arg=cgroup-root=/ \
-              --kubelet-arg=cgroups-per-qos=false \
-              --kubelet-arg=enforce-node-allocatable= \
-              --v=0 &
+            # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
+            # k3s server \
+              # --node-name serf120 \
+              # --disable traefik \
+              # --disable servicelb \
+              # --disable local-storage \
+              # --disable metrics-server \
+              # --disable-cloud-controller \
+              # --disable-network-policy \
+              # --disable-helm-controller \
+              # --snapshotter native \
+              # --tls-san 10.0.65.13 \
+              # --kubelet-arg=cgroup-root=/ \
+              # --kubelet-arg=cgroups-per-qos=false \
+              # --kubelet-arg=enforce-node-allocatable= \
+              # --v=0 &
 
-            sleep 20
-            chmod 666 /etc/rancher/k3s/k3s.yaml
-            export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+            # sleep 20
+            # chmod 666 /etc/rancher/k3s/k3s.yaml
+            # export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
-            echo "[INIT] Waiting for containerd to be ready..."
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                echo "  containerd not yet ready, retrying..."
-                sleep 3
-            done
-            echo "Containerd is ready."
+            # echo "[INIT] Waiting for containerd to be ready..."
+            # until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
+                # echo "  containerd not yet ready, retrying..."
+                # sleep 3
+            # done
+            # echo "Containerd is ready."
 
-            echo "[INIT] Importing cached images..."
-            for f in /opt/k3s-images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
-            done
+            # echo "[INIT] Importing cached images..."
+            # for f in /opt/k3s-images/*.tar; do
+                # echo "Loading $f ..."
+                # /usr/local/bin/k3s ctr images import "$f" || true
+            # done
 
-            k3s kubectl apply -f /tmp/namespace.yaml
-            k3s kubectl apply -f /tmp/rbac.yaml
-            k3s kubectl apply -f /tmp/deployment.yaml
-            k3s kubectl apply -f /tmp/ram_price.yaml
-            k3s kubectl apply -f /tmp/storage_price.yaml
-            k3s kubectl apply -f /tmp/vcpu_price.yaml
-            k3s kubectl apply -f /tmp/vgpu_price.yaml
-            k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+            # k3s kubectl apply -f /tmp/namespace.yaml
+            # k3s kubectl apply -f /tmp/rbac.yaml
+            # k3s kubectl apply -f /tmp/deployment.yaml
+            # k3s kubectl apply -f /tmp/ram_price.yaml
+            # k3s kubectl apply -f /tmp/storage_price.yaml
+            # k3s kubectl apply -f /tmp/vcpu_price.yaml
+            # k3s kubectl apply -f /tmp/vgpu_price.yaml
+            # k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
  
 
-            mkdir -p ~/.kube
-            cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
-            chown $(whoami):$(whoami) ~/.kube/config
-            chmod 600 ~/.kube/config
+            # mkdir -p ~/.kube
+            # cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+            # chown $(whoami):$(whoami) ~/.kube/config
+            # chmod 600 ~/.kube/config
 
-            echo "[READY] K3s cluster is up and running on $(hostname)."
+            # echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            # pip install kubernetes
             # Install KWOK
-            echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            # echo "[KWOK] Installing KWOK controller..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
             
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            # echo "[KWOK] Waiting for KWOK controller to be ready..."
+            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
             
-            echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            # echo "[KWOK] Applying stage-fast configuration..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
             
-            echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            # echo "[KWOK] Applying metrics-usage configuration..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
             
-            echo "[KWOK] Installation complete!"
+            # echo "[KWOK] Installation complete!"
             
             while true; do
                 sync
@@ -14838,73 +14838,73 @@ topology:
             sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
-            echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            k3s server \
-              --node-name serf123 \
-              --disable traefik \
-              --disable servicelb \
-              --disable local-storage \
-              --disable metrics-server \
-              --disable-cloud-controller \
-              --disable-network-policy \
-              --disable-helm-controller \
-              --snapshotter native \
-              --tls-san 10.0.68.10 \
-              --kubelet-arg=cgroup-root=/ \
-              --kubelet-arg=cgroups-per-qos=false \
-              --kubelet-arg=enforce-node-allocatable= \
-              --v=0 &
+            # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
+            # k3s server \
+              # --node-name serf123 \
+              # --disable traefik \
+              # --disable servicelb \
+              # --disable local-storage \
+              # --disable metrics-server \
+              # --disable-cloud-controller \
+              # --disable-network-policy \
+              # --disable-helm-controller \
+              # --snapshotter native \
+              # --tls-san 10.0.68.10 \
+              # --kubelet-arg=cgroup-root=/ \
+              # --kubelet-arg=cgroups-per-qos=false \
+              # --kubelet-arg=enforce-node-allocatable= \
+              # --v=0 &
 
-            sleep 20
-            chmod 666 /etc/rancher/k3s/k3s.yaml
-            export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+            # sleep 20
+            # chmod 666 /etc/rancher/k3s/k3s.yaml
+            # export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
-            echo "[INIT] Waiting for containerd to be ready..."
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                echo "  containerd not yet ready, retrying..."
-                sleep 3
-            done
-            echo "Containerd is ready."
+            # echo "[INIT] Waiting for containerd to be ready..."
+            # until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
+                # echo "  containerd not yet ready, retrying..."
+                # sleep 3
+            # done
+            # echo "Containerd is ready."
 
-            echo "[INIT] Importing cached images..."
-            for f in /opt/k3s-images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
-            done
+            # echo "[INIT] Importing cached images..."
+            # for f in /opt/k3s-images/*.tar; do
+                # echo "Loading $f ..."
+                # /usr/local/bin/k3s ctr images import "$f" || true
+            # done
 
-            k3s kubectl apply -f /tmp/namespace.yaml
-            k3s kubectl apply -f /tmp/rbac.yaml
-            k3s kubectl apply -f /tmp/deployment.yaml
-            k3s kubectl apply -f /tmp/ram_price.yaml
-            k3s kubectl apply -f /tmp/storage_price.yaml
-            k3s kubectl apply -f /tmp/vcpu_price.yaml
-            k3s kubectl apply -f /tmp/vgpu_price.yaml
-            k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+            # k3s kubectl apply -f /tmp/namespace.yaml
+            # k3s kubectl apply -f /tmp/rbac.yaml
+            # k3s kubectl apply -f /tmp/deployment.yaml
+            # k3s kubectl apply -f /tmp/ram_price.yaml
+            # k3s kubectl apply -f /tmp/storage_price.yaml
+            # k3s kubectl apply -f /tmp/vcpu_price.yaml
+            # k3s kubectl apply -f /tmp/vgpu_price.yaml
+            # k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
  
 
-            mkdir -p ~/.kube
-            cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
-            chown $(whoami):$(whoami) ~/.kube/config
-            chmod 600 ~/.kube/config
+            # mkdir -p ~/.kube
+            # cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+            # chown $(whoami):$(whoami) ~/.kube/config
+            # chmod 600 ~/.kube/config
 
-            echo "[READY] K3s cluster is up and running on $(hostname)."
+            # echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            # pip install kubernetes
             # Install KWOK
-            echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            # echo "[KWOK] Installing KWOK controller..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
             
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            # echo "[KWOK] Waiting for KWOK controller to be ready..."
+            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
             
-            echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            # echo "[KWOK] Applying stage-fast configuration..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
             
-            echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            # echo "[KWOK] Applying metrics-usage configuration..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
             
-            echo "[KWOK] Installation complete!"
+            # echo "[KWOK] Installation complete!"
             
             while true; do
                 sync
@@ -15434,73 +15434,73 @@ topology:
             sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
-            echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            k3s server \
-              --node-name serf128 \
-              --disable traefik \
-              --disable servicelb \
-              --disable local-storage \
-              --disable metrics-server \
-              --disable-cloud-controller \
-              --disable-network-policy \
-              --disable-helm-controller \
-              --snapshotter native \
-              --tls-san 10.0.73.10 \
-              --kubelet-arg=cgroup-root=/ \
-              --kubelet-arg=cgroups-per-qos=false \
-              --kubelet-arg=enforce-node-allocatable= \
-              --v=0 &
+            # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
+            # k3s server \
+              # --node-name serf128 \
+              # --disable traefik \
+              # --disable servicelb \
+              # --disable local-storage \
+              # --disable metrics-server \
+              # --disable-cloud-controller \
+              # --disable-network-policy \
+              # --disable-helm-controller \
+              # --snapshotter native \
+              # --tls-san 10.0.73.10 \
+              # --kubelet-arg=cgroup-root=/ \
+              # --kubelet-arg=cgroups-per-qos=false \
+              # --kubelet-arg=enforce-node-allocatable= \
+              # --v=0 &
 
-            sleep 20
-            chmod 666 /etc/rancher/k3s/k3s.yaml
-            export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+            # sleep 20
+            # chmod 666 /etc/rancher/k3s/k3s.yaml
+            # export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
-            echo "[INIT] Waiting for containerd to be ready..."
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                echo "  containerd not yet ready, retrying..."
-                sleep 3
-            done
-            echo "Containerd is ready."
+            # echo "[INIT] Waiting for containerd to be ready..."
+            # until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
+                # echo "  containerd not yet ready, retrying..."
+                # sleep 3
+            # done
+            # echo "Containerd is ready."
 
-            echo "[INIT] Importing cached images..."
-            for f in /opt/k3s-images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
-            done
+            # echo "[INIT] Importing cached images..."
+            # for f in /opt/k3s-images/*.tar; do
+                # echo "Loading $f ..."
+                # /usr/local/bin/k3s ctr images import "$f" || true
+            # done
 
-            k3s kubectl apply -f /tmp/namespace.yaml
-            k3s kubectl apply -f /tmp/rbac.yaml
-            k3s kubectl apply -f /tmp/deployment.yaml
-            k3s kubectl apply -f /tmp/ram_price.yaml
-            k3s kubectl apply -f /tmp/storage_price.yaml
-            k3s kubectl apply -f /tmp/vcpu_price.yaml
-            k3s kubectl apply -f /tmp/vgpu_price.yaml
-            k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+            # k3s kubectl apply -f /tmp/namespace.yaml
+            # k3s kubectl apply -f /tmp/rbac.yaml
+            # k3s kubectl apply -f /tmp/deployment.yaml
+            # k3s kubectl apply -f /tmp/ram_price.yaml
+            # k3s kubectl apply -f /tmp/storage_price.yaml
+            # k3s kubectl apply -f /tmp/vcpu_price.yaml
+            # k3s kubectl apply -f /tmp/vgpu_price.yaml
+            # k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
  
 
-            mkdir -p ~/.kube
-            cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
-            chown $(whoami):$(whoami) ~/.kube/config
-            chmod 600 ~/.kube/config
+            # mkdir -p ~/.kube
+            # cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+            # chown $(whoami):$(whoami) ~/.kube/config
+            # chmod 600 ~/.kube/config
 
-            echo "[READY] K3s cluster is up and running on $(hostname)."
+            # echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            # pip install kubernetes
             # Install KWOK
-            echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            # echo "[KWOK] Installing KWOK controller..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
             
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            # echo "[KWOK] Waiting for KWOK controller to be ready..."
+            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
             
-            echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            # echo "[KWOK] Applying stage-fast configuration..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
             
-            echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            # echo "[KWOK] Applying metrics-usage configuration..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
             
-            echo "[KWOK] Installation complete!"
+            # echo "[KWOK] Installation complete!"
             
             while true; do
                 sync
@@ -15792,73 +15792,73 @@ topology:
             sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
-            echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            k3s server \
-              --node-name serf131 \
-              --disable traefik \
-              --disable servicelb \
-              --disable local-storage \
-              --disable metrics-server \
-              --disable-cloud-controller \
-              --disable-network-policy \
-              --disable-helm-controller \
-              --snapshotter native \
-              --tls-san 10.0.75.11 \
-              --kubelet-arg=cgroup-root=/ \
-              --kubelet-arg=cgroups-per-qos=false \
-              --kubelet-arg=enforce-node-allocatable= \
-              --v=0 &
+            # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
+            # k3s server \
+              # --node-name serf131 \
+              # --disable traefik \
+              # --disable servicelb \
+              # --disable local-storage \
+              # --disable metrics-server \
+              # --disable-cloud-controller \
+              # --disable-network-policy \
+              # --disable-helm-controller \
+              # --snapshotter native \
+              # --tls-san 10.0.75.11 \
+              # --kubelet-arg=cgroup-root=/ \
+              # --kubelet-arg=cgroups-per-qos=false \
+              # --kubelet-arg=enforce-node-allocatable= \
+              # --v=0 &
 
-            sleep 20
-            chmod 666 /etc/rancher/k3s/k3s.yaml
-            export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+            # sleep 20
+            # chmod 666 /etc/rancher/k3s/k3s.yaml
+            # export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
-            echo "[INIT] Waiting for containerd to be ready..."
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                echo "  containerd not yet ready, retrying..."
-                sleep 3
-            done
-            echo "Containerd is ready."
+            # echo "[INIT] Waiting for containerd to be ready..."
+            # until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
+                # echo "  containerd not yet ready, retrying..."
+                # sleep 3
+            # done
+            # echo "Containerd is ready."
 
-            echo "[INIT] Importing cached images..."
-            for f in /opt/k3s-images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
-            done
+            # echo "[INIT] Importing cached images..."
+            # for f in /opt/k3s-images/*.tar; do
+                # echo "Loading $f ..."
+                # /usr/local/bin/k3s ctr images import "$f" || true
+            # done
 
-            k3s kubectl apply -f /tmp/namespace.yaml
-            k3s kubectl apply -f /tmp/rbac.yaml
-            k3s kubectl apply -f /tmp/deployment.yaml
-            k3s kubectl apply -f /tmp/ram_price.yaml
-            k3s kubectl apply -f /tmp/storage_price.yaml
-            k3s kubectl apply -f /tmp/vcpu_price.yaml
-            k3s kubectl apply -f /tmp/vgpu_price.yaml
-            k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+            # k3s kubectl apply -f /tmp/namespace.yaml
+            # k3s kubectl apply -f /tmp/rbac.yaml
+            # k3s kubectl apply -f /tmp/deployment.yaml
+            # k3s kubectl apply -f /tmp/ram_price.yaml
+            # k3s kubectl apply -f /tmp/storage_price.yaml
+            # k3s kubectl apply -f /tmp/vcpu_price.yaml
+            # k3s kubectl apply -f /tmp/vgpu_price.yaml
+            # k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
  
 
-            mkdir -p ~/.kube
-            cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
-            chown $(whoami):$(whoami) ~/.kube/config
-            chmod 600 ~/.kube/config
+            # mkdir -p ~/.kube
+            # cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+            # chown $(whoami):$(whoami) ~/.kube/config
+            # chmod 600 ~/.kube/config
 
-            echo "[READY] K3s cluster is up and running on $(hostname)."
+            # echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            # pip install kubernetes
             # Install KWOK
-            echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            # echo "[KWOK] Installing KWOK controller..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
             
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            # echo "[KWOK] Waiting for KWOK controller to be ready..."
+            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
             
-            echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            # echo "[KWOK] Applying stage-fast configuration..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
             
-            echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            # echo "[KWOK] Applying metrics-usage configuration..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
             
-            echo "[KWOK] Installation complete!"
+            # echo "[KWOK] Installation complete!"
             
             while true; do
                 sync
@@ -16150,73 +16150,73 @@ topology:
             sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
-            echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            k3s server \
-              --node-name serf134 \
-              --disable traefik \
-              --disable servicelb \
-              --disable local-storage \
-              --disable metrics-server \
-              --disable-cloud-controller \
-              --disable-network-policy \
-              --disable-helm-controller \
-              --snapshotter native \
-              --tls-san 10.0.75.14 \
-              --kubelet-arg=cgroup-root=/ \
-              --kubelet-arg=cgroups-per-qos=false \
-              --kubelet-arg=enforce-node-allocatable= \
-              --v=0 &
+            # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
+            # k3s server \
+              # --node-name serf134 \
+              # --disable traefik \
+              # --disable servicelb \
+              # --disable local-storage \
+              # --disable metrics-server \
+              # --disable-cloud-controller \
+              # --disable-network-policy \
+              # --disable-helm-controller \
+              # --snapshotter native \
+              # --tls-san 10.0.75.14 \
+              # --kubelet-arg=cgroup-root=/ \
+              # --kubelet-arg=cgroups-per-qos=false \
+              # --kubelet-arg=enforce-node-allocatable= \
+              # --v=0 &
 
-            sleep 20
-            chmod 666 /etc/rancher/k3s/k3s.yaml
-            export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+            # sleep 20
+            # chmod 666 /etc/rancher/k3s/k3s.yaml
+            # export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
-            echo "[INIT] Waiting for containerd to be ready..."
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                echo "  containerd not yet ready, retrying..."
-                sleep 3
-            done
-            echo "Containerd is ready."
+            # echo "[INIT] Waiting for containerd to be ready..."
+            # until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
+                # echo "  containerd not yet ready, retrying..."
+                # sleep 3
+            # done
+            # echo "Containerd is ready."
 
-            echo "[INIT] Importing cached images..."
-            for f in /opt/k3s-images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
-            done
+            # echo "[INIT] Importing cached images..."
+            # for f in /opt/k3s-images/*.tar; do
+                # echo "Loading $f ..."
+                # /usr/local/bin/k3s ctr images import "$f" || true
+            # done
 
-            k3s kubectl apply -f /tmp/namespace.yaml
-            k3s kubectl apply -f /tmp/rbac.yaml
-            k3s kubectl apply -f /tmp/deployment.yaml
-            k3s kubectl apply -f /tmp/ram_price.yaml
-            k3s kubectl apply -f /tmp/storage_price.yaml
-            k3s kubectl apply -f /tmp/vcpu_price.yaml
-            k3s kubectl apply -f /tmp/vgpu_price.yaml
-            k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+            # k3s kubectl apply -f /tmp/namespace.yaml
+            # k3s kubectl apply -f /tmp/rbac.yaml
+            # k3s kubectl apply -f /tmp/deployment.yaml
+            # k3s kubectl apply -f /tmp/ram_price.yaml
+            # k3s kubectl apply -f /tmp/storage_price.yaml
+            # k3s kubectl apply -f /tmp/vcpu_price.yaml
+            # k3s kubectl apply -f /tmp/vgpu_price.yaml
+            # k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
  
 
-            mkdir -p ~/.kube
-            cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
-            chown $(whoami):$(whoami) ~/.kube/config
-            chmod 600 ~/.kube/config
+            # mkdir -p ~/.kube
+            # cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+            # chown $(whoami):$(whoami) ~/.kube/config
+            # chmod 600 ~/.kube/config
 
-            echo "[READY] K3s cluster is up and running on $(hostname)."
+            # echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            # pip install kubernetes
             # Install KWOK
-            echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            # echo "[KWOK] Installing KWOK controller..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
             
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            # echo "[KWOK] Waiting for KWOK controller to be ready..."
+            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
             
-            echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            # echo "[KWOK] Applying stage-fast configuration..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
             
-            echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            # echo "[KWOK] Applying metrics-usage configuration..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
             
-            echo "[KWOK] Installation complete!"
+            # echo "[KWOK] Installation complete!"
             
             while true; do
                 sync
@@ -16508,73 +16508,73 @@ topology:
             sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
-            echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            k3s server \
-              --node-name serf137 \
-              --disable traefik \
-              --disable servicelb \
-              --disable local-storage \
-              --disable metrics-server \
-              --disable-cloud-controller \
-              --disable-network-policy \
-              --disable-helm-controller \
-              --snapshotter native \
-              --tls-san 10.0.75.17 \
-              --kubelet-arg=cgroup-root=/ \
-              --kubelet-arg=cgroups-per-qos=false \
-              --kubelet-arg=enforce-node-allocatable= \
-              --v=0 &
+            # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
+            # k3s server \
+              # --node-name serf137 \
+              # --disable traefik \
+              # --disable servicelb \
+              # --disable local-storage \
+              # --disable metrics-server \
+              # --disable-cloud-controller \
+              # --disable-network-policy \
+              # --disable-helm-controller \
+              # --snapshotter native \
+              # --tls-san 10.0.75.17 \
+              # --kubelet-arg=cgroup-root=/ \
+              # --kubelet-arg=cgroups-per-qos=false \
+              # --kubelet-arg=enforce-node-allocatable= \
+              # --v=0 &
 
-            sleep 20
-            chmod 666 /etc/rancher/k3s/k3s.yaml
-            export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+            # sleep 20
+            # chmod 666 /etc/rancher/k3s/k3s.yaml
+            # export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
-            echo "[INIT] Waiting for containerd to be ready..."
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                echo "  containerd not yet ready, retrying..."
-                sleep 3
-            done
-            echo "Containerd is ready."
+            # echo "[INIT] Waiting for containerd to be ready..."
+            # until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
+                # echo "  containerd not yet ready, retrying..."
+                # sleep 3
+            # done
+            # echo "Containerd is ready."
 
-            echo "[INIT] Importing cached images..."
-            for f in /opt/k3s-images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
-            done
+            # echo "[INIT] Importing cached images..."
+            # for f in /opt/k3s-images/*.tar; do
+                # echo "Loading $f ..."
+                # /usr/local/bin/k3s ctr images import "$f" || true
+            # done
 
-            k3s kubectl apply -f /tmp/namespace.yaml
-            k3s kubectl apply -f /tmp/rbac.yaml
-            k3s kubectl apply -f /tmp/deployment.yaml
-            k3s kubectl apply -f /tmp/ram_price.yaml
-            k3s kubectl apply -f /tmp/storage_price.yaml
-            k3s kubectl apply -f /tmp/vcpu_price.yaml
-            k3s kubectl apply -f /tmp/vgpu_price.yaml
-            k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+            # k3s kubectl apply -f /tmp/namespace.yaml
+            # k3s kubectl apply -f /tmp/rbac.yaml
+            # k3s kubectl apply -f /tmp/deployment.yaml
+            # k3s kubectl apply -f /tmp/ram_price.yaml
+            # k3s kubectl apply -f /tmp/storage_price.yaml
+            # k3s kubectl apply -f /tmp/vcpu_price.yaml
+            # k3s kubectl apply -f /tmp/vgpu_price.yaml
+            # k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
  
 
-            mkdir -p ~/.kube
-            cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
-            chown $(whoami):$(whoami) ~/.kube/config
-            chmod 600 ~/.kube/config
+            # mkdir -p ~/.kube
+            # cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+            # chown $(whoami):$(whoami) ~/.kube/config
+            # chmod 600 ~/.kube/config
 
-            echo "[READY] K3s cluster is up and running on $(hostname)."
+            # echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            # pip install kubernetes
             # Install KWOK
-            echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            # echo "[KWOK] Installing KWOK controller..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
             
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            # echo "[KWOK] Waiting for KWOK controller to be ready..."
+            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
             
-            echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            # echo "[KWOK] Applying stage-fast configuration..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
             
-            echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            # echo "[KWOK] Applying metrics-usage configuration..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
             
-            echo "[KWOK] Installation complete!"
+            # echo "[KWOK] Installation complete!"
             
             while true; do
                 sync
@@ -17104,73 +17104,73 @@ topology:
             sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
-            echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            k3s server \
-              --node-name serf142 \
-              --disable traefik \
-              --disable servicelb \
-              --disable local-storage \
-              --disable metrics-server \
-              --disable-cloud-controller \
-              --disable-network-policy \
-              --disable-helm-controller \
-              --snapshotter native \
-              --tls-san 10.0.76.10 \
-              --kubelet-arg=cgroup-root=/ \
-              --kubelet-arg=cgroups-per-qos=false \
-              --kubelet-arg=enforce-node-allocatable= \
-              --v=0 &
+            # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
+            # k3s server \
+              # --node-name serf142 \
+              # --disable traefik \
+              # --disable servicelb \
+              # --disable local-storage \
+              # --disable metrics-server \
+              # --disable-cloud-controller \
+              # --disable-network-policy \
+              # --disable-helm-controller \
+              # --snapshotter native \
+              # --tls-san 10.0.76.10 \
+              # --kubelet-arg=cgroup-root=/ \
+              # --kubelet-arg=cgroups-per-qos=false \
+              # --kubelet-arg=enforce-node-allocatable= \
+              # --v=0 &
 
-            sleep 20
-            chmod 666 /etc/rancher/k3s/k3s.yaml
-            export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+            # sleep 20
+            # chmod 666 /etc/rancher/k3s/k3s.yaml
+            # export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
-            echo "[INIT] Waiting for containerd to be ready..."
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                echo "  containerd not yet ready, retrying..."
-                sleep 3
-            done
-            echo "Containerd is ready."
+            # echo "[INIT] Waiting for containerd to be ready..."
+            # until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
+                # echo "  containerd not yet ready, retrying..."
+                # sleep 3
+            # done
+            # echo "Containerd is ready."
 
-            echo "[INIT] Importing cached images..."
-            for f in /opt/k3s-images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
-            done
+            # echo "[INIT] Importing cached images..."
+            # for f in /opt/k3s-images/*.tar; do
+                # echo "Loading $f ..."
+                # /usr/local/bin/k3s ctr images import "$f" || true
+            # done
 
-            k3s kubectl apply -f /tmp/namespace.yaml
-            k3s kubectl apply -f /tmp/rbac.yaml
-            k3s kubectl apply -f /tmp/deployment.yaml
-            k3s kubectl apply -f /tmp/ram_price.yaml
-            k3s kubectl apply -f /tmp/storage_price.yaml
-            k3s kubectl apply -f /tmp/vcpu_price.yaml
-            k3s kubectl apply -f /tmp/vgpu_price.yaml
-            k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+            # k3s kubectl apply -f /tmp/namespace.yaml
+            # k3s kubectl apply -f /tmp/rbac.yaml
+            # k3s kubectl apply -f /tmp/deployment.yaml
+            # k3s kubectl apply -f /tmp/ram_price.yaml
+            # k3s kubectl apply -f /tmp/storage_price.yaml
+            # k3s kubectl apply -f /tmp/vcpu_price.yaml
+            # k3s kubectl apply -f /tmp/vgpu_price.yaml
+            # k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
  
 
-            mkdir -p ~/.kube
-            cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
-            chown $(whoami):$(whoami) ~/.kube/config
-            chmod 600 ~/.kube/config
+            # mkdir -p ~/.kube
+            # cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+            # chown $(whoami):$(whoami) ~/.kube/config
+            # chmod 600 ~/.kube/config
 
-            echo "[READY] K3s cluster is up and running on $(hostname)."
+            # echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            # pip install kubernetes
             # Install KWOK
-            echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            # echo "[KWOK] Installing KWOK controller..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
             
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            # echo "[KWOK] Waiting for KWOK controller to be ready..."
+            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
             
-            echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            # echo "[KWOK] Applying stage-fast configuration..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
             
-            echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            # echo "[KWOK] Applying metrics-usage configuration..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
             
-            echo "[KWOK] Installation complete!"
+            # echo "[KWOK] Installation complete!"
             
             while true; do
                 sync
@@ -17462,73 +17462,73 @@ topology:
             sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
-            echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            k3s server \
-              --node-name serf145 \
-              --disable traefik \
-              --disable servicelb \
-              --disable local-storage \
-              --disable metrics-server \
-              --disable-cloud-controller \
-              --disable-network-policy \
-              --disable-helm-controller \
-              --snapshotter native \
-              --tls-san 10.0.76.13 \
-              --kubelet-arg=cgroup-root=/ \
-              --kubelet-arg=cgroups-per-qos=false \
-              --kubelet-arg=enforce-node-allocatable= \
-              --v=0 &
+            # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
+            # k3s server \
+              # --node-name serf145 \
+              # --disable traefik \
+              # --disable servicelb \
+              # --disable local-storage \
+              # --disable metrics-server \
+              # --disable-cloud-controller \
+              # --disable-network-policy \
+              # --disable-helm-controller \
+              # --snapshotter native \
+              # --tls-san 10.0.76.13 \
+              # --kubelet-arg=cgroup-root=/ \
+              # --kubelet-arg=cgroups-per-qos=false \
+              # --kubelet-arg=enforce-node-allocatable= \
+              # --v=0 &
 
-            sleep 20
-            chmod 666 /etc/rancher/k3s/k3s.yaml
-            export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+            # sleep 20
+            # chmod 666 /etc/rancher/k3s/k3s.yaml
+            # export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
-            echo "[INIT] Waiting for containerd to be ready..."
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                echo "  containerd not yet ready, retrying..."
-                sleep 3
-            done
-            echo "Containerd is ready."
+            # echo "[INIT] Waiting for containerd to be ready..."
+            # until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
+                # echo "  containerd not yet ready, retrying..."
+                # sleep 3
+            # done
+            # echo "Containerd is ready."
 
-            echo "[INIT] Importing cached images..."
-            for f in /opt/k3s-images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
-            done
+            # echo "[INIT] Importing cached images..."
+            # for f in /opt/k3s-images/*.tar; do
+                # echo "Loading $f ..."
+                # /usr/local/bin/k3s ctr images import "$f" || true
+            # done
 
-            k3s kubectl apply -f /tmp/namespace.yaml
-            k3s kubectl apply -f /tmp/rbac.yaml
-            k3s kubectl apply -f /tmp/deployment.yaml
-            k3s kubectl apply -f /tmp/ram_price.yaml
-            k3s kubectl apply -f /tmp/storage_price.yaml
-            k3s kubectl apply -f /tmp/vcpu_price.yaml
-            k3s kubectl apply -f /tmp/vgpu_price.yaml
-            k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+            # k3s kubectl apply -f /tmp/namespace.yaml
+            # k3s kubectl apply -f /tmp/rbac.yaml
+            # k3s kubectl apply -f /tmp/deployment.yaml
+            # k3s kubectl apply -f /tmp/ram_price.yaml
+            # k3s kubectl apply -f /tmp/storage_price.yaml
+            # k3s kubectl apply -f /tmp/vcpu_price.yaml
+            # k3s kubectl apply -f /tmp/vgpu_price.yaml
+            # k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
  
 
-            mkdir -p ~/.kube
-            cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
-            chown $(whoami):$(whoami) ~/.kube/config
-            chmod 600 ~/.kube/config
+            # mkdir -p ~/.kube
+            # cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+            # chown $(whoami):$(whoami) ~/.kube/config
+            # chmod 600 ~/.kube/config
 
-            echo "[READY] K3s cluster is up and running on $(hostname)."
+            # echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            # pip install kubernetes
             # Install KWOK
-            echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            # echo "[KWOK] Installing KWOK controller..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
             
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            # echo "[KWOK] Waiting for KWOK controller to be ready..."
+            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
             
-            echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            # echo "[KWOK] Applying stage-fast configuration..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
             
-            echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            # echo "[KWOK] Applying metrics-usage configuration..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
             
-            echo "[KWOK] Installation complete!"
+            # echo "[KWOK] Installation complete!"
             
             while true; do
                 sync
@@ -17820,73 +17820,73 @@ topology:
             sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
-            echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            k3s server \
-              --node-name serf148 \
-              --disable traefik \
-              --disable servicelb \
-              --disable local-storage \
-              --disable metrics-server \
-              --disable-cloud-controller \
-              --disable-network-policy \
-              --disable-helm-controller \
-              --snapshotter native \
-              --tls-san 10.0.77.11 \
-              --kubelet-arg=cgroup-root=/ \
-              --kubelet-arg=cgroups-per-qos=false \
-              --kubelet-arg=enforce-node-allocatable= \
-              --v=0 &
+            # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
+            # k3s server \
+              # --node-name serf148 \
+              # --disable traefik \
+              # --disable servicelb \
+              # --disable local-storage \
+              # --disable metrics-server \
+              # --disable-cloud-controller \
+              # --disable-network-policy \
+              # --disable-helm-controller \
+              # --snapshotter native \
+              # --tls-san 10.0.77.11 \
+              # --kubelet-arg=cgroup-root=/ \
+              # --kubelet-arg=cgroups-per-qos=false \
+              # --kubelet-arg=enforce-node-allocatable= \
+              # --v=0 &
 
-            sleep 20
-            chmod 666 /etc/rancher/k3s/k3s.yaml
-            export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+            # sleep 20
+            # chmod 666 /etc/rancher/k3s/k3s.yaml
+            # export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
-            echo "[INIT] Waiting for containerd to be ready..."
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                echo "  containerd not yet ready, retrying..."
-                sleep 3
-            done
-            echo "Containerd is ready."
+            # echo "[INIT] Waiting for containerd to be ready..."
+            # until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
+                # echo "  containerd not yet ready, retrying..."
+                # sleep 3
+            # done
+            # echo "Containerd is ready."
 
-            echo "[INIT] Importing cached images..."
-            for f in /opt/k3s-images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
-            done
+            # echo "[INIT] Importing cached images..."
+            # for f in /opt/k3s-images/*.tar; do
+                # echo "Loading $f ..."
+                # /usr/local/bin/k3s ctr images import "$f" || true
+            # done
 
-            k3s kubectl apply -f /tmp/namespace.yaml
-            k3s kubectl apply -f /tmp/rbac.yaml
-            k3s kubectl apply -f /tmp/deployment.yaml
-            k3s kubectl apply -f /tmp/ram_price.yaml
-            k3s kubectl apply -f /tmp/storage_price.yaml
-            k3s kubectl apply -f /tmp/vcpu_price.yaml
-            k3s kubectl apply -f /tmp/vgpu_price.yaml
-            k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+            # k3s kubectl apply -f /tmp/namespace.yaml
+            # k3s kubectl apply -f /tmp/rbac.yaml
+            # k3s kubectl apply -f /tmp/deployment.yaml
+            # k3s kubectl apply -f /tmp/ram_price.yaml
+            # k3s kubectl apply -f /tmp/storage_price.yaml
+            # k3s kubectl apply -f /tmp/vcpu_price.yaml
+            # k3s kubectl apply -f /tmp/vgpu_price.yaml
+            # k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
  
 
-            mkdir -p ~/.kube
-            cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
-            chown $(whoami):$(whoami) ~/.kube/config
-            chmod 600 ~/.kube/config
+            # mkdir -p ~/.kube
+            # cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+            # chown $(whoami):$(whoami) ~/.kube/config
+            # chmod 600 ~/.kube/config
 
-            echo "[READY] K3s cluster is up and running on $(hostname)."
+            # echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            # pip install kubernetes
             # Install KWOK
-            echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            # echo "[KWOK] Installing KWOK controller..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
             
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            # echo "[KWOK] Waiting for KWOK controller to be ready..."
+            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
             
-            echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            # echo "[KWOK] Applying stage-fast configuration..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
             
-            echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            # echo "[KWOK] Applying metrics-usage configuration..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
             
-            echo "[KWOK] Installation complete!"
+            # echo "[KWOK] Installation complete!"
             
             while true; do
                 sync
@@ -18178,73 +18178,73 @@ topology:
             sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
-            echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            k3s server \
-              --node-name serf151 \
-              --disable traefik \
-              --disable servicelb \
-              --disable local-storage \
-              --disable metrics-server \
-              --disable-cloud-controller \
-              --disable-network-policy \
-              --disable-helm-controller \
-              --snapshotter native \
-              --tls-san 10.0.77.14 \
-              --kubelet-arg=cgroup-root=/ \
-              --kubelet-arg=cgroups-per-qos=false \
-              --kubelet-arg=enforce-node-allocatable= \
-              --v=0 &
+            # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
+            # k3s server \
+              # --node-name serf151 \
+              # --disable traefik \
+              # --disable servicelb \
+              # --disable local-storage \
+              # --disable metrics-server \
+              # --disable-cloud-controller \
+              # --disable-network-policy \
+              # --disable-helm-controller \
+              # --snapshotter native \
+              # --tls-san 10.0.77.14 \
+              # --kubelet-arg=cgroup-root=/ \
+              # --kubelet-arg=cgroups-per-qos=false \
+              # --kubelet-arg=enforce-node-allocatable= \
+              # --v=0 &
 
-            sleep 20
-            chmod 666 /etc/rancher/k3s/k3s.yaml
-            export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+            # sleep 20
+            # chmod 666 /etc/rancher/k3s/k3s.yaml
+            # export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
-            echo "[INIT] Waiting for containerd to be ready..."
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                echo "  containerd not yet ready, retrying..."
-                sleep 3
-            done
-            echo "Containerd is ready."
+            # echo "[INIT] Waiting for containerd to be ready..."
+            # until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
+                # echo "  containerd not yet ready, retrying..."
+                # sleep 3
+            # done
+            # echo "Containerd is ready."
 
-            echo "[INIT] Importing cached images..."
-            for f in /opt/k3s-images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
-            done
+            # echo "[INIT] Importing cached images..."
+            # for f in /opt/k3s-images/*.tar; do
+                # echo "Loading $f ..."
+                # /usr/local/bin/k3s ctr images import "$f" || true
+            # done
 
-            k3s kubectl apply -f /tmp/namespace.yaml
-            k3s kubectl apply -f /tmp/rbac.yaml
-            k3s kubectl apply -f /tmp/deployment.yaml
-            k3s kubectl apply -f /tmp/ram_price.yaml
-            k3s kubectl apply -f /tmp/storage_price.yaml
-            k3s kubectl apply -f /tmp/vcpu_price.yaml
-            k3s kubectl apply -f /tmp/vgpu_price.yaml
-            k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+            # k3s kubectl apply -f /tmp/namespace.yaml
+            # k3s kubectl apply -f /tmp/rbac.yaml
+            # k3s kubectl apply -f /tmp/deployment.yaml
+            # k3s kubectl apply -f /tmp/ram_price.yaml
+            # k3s kubectl apply -f /tmp/storage_price.yaml
+            # k3s kubectl apply -f /tmp/vcpu_price.yaml
+            # k3s kubectl apply -f /tmp/vgpu_price.yaml
+            # k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
  
 
-            mkdir -p ~/.kube
-            cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
-            chown $(whoami):$(whoami) ~/.kube/config
-            chmod 600 ~/.kube/config
+            # mkdir -p ~/.kube
+            # cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+            # chown $(whoami):$(whoami) ~/.kube/config
+            # chmod 600 ~/.kube/config
 
-            echo "[READY] K3s cluster is up and running on $(hostname)."
+            # echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            # pip install kubernetes
             # Install KWOK
-            echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            # echo "[KWOK] Installing KWOK controller..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
             
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            # echo "[KWOK] Waiting for KWOK controller to be ready..."
+            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
             
-            echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            # echo "[KWOK] Applying stage-fast configuration..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
             
-            echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            # echo "[KWOK] Applying metrics-usage configuration..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
             
-            echo "[KWOK] Installation complete!"
+            # echo "[KWOK] Installation complete!"
             
             while true; do
                 sync
@@ -18774,73 +18774,73 @@ topology:
             sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
-            echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            k3s server \
-              --node-name serf156 \
-              --disable traefik \
-              --disable servicelb \
-              --disable local-storage \
-              --disable metrics-server \
-              --disable-cloud-controller \
-              --disable-network-policy \
-              --disable-helm-controller \
-              --snapshotter native \
-              --tls-san 10.0.77.19 \
-              --kubelet-arg=cgroup-root=/ \
-              --kubelet-arg=cgroups-per-qos=false \
-              --kubelet-arg=enforce-node-allocatable= \
-              --v=0 &
+            # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
+            # k3s server \
+              # --node-name serf156 \
+              # --disable traefik \
+              # --disable servicelb \
+              # --disable local-storage \
+              # --disable metrics-server \
+              # --disable-cloud-controller \
+              # --disable-network-policy \
+              # --disable-helm-controller \
+              # --snapshotter native \
+              # --tls-san 10.0.77.19 \
+              # --kubelet-arg=cgroup-root=/ \
+              # --kubelet-arg=cgroups-per-qos=false \
+              # --kubelet-arg=enforce-node-allocatable= \
+              # --v=0 &
 
-            sleep 20
-            chmod 666 /etc/rancher/k3s/k3s.yaml
-            export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+            # sleep 20
+            # chmod 666 /etc/rancher/k3s/k3s.yaml
+            # export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
-            echo "[INIT] Waiting for containerd to be ready..."
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                echo "  containerd not yet ready, retrying..."
-                sleep 3
-            done
-            echo "Containerd is ready."
+            # echo "[INIT] Waiting for containerd to be ready..."
+            # until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
+                # echo "  containerd not yet ready, retrying..."
+                # sleep 3
+            # done
+            # echo "Containerd is ready."
 
-            echo "[INIT] Importing cached images..."
-            for f in /opt/k3s-images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
-            done
+            # echo "[INIT] Importing cached images..."
+            # for f in /opt/k3s-images/*.tar; do
+                # echo "Loading $f ..."
+                # /usr/local/bin/k3s ctr images import "$f" || true
+            # done
 
-            k3s kubectl apply -f /tmp/namespace.yaml
-            k3s kubectl apply -f /tmp/rbac.yaml
-            k3s kubectl apply -f /tmp/deployment.yaml
-            k3s kubectl apply -f /tmp/ram_price.yaml
-            k3s kubectl apply -f /tmp/storage_price.yaml
-            k3s kubectl apply -f /tmp/vcpu_price.yaml
-            k3s kubectl apply -f /tmp/vgpu_price.yaml
-            k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+            # k3s kubectl apply -f /tmp/namespace.yaml
+            # k3s kubectl apply -f /tmp/rbac.yaml
+            # k3s kubectl apply -f /tmp/deployment.yaml
+            # k3s kubectl apply -f /tmp/ram_price.yaml
+            # k3s kubectl apply -f /tmp/storage_price.yaml
+            # k3s kubectl apply -f /tmp/vcpu_price.yaml
+            # k3s kubectl apply -f /tmp/vgpu_price.yaml
+            # k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
  
 
-            mkdir -p ~/.kube
-            cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
-            chown $(whoami):$(whoami) ~/.kube/config
-            chmod 600 ~/.kube/config
+            # mkdir -p ~/.kube
+            # cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+            # chown $(whoami):$(whoami) ~/.kube/config
+            # chmod 600 ~/.kube/config
 
-            echo "[READY] K3s cluster is up and running on $(hostname)."
+            # echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            # pip install kubernetes
             # Install KWOK
-            echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            # echo "[KWOK] Installing KWOK controller..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
             
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            # echo "[KWOK] Waiting for KWOK controller to be ready..."
+            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
             
-            echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            # echo "[KWOK] Applying stage-fast configuration..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
             
-            echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            # echo "[KWOK] Applying metrics-usage configuration..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
             
-            echo "[KWOK] Installation complete!"
+            # echo "[KWOK] Installation complete!"
             
             while true; do
                 sync
@@ -19013,73 +19013,73 @@ topology:
             sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
-            echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            k3s server \
-              --node-name serf158 \
-              --disable traefik \
-              --disable servicelb \
-              --disable local-storage \
-              --disable metrics-server \
-              --disable-cloud-controller \
-              --disable-network-policy \
-              --disable-helm-controller \
-              --snapshotter native \
-              --tls-san 10.0.79.10 \
-              --kubelet-arg=cgroup-root=/ \
-              --kubelet-arg=cgroups-per-qos=false \
-              --kubelet-arg=enforce-node-allocatable= \
-              --v=0 &
+            # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
+            # k3s server \
+              # --node-name serf158 \
+              # --disable traefik \
+              # --disable servicelb \
+              # --disable local-storage \
+              # --disable metrics-server \
+              # --disable-cloud-controller \
+              # --disable-network-policy \
+              # --disable-helm-controller \
+              # --snapshotter native \
+              # --tls-san 10.0.79.10 \
+              # --kubelet-arg=cgroup-root=/ \
+              # --kubelet-arg=cgroups-per-qos=false \
+              # --kubelet-arg=enforce-node-allocatable= \
+              # --v=0 &
 
-            sleep 20
-            chmod 666 /etc/rancher/k3s/k3s.yaml
-            export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+            # sleep 20
+            # chmod 666 /etc/rancher/k3s/k3s.yaml
+            # export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
-            echo "[INIT] Waiting for containerd to be ready..."
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                echo "  containerd not yet ready, retrying..."
-                sleep 3
-            done
-            echo "Containerd is ready."
+            # echo "[INIT] Waiting for containerd to be ready..."
+            # until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
+                # echo "  containerd not yet ready, retrying..."
+                # sleep 3
+            # done
+            # echo "Containerd is ready."
 
-            echo "[INIT] Importing cached images..."
-            for f in /opt/k3s-images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
-            done
+            # echo "[INIT] Importing cached images..."
+            # for f in /opt/k3s-images/*.tar; do
+                # echo "Loading $f ..."
+                # /usr/local/bin/k3s ctr images import "$f" || true
+            # done
 
-            k3s kubectl apply -f /tmp/namespace.yaml
-            k3s kubectl apply -f /tmp/rbac.yaml
-            k3s kubectl apply -f /tmp/deployment.yaml
-            k3s kubectl apply -f /tmp/ram_price.yaml
-            k3s kubectl apply -f /tmp/storage_price.yaml
-            k3s kubectl apply -f /tmp/vcpu_price.yaml
-            k3s kubectl apply -f /tmp/vgpu_price.yaml
-            k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+            # k3s kubectl apply -f /tmp/namespace.yaml
+            # k3s kubectl apply -f /tmp/rbac.yaml
+            # k3s kubectl apply -f /tmp/deployment.yaml
+            # k3s kubectl apply -f /tmp/ram_price.yaml
+            # k3s kubectl apply -f /tmp/storage_price.yaml
+            # k3s kubectl apply -f /tmp/vcpu_price.yaml
+            # k3s kubectl apply -f /tmp/vgpu_price.yaml
+            # k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
  
 
-            mkdir -p ~/.kube
-            cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
-            chown $(whoami):$(whoami) ~/.kube/config
-            chmod 600 ~/.kube/config
+            # mkdir -p ~/.kube
+            # cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+            # chown $(whoami):$(whoami) ~/.kube/config
+            # chmod 600 ~/.kube/config
 
-            echo "[READY] K3s cluster is up and running on $(hostname)."
+            # echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            # pip install kubernetes
             # Install KWOK
-            echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            # echo "[KWOK] Installing KWOK controller..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
             
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            # echo "[KWOK] Waiting for KWOK controller to be ready..."
+            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
             
-            echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            # echo "[KWOK] Applying stage-fast configuration..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
             
-            echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            # echo "[KWOK] Applying metrics-usage configuration..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
             
-            echo "[KWOK] Installation complete!"
+            # echo "[KWOK] Installation complete!"
             
             while true; do
                 sync
@@ -19252,73 +19252,73 @@ topology:
             sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
-            echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            k3s server \
-              --node-name serf160 \
-              --disable traefik \
-              --disable servicelb \
-              --disable local-storage \
-              --disable metrics-server \
-              --disable-cloud-controller \
-              --disable-network-policy \
-              --disable-helm-controller \
-              --snapshotter native \
-              --tls-san 10.0.81.10 \
-              --kubelet-arg=cgroup-root=/ \
-              --kubelet-arg=cgroups-per-qos=false \
-              --kubelet-arg=enforce-node-allocatable= \
-              --v=0 &
+            # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
+            # k3s server \
+              # --node-name serf160 \
+              # --disable traefik \
+              # --disable servicelb \
+              # --disable local-storage \
+              # --disable metrics-server \
+              # --disable-cloud-controller \
+              # --disable-network-policy \
+              # --disable-helm-controller \
+              # --snapshotter native \
+              # --tls-san 10.0.81.10 \
+              # --kubelet-arg=cgroup-root=/ \
+              # --kubelet-arg=cgroups-per-qos=false \
+              # --kubelet-arg=enforce-node-allocatable= \
+              # --v=0 &
 
-            sleep 20
-            chmod 666 /etc/rancher/k3s/k3s.yaml
-            export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+            # sleep 20
+            # chmod 666 /etc/rancher/k3s/k3s.yaml
+            # export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
-            echo "[INIT] Waiting for containerd to be ready..."
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                echo "  containerd not yet ready, retrying..."
-                sleep 3
-            done
-            echo "Containerd is ready."
+            # echo "[INIT] Waiting for containerd to be ready..."
+            # until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
+                # echo "  containerd not yet ready, retrying..."
+                # sleep 3
+            # done
+            # echo "Containerd is ready."
 
-            echo "[INIT] Importing cached images..."
-            for f in /opt/k3s-images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
-            done
+            # echo "[INIT] Importing cached images..."
+            # for f in /opt/k3s-images/*.tar; do
+                # echo "Loading $f ..."
+                # /usr/local/bin/k3s ctr images import "$f" || true
+            # done
 
-            k3s kubectl apply -f /tmp/namespace.yaml
-            k3s kubectl apply -f /tmp/rbac.yaml
-            k3s kubectl apply -f /tmp/deployment.yaml
-            k3s kubectl apply -f /tmp/ram_price.yaml
-            k3s kubectl apply -f /tmp/storage_price.yaml
-            k3s kubectl apply -f /tmp/vcpu_price.yaml
-            k3s kubectl apply -f /tmp/vgpu_price.yaml
-            k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+            # k3s kubectl apply -f /tmp/namespace.yaml
+            # k3s kubectl apply -f /tmp/rbac.yaml
+            # k3s kubectl apply -f /tmp/deployment.yaml
+            # k3s kubectl apply -f /tmp/ram_price.yaml
+            # k3s kubectl apply -f /tmp/storage_price.yaml
+            # k3s kubectl apply -f /tmp/vcpu_price.yaml
+            # k3s kubectl apply -f /tmp/vgpu_price.yaml
+            # k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
  
 
-            mkdir -p ~/.kube
-            cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
-            chown $(whoami):$(whoami) ~/.kube/config
-            chmod 600 ~/.kube/config
+            # mkdir -p ~/.kube
+            # cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+            # chown $(whoami):$(whoami) ~/.kube/config
+            # chmod 600 ~/.kube/config
 
-            echo "[READY] K3s cluster is up and running on $(hostname)."
+            # echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            # pip install kubernetes
             # Install KWOK
-            echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            # echo "[KWOK] Installing KWOK controller..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
             
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            # echo "[KWOK] Waiting for KWOK controller to be ready..."
+            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
             
-            echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            # echo "[KWOK] Applying stage-fast configuration..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
             
-            echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            # echo "[KWOK] Applying metrics-usage configuration..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
             
-            echo "[KWOK] Installation complete!"
+            # echo "[KWOK] Installation complete!"
             
             while true; do
                 sync
@@ -19491,73 +19491,73 @@ topology:
             sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
-            echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            k3s server \
-              --node-name serf162 \
-              --disable traefik \
-              --disable servicelb \
-              --disable local-storage \
-              --disable metrics-server \
-              --disable-cloud-controller \
-              --disable-network-policy \
-              --disable-helm-controller \
-              --snapshotter native \
-              --tls-san 10.0.83.10 \
-              --kubelet-arg=cgroup-root=/ \
-              --kubelet-arg=cgroups-per-qos=false \
-              --kubelet-arg=enforce-node-allocatable= \
-              --v=0 &
+            # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
+            # k3s server \
+              # --node-name serf162 \
+              # --disable traefik \
+              # --disable servicelb \
+              # --disable local-storage \
+              # --disable metrics-server \
+              # --disable-cloud-controller \
+              # --disable-network-policy \
+              # --disable-helm-controller \
+              # --snapshotter native \
+              # --tls-san 10.0.83.10 \
+              # --kubelet-arg=cgroup-root=/ \
+              # --kubelet-arg=cgroups-per-qos=false \
+              # --kubelet-arg=enforce-node-allocatable= \
+              # --v=0 &
 
-            sleep 20
-            chmod 666 /etc/rancher/k3s/k3s.yaml
-            export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+            # sleep 20
+            # chmod 666 /etc/rancher/k3s/k3s.yaml
+            # export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
-            echo "[INIT] Waiting for containerd to be ready..."
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                echo "  containerd not yet ready, retrying..."
-                sleep 3
-            done
-            echo "Containerd is ready."
+            # echo "[INIT] Waiting for containerd to be ready..."
+            # until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
+                # echo "  containerd not yet ready, retrying..."
+                # sleep 3
+            # done
+            # echo "Containerd is ready."
 
-            echo "[INIT] Importing cached images..."
-            for f in /opt/k3s-images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
-            done
+            # echo "[INIT] Importing cached images..."
+            # for f in /opt/k3s-images/*.tar; do
+                # echo "Loading $f ..."
+                # /usr/local/bin/k3s ctr images import "$f" || true
+            # done
 
-            k3s kubectl apply -f /tmp/namespace.yaml
-            k3s kubectl apply -f /tmp/rbac.yaml
-            k3s kubectl apply -f /tmp/deployment.yaml
-            k3s kubectl apply -f /tmp/ram_price.yaml
-            k3s kubectl apply -f /tmp/storage_price.yaml
-            k3s kubectl apply -f /tmp/vcpu_price.yaml
-            k3s kubectl apply -f /tmp/vgpu_price.yaml
-            k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+            # k3s kubectl apply -f /tmp/namespace.yaml
+            # k3s kubectl apply -f /tmp/rbac.yaml
+            # k3s kubectl apply -f /tmp/deployment.yaml
+            # k3s kubectl apply -f /tmp/ram_price.yaml
+            # k3s kubectl apply -f /tmp/storage_price.yaml
+            # k3s kubectl apply -f /tmp/vcpu_price.yaml
+            # k3s kubectl apply -f /tmp/vgpu_price.yaml
+            # k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
  
 
-            mkdir -p ~/.kube
-            cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
-            chown $(whoami):$(whoami) ~/.kube/config
-            chmod 600 ~/.kube/config
+            # mkdir -p ~/.kube
+            # cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+            # chown $(whoami):$(whoami) ~/.kube/config
+            # chmod 600 ~/.kube/config
 
-            echo "[READY] K3s cluster is up and running on $(hostname)."
+            # echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            # pip install kubernetes
             # Install KWOK
-            echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            # echo "[KWOK] Installing KWOK controller..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
             
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            # echo "[KWOK] Waiting for KWOK controller to be ready..."
+            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
             
-            echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            # echo "[KWOK] Applying stage-fast configuration..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
             
-            echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            # echo "[KWOK] Applying metrics-usage configuration..."
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
             
-            echo "[KWOK] Installation complete!"
+            # echo "[KWOK] Installation complete!"
             
             while true; do
                 sync
