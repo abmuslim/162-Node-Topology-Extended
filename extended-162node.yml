@@ -525,13 +525,7 @@ topology:
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            cat > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl << 'TOML'
-{{ template "base" . }}
-
-[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]
-  platform = "linux/amd64"
-  snapshotter = "native"
-TOML
+            { echo '{{ template "base" . }}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
 
             k3s server \
               --node-name serf3 \
@@ -893,13 +887,7 @@ TOML
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            cat > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl << 'TOML'
-{{ template "base" . }}
-
-[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]
-  platform = "linux/amd64"
-  snapshotter = "native"
-TOML
+            { echo '{{ template "base" . }}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
 
             k3s server \
               --node-name serf6 \
@@ -1261,13 +1249,7 @@ TOML
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            cat > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl << 'TOML'
-{{ template "base" . }}
-
-[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]
-  platform = "linux/amd64"
-  snapshotter = "native"
-TOML
+            { echo '{{ template "base" . }}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
 
             k3s server \
               --node-name serf9 \
@@ -1629,13 +1611,7 @@ TOML
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            cat > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl << 'TOML'
-{{ template "base" . }}
-
-[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]
-  platform = "linux/amd64"
-  snapshotter = "native"
-TOML
+            { echo '{{ template "base" . }}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
 
             k3s server \
               --node-name serf12 \
@@ -2116,13 +2092,7 @@ TOML
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            cat > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl << 'TOML'
-{{ template "base" . }}
-
-[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]
-  platform = "linux/amd64"
-  snapshotter = "native"
-TOML
+            { echo '{{ template "base" . }}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
 
             k3s server \
               --node-name serf16 \
@@ -2484,13 +2454,7 @@ TOML
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            cat > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl << 'TOML'
-{{ template "base" . }}
-
-[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]
-  platform = "linux/amd64"
-  snapshotter = "native"
-TOML
+            { echo '{{ template "base" . }}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
 
             k3s server \
               --node-name serf19 \
@@ -2852,13 +2816,7 @@ TOML
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            cat > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl << 'TOML'
-{{ template "base" . }}
-
-[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]
-  platform = "linux/amd64"
-  snapshotter = "native"
-TOML
+            { echo '{{ template "base" . }}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
 
             k3s server \
               --node-name serf22 \
@@ -3220,13 +3178,7 @@ TOML
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            cat > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl << 'TOML'
-{{ template "base" . }}
-
-[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]
-  platform = "linux/amd64"
-  snapshotter = "native"
-TOML
+            { echo '{{ template "base" . }}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
 
             k3s server \
               --node-name serf25 \
@@ -3826,13 +3778,7 @@ TOML
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            cat > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl << 'TOML'
-{{ template "base" . }}
-
-[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]
-  platform = "linux/amd64"
-  snapshotter = "native"
-TOML
+            { echo '{{ template "base" . }}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
 
             k3s server \
               --node-name serf30 \
@@ -4194,13 +4140,7 @@ TOML
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            cat > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl << 'TOML'
-{{ template "base" . }}
-
-[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]
-  platform = "linux/amd64"
-  snapshotter = "native"
-TOML
+            { echo '{{ template "base" . }}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
 
             k3s server \
               --node-name serf33 \
@@ -4562,13 +4502,7 @@ TOML
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            cat > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl << 'TOML'
-{{ template "base" . }}
-
-[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]
-  platform = "linux/amd64"
-  snapshotter = "native"
-TOML
+            { echo '{{ template "base" . }}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
 
             k3s server \
               --node-name serf36 \
@@ -4930,13 +4864,7 @@ TOML
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            cat > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl << 'TOML'
-{{ template "base" . }}
-
-[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]
-  platform = "linux/amd64"
-  snapshotter = "native"
-TOML
+            { echo '{{ template "base" . }}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
 
             k3s server \
               --node-name serf39 \
@@ -5536,13 +5464,7 @@ TOML
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            cat > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl << 'TOML'
-{{ template "base" . }}
-
-[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]
-  platform = "linux/amd64"
-  snapshotter = "native"
-TOML
+            { echo '{{ template "base" . }}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
 
             k3s server \
               --node-name serf44 \
@@ -5904,13 +5826,7 @@ TOML
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            cat > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl << 'TOML'
-{{ template "base" . }}
-
-[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]
-  platform = "linux/amd64"
-  snapshotter = "native"
-TOML
+            { echo '{{ template "base" . }}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
 
             k3s server \
               --node-name serf47 \
@@ -6272,13 +6188,7 @@ TOML
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            cat > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl << 'TOML'
-{{ template "base" . }}
-
-[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]
-  platform = "linux/amd64"
-  snapshotter = "native"
-TOML
+            { echo '{{ template "base" . }}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
 
             k3s server \
               --node-name serf50 \
@@ -6640,13 +6550,7 @@ TOML
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            cat > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl << 'TOML'
-{{ template "base" . }}
-
-[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]
-  platform = "linux/amd64"
-  snapshotter = "native"
-TOML
+            { echo '{{ template "base" . }}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
 
             k3s server \
               --node-name serf53 \
@@ -7246,13 +7150,7 @@ TOML
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            cat > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl << 'TOML'
-{{ template "base" . }}
-
-[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]
-  platform = "linux/amd64"
-  snapshotter = "native"
-TOML
+            { echo '{{ template "base" . }}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
 
             k3s server \
               --node-name serf58 \
@@ -7614,13 +7512,7 @@ TOML
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            cat > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl << 'TOML'
-{{ template "base" . }}
-
-[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]
-  platform = "linux/amd64"
-  snapshotter = "native"
-TOML
+            { echo '{{ template "base" . }}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
 
             k3s server \
               --node-name serf61 \
@@ -7982,13 +7874,7 @@ TOML
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            cat > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl << 'TOML'
-{{ template "base" . }}
-
-[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]
-  platform = "linux/amd64"
-  snapshotter = "native"
-TOML
+            { echo '{{ template "base" . }}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
 
             k3s server \
               --node-name serf64 \
@@ -8350,13 +8236,7 @@ TOML
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            cat > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl << 'TOML'
-{{ template "base" . }}
-
-[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]
-  platform = "linux/amd64"
-  snapshotter = "native"
-TOML
+            { echo '{{ template "base" . }}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
 
             k3s server \
               --node-name serf67 \
@@ -8956,13 +8836,7 @@ TOML
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            cat > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl << 'TOML'
-{{ template "base" . }}
-
-[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]
-  platform = "linux/amd64"
-  snapshotter = "native"
-TOML
+            { echo '{{ template "base" . }}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
 
             k3s server \
               --node-name serf72 \
@@ -9324,13 +9198,7 @@ TOML
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            cat > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl << 'TOML'
-{{ template "base" . }}
-
-[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]
-  platform = "linux/amd64"
-  snapshotter = "native"
-TOML
+            { echo '{{ template "base" . }}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
 
             k3s server \
               --node-name serf75 \
@@ -9692,13 +9560,7 @@ TOML
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            cat > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl << 'TOML'
-{{ template "base" . }}
-
-[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]
-  platform = "linux/amd64"
-  snapshotter = "native"
-TOML
+            { echo '{{ template "base" . }}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
 
             k3s server \
               --node-name serf78 \
@@ -10060,13 +9922,7 @@ TOML
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            cat > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl << 'TOML'
-{{ template "base" . }}
-
-[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]
-  platform = "linux/amd64"
-  snapshotter = "native"
-TOML
+            { echo '{{ template "base" . }}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
 
             k3s server \
               --node-name serf81 \
@@ -10666,13 +10522,7 @@ TOML
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            cat > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl << 'TOML'
-{{ template "base" . }}
-
-[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]
-  platform = "linux/amd64"
-  snapshotter = "native"
-TOML
+            { echo '{{ template "base" . }}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
 
             k3s server \
               --node-name serf86 \
@@ -11034,13 +10884,7 @@ TOML
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            cat > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl << 'TOML'
-{{ template "base" . }}
-
-[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]
-  platform = "linux/amd64"
-  snapshotter = "native"
-TOML
+            { echo '{{ template "base" . }}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
 
             k3s server \
               --node-name serf89 \
@@ -11402,13 +11246,7 @@ TOML
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            cat > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl << 'TOML'
-{{ template "base" . }}
-
-[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]
-  platform = "linux/amd64"
-  snapshotter = "native"
-TOML
+            { echo '{{ template "base" . }}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
 
             k3s server \
               --node-name serf92 \
@@ -11770,13 +11608,7 @@ TOML
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            cat > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl << 'TOML'
-{{ template "base" . }}
-
-[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]
-  platform = "linux/amd64"
-  snapshotter = "native"
-TOML
+            { echo '{{ template "base" . }}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
 
             k3s server \
               --node-name serf95 \
@@ -12376,13 +12208,7 @@ TOML
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            cat > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl << 'TOML'
-{{ template "base" . }}
-
-[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]
-  platform = "linux/amd64"
-  snapshotter = "native"
-TOML
+            { echo '{{ template "base" . }}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
 
             k3s server \
               --node-name serf100 \
@@ -12744,13 +12570,7 @@ TOML
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            cat > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl << 'TOML'
-{{ template "base" . }}
-
-[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]
-  platform = "linux/amd64"
-  snapshotter = "native"
-TOML
+            { echo '{{ template "base" . }}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
 
             k3s server \
               --node-name serf103 \
