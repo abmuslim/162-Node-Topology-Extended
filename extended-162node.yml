@@ -244,7 +244,7 @@ topology:
     #---------------------------------K3s Serf Nodes (162 nodes)---------------------------------
     serf1:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -363,7 +363,7 @@ topology:
 
     serf2:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -482,7 +482,7 @@ topology:
 
     serf3:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -540,7 +540,7 @@ topology:
               --kubelet-arg=enforce-node-allocatable= \
               --v=0 &
 
-            sleep 20
+            until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -557,6 +557,7 @@ topology:
                 /usr/local/bin/k3s ctr images import "$f" || true
             done
 
+            until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -602,7 +603,7 @@ topology:
 
     serf4:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -721,7 +722,7 @@ topology:
 
     serf5:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -840,7 +841,7 @@ topology:
 
     serf6:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -898,7 +899,7 @@ topology:
               --kubelet-arg=enforce-node-allocatable= \
               --v=0 &
 
-            sleep 20
+            until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -915,6 +916,7 @@ topology:
                 /usr/local/bin/k3s ctr images import "$f" || true
             done
 
+            until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -960,7 +962,7 @@ topology:
 
     serf7:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -1079,7 +1081,7 @@ topology:
 
     serf8:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -1198,7 +1200,7 @@ topology:
 
     serf9:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -1256,7 +1258,7 @@ topology:
               --kubelet-arg=enforce-node-allocatable= \
               --v=0 &
 
-            sleep 20
+            until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -1273,6 +1275,7 @@ topology:
                 /usr/local/bin/k3s ctr images import "$f" || true
             done
 
+            until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -1318,7 +1321,7 @@ topology:
 
     serf10:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -1437,7 +1440,7 @@ topology:
 
     serf11:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -1556,7 +1559,7 @@ topology:
 
     serf12:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -1614,7 +1617,7 @@ topology:
               --kubelet-arg=enforce-node-allocatable= \
               --v=0 &
 
-            sleep 20
+            until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -1631,6 +1634,7 @@ topology:
                 /usr/local/bin/k3s ctr images import "$f" || true
             done
 
+            until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -1676,7 +1680,7 @@ topology:
 
     serf13:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -1795,7 +1799,7 @@ topology:
 
     serf14:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -1914,7 +1918,7 @@ topology:
 
     serf15:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -2033,7 +2037,7 @@ topology:
 
     serf16:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -2091,7 +2095,7 @@ topology:
               --kubelet-arg=enforce-node-allocatable= \
               --v=0 &
 
-            sleep 20
+            until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -2108,6 +2112,7 @@ topology:
                 /usr/local/bin/k3s ctr images import "$f" || true
             done
 
+            until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -2153,7 +2158,7 @@ topology:
 
     serf17:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -2272,7 +2277,7 @@ topology:
 
     serf18:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -2391,7 +2396,7 @@ topology:
 
     serf19:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -2449,7 +2454,7 @@ topology:
               --kubelet-arg=enforce-node-allocatable= \
               --v=0 &
 
-            sleep 20
+            until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -2466,6 +2471,7 @@ topology:
                 /usr/local/bin/k3s ctr images import "$f" || true
             done
 
+            until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -2511,7 +2517,7 @@ topology:
 
     serf20:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -2630,7 +2636,7 @@ topology:
 
     serf21:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -2749,7 +2755,7 @@ topology:
 
     serf22:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -2807,7 +2813,7 @@ topology:
               --kubelet-arg=enforce-node-allocatable= \
               --v=0 &
 
-            sleep 20
+            until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -2824,6 +2830,7 @@ topology:
                 /usr/local/bin/k3s ctr images import "$f" || true
             done
 
+            until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -2869,7 +2876,7 @@ topology:
 
     serf23:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -2988,7 +2995,7 @@ topology:
 
     serf24:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -3107,7 +3114,7 @@ topology:
 
     serf25:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -3165,7 +3172,7 @@ topology:
               --kubelet-arg=enforce-node-allocatable= \
               --v=0 &
 
-            sleep 20
+            until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -3182,6 +3189,7 @@ topology:
                 /usr/local/bin/k3s ctr images import "$f" || true
             done
 
+            until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -3227,7 +3235,7 @@ topology:
 
     serf26:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -3346,7 +3354,7 @@ topology:
 
     serf27:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -3465,7 +3473,7 @@ topology:
 
     serf28:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -3584,7 +3592,7 @@ topology:
 
     serf29:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -3703,7 +3711,7 @@ topology:
 
     serf30:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -3761,7 +3769,7 @@ topology:
               --kubelet-arg=enforce-node-allocatable= \
               --v=0 &
 
-            sleep 20
+            until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -3778,6 +3786,7 @@ topology:
                 /usr/local/bin/k3s ctr images import "$f" || true
             done
 
+            until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -3823,7 +3832,7 @@ topology:
 
     serf31:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -3942,7 +3951,7 @@ topology:
 
     serf32:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -4061,7 +4070,7 @@ topology:
 
     serf33:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -4119,7 +4128,7 @@ topology:
               --kubelet-arg=enforce-node-allocatable= \
               --v=0 &
 
-            sleep 20
+            until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -4136,6 +4145,7 @@ topology:
                 /usr/local/bin/k3s ctr images import "$f" || true
             done
 
+            until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -4181,7 +4191,7 @@ topology:
 
     serf34:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -4300,7 +4310,7 @@ topology:
 
     serf35:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -4419,7 +4429,7 @@ topology:
 
     serf36:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -4477,7 +4487,7 @@ topology:
               --kubelet-arg=enforce-node-allocatable= \
               --v=0 &
 
-            sleep 20
+            until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -4494,6 +4504,7 @@ topology:
                 /usr/local/bin/k3s ctr images import "$f" || true
             done
 
+            until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -4539,7 +4550,7 @@ topology:
 
     serf37:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -4658,7 +4669,7 @@ topology:
 
     serf38:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -4777,7 +4788,7 @@ topology:
 
     serf39:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -4835,7 +4846,7 @@ topology:
               --kubelet-arg=enforce-node-allocatable= \
               --v=0 &
 
-            sleep 20
+            until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -4852,6 +4863,7 @@ topology:
                 /usr/local/bin/k3s ctr images import "$f" || true
             done
 
+            until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -4897,7 +4909,7 @@ topology:
 
     serf40:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -5016,7 +5028,7 @@ topology:
 
     serf41:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -5135,7 +5147,7 @@ topology:
 
     serf42:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -5254,7 +5266,7 @@ topology:
 
     serf43:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -5373,7 +5385,7 @@ topology:
 
     serf44:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -5431,7 +5443,7 @@ topology:
               --kubelet-arg=enforce-node-allocatable= \
               --v=0 &
 
-            sleep 20
+            until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -5448,6 +5460,7 @@ topology:
                 /usr/local/bin/k3s ctr images import "$f" || true
             done
 
+            until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -5493,7 +5506,7 @@ topology:
 
     serf45:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -5612,7 +5625,7 @@ topology:
 
     serf46:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -5731,7 +5744,7 @@ topology:
 
     serf47:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -5789,7 +5802,7 @@ topology:
               --kubelet-arg=enforce-node-allocatable= \
               --v=0 &
 
-            sleep 20
+            until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -5806,6 +5819,7 @@ topology:
                 /usr/local/bin/k3s ctr images import "$f" || true
             done
 
+            until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -5851,7 +5865,7 @@ topology:
 
     serf48:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -5970,7 +5984,7 @@ topology:
 
     serf49:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -6089,7 +6103,7 @@ topology:
 
     serf50:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -6147,7 +6161,7 @@ topology:
               --kubelet-arg=enforce-node-allocatable= \
               --v=0 &
 
-            sleep 20
+            until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -6164,6 +6178,7 @@ topology:
                 /usr/local/bin/k3s ctr images import "$f" || true
             done
 
+            until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -6209,7 +6224,7 @@ topology:
 
     serf51:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -6328,7 +6343,7 @@ topology:
 
     serf52:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -6447,7 +6462,7 @@ topology:
 
     serf53:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -6505,7 +6520,7 @@ topology:
               --kubelet-arg=enforce-node-allocatable= \
               --v=0 &
 
-            sleep 20
+            until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -6522,6 +6537,7 @@ topology:
                 /usr/local/bin/k3s ctr images import "$f" || true
             done
 
+            until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -6567,7 +6583,7 @@ topology:
 
     serf54:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -6686,7 +6702,7 @@ topology:
 
     serf55:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -6805,7 +6821,7 @@ topology:
 
     serf56:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -6924,7 +6940,7 @@ topology:
 
     serf57:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -7043,7 +7059,7 @@ topology:
 
     serf58:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -7101,7 +7117,7 @@ topology:
               --kubelet-arg=enforce-node-allocatable= \
               --v=0 &
 
-            sleep 20
+            until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -7118,6 +7134,7 @@ topology:
                 /usr/local/bin/k3s ctr images import "$f" || true
             done
 
+            until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -7163,7 +7180,7 @@ topology:
 
     serf59:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -7282,7 +7299,7 @@ topology:
 
     serf60:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -7401,7 +7418,7 @@ topology:
 
     serf61:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -7459,7 +7476,7 @@ topology:
               --kubelet-arg=enforce-node-allocatable= \
               --v=0 &
 
-            sleep 20
+            until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -7476,6 +7493,7 @@ topology:
                 /usr/local/bin/k3s ctr images import "$f" || true
             done
 
+            until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -7521,7 +7539,7 @@ topology:
 
     serf62:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -7640,7 +7658,7 @@ topology:
 
     serf63:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -7759,7 +7777,7 @@ topology:
 
     serf64:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -7817,7 +7835,7 @@ topology:
               --kubelet-arg=enforce-node-allocatable= \
               --v=0 &
 
-            sleep 20
+            until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -7834,6 +7852,7 @@ topology:
                 /usr/local/bin/k3s ctr images import "$f" || true
             done
 
+            until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -7879,7 +7898,7 @@ topology:
 
     serf65:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -7998,7 +8017,7 @@ topology:
 
     serf66:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -8117,7 +8136,7 @@ topology:
 
     serf67:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -8175,7 +8194,7 @@ topology:
               --kubelet-arg=enforce-node-allocatable= \
               --v=0 &
 
-            sleep 20
+            until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -8192,6 +8211,7 @@ topology:
                 /usr/local/bin/k3s ctr images import "$f" || true
             done
 
+            until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -8237,7 +8257,7 @@ topology:
 
     serf68:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -8356,7 +8376,7 @@ topology:
 
     serf69:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -8475,7 +8495,7 @@ topology:
 
     serf70:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -8594,7 +8614,7 @@ topology:
 
     serf71:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -8713,7 +8733,7 @@ topology:
 
     serf72:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -8771,7 +8791,7 @@ topology:
               --kubelet-arg=enforce-node-allocatable= \
               --v=0 &
 
-            sleep 20
+            until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -8788,6 +8808,7 @@ topology:
                 /usr/local/bin/k3s ctr images import "$f" || true
             done
 
+            until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -8833,7 +8854,7 @@ topology:
 
     serf73:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -8952,7 +8973,7 @@ topology:
 
     serf74:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -9071,7 +9092,7 @@ topology:
 
     serf75:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -9129,7 +9150,7 @@ topology:
               --kubelet-arg=enforce-node-allocatable= \
               --v=0 &
 
-            sleep 20
+            until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -9146,6 +9167,7 @@ topology:
                 /usr/local/bin/k3s ctr images import "$f" || true
             done
 
+            until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -9191,7 +9213,7 @@ topology:
 
     serf76:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -9310,7 +9332,7 @@ topology:
 
     serf77:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -9429,7 +9451,7 @@ topology:
 
     serf78:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -9487,7 +9509,7 @@ topology:
               --kubelet-arg=enforce-node-allocatable= \
               --v=0 &
 
-            sleep 20
+            until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -9504,6 +9526,7 @@ topology:
                 /usr/local/bin/k3s ctr images import "$f" || true
             done
 
+            until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -9549,7 +9572,7 @@ topology:
 
     serf79:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -9668,7 +9691,7 @@ topology:
 
     serf80:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -9787,7 +9810,7 @@ topology:
 
     serf81:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -9845,7 +9868,7 @@ topology:
               --kubelet-arg=enforce-node-allocatable= \
               --v=0 &
 
-            sleep 20
+            until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -9862,6 +9885,7 @@ topology:
                 /usr/local/bin/k3s ctr images import "$f" || true
             done
 
+            until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -9907,7 +9931,7 @@ topology:
 
     serf82:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -10026,7 +10050,7 @@ topology:
 
     serf83:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -10145,7 +10169,7 @@ topology:
 
     serf84:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -10264,7 +10288,7 @@ topology:
 
     serf85:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -10383,7 +10407,7 @@ topology:
 
     serf86:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -10441,7 +10465,7 @@ topology:
               --kubelet-arg=enforce-node-allocatable= \
               --v=0 &
 
-            sleep 20
+            until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -10458,6 +10482,7 @@ topology:
                 /usr/local/bin/k3s ctr images import "$f" || true
             done
 
+            until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -10503,7 +10528,7 @@ topology:
 
     serf87:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -10622,7 +10647,7 @@ topology:
 
     serf88:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -10741,7 +10766,7 @@ topology:
 
     serf89:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -10799,7 +10824,7 @@ topology:
               --kubelet-arg=enforce-node-allocatable= \
               --v=0 &
 
-            sleep 20
+            until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -10816,6 +10841,7 @@ topology:
                 /usr/local/bin/k3s ctr images import "$f" || true
             done
 
+            until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -10861,7 +10887,7 @@ topology:
 
     serf90:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -10980,7 +11006,7 @@ topology:
 
     serf91:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -11099,7 +11125,7 @@ topology:
 
     serf92:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -11157,7 +11183,7 @@ topology:
               --kubelet-arg=enforce-node-allocatable= \
               --v=0 &
 
-            sleep 20
+            until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -11174,6 +11200,7 @@ topology:
                 /usr/local/bin/k3s ctr images import "$f" || true
             done
 
+            until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -11219,7 +11246,7 @@ topology:
 
     serf93:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -11338,7 +11365,7 @@ topology:
 
     serf94:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -11457,7 +11484,7 @@ topology:
 
     serf95:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -11515,7 +11542,7 @@ topology:
               --kubelet-arg=enforce-node-allocatable= \
               --v=0 &
 
-            sleep 20
+            until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -11532,6 +11559,7 @@ topology:
                 /usr/local/bin/k3s ctr images import "$f" || true
             done
 
+            until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -11577,7 +11605,7 @@ topology:
 
     serf96:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -11696,7 +11724,7 @@ topology:
 
     serf97:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -11815,7 +11843,7 @@ topology:
 
     serf98:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -11934,7 +11962,7 @@ topology:
 
     serf99:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -12053,7 +12081,7 @@ topology:
 
     serf100:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -12111,7 +12139,7 @@ topology:
               --kubelet-arg=enforce-node-allocatable= \
               --v=0 &
 
-            sleep 20
+            until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -12128,6 +12156,7 @@ topology:
                 /usr/local/bin/k3s ctr images import "$f" || true
             done
 
+            until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -12173,7 +12202,7 @@ topology:
 
     serf101:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -12292,7 +12321,7 @@ topology:
 
     serf102:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -12411,7 +12440,7 @@ topology:
 
     serf103:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -12469,7 +12498,7 @@ topology:
               --kubelet-arg=enforce-node-allocatable= \
               --v=0 &
 
-            sleep 20
+            until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -12486,6 +12515,7 @@ topology:
                 /usr/local/bin/k3s ctr images import "$f" || true
             done
 
+            until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -12531,7 +12561,7 @@ topology:
 
     serf104:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -12650,7 +12680,7 @@ topology:
 
     serf105:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -12769,7 +12799,7 @@ topology:
 
     serf106:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -12827,7 +12857,7 @@ topology:
               # --kubelet-arg=enforce-node-allocatable= \
               # --v=0 &
 
-            # sleep 20
+            # until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             # chmod 666 /etc/rancher/k3s/k3s.yaml
             # export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -12844,6 +12874,7 @@ topology:
                 # /usr/local/bin/k3s ctr images import "$f" || true
             # done
 
+            # until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             # k3s kubectl apply -f /tmp/namespace.yaml
             # k3s kubectl apply -f /tmp/rbac.yaml
             # k3s kubectl apply -f /tmp/deployment.yaml
@@ -12889,7 +12920,7 @@ topology:
 
     serf107:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -13008,7 +13039,7 @@ topology:
 
     serf108:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -13127,7 +13158,7 @@ topology:
 
     serf109:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -13185,7 +13216,7 @@ topology:
               # --kubelet-arg=enforce-node-allocatable= \
               # --v=0 &
 
-            # sleep 20
+            # until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             # chmod 666 /etc/rancher/k3s/k3s.yaml
             # export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -13202,6 +13233,7 @@ topology:
                 # /usr/local/bin/k3s ctr images import "$f" || true
             # done
 
+            # until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             # k3s kubectl apply -f /tmp/namespace.yaml
             # k3s kubectl apply -f /tmp/rbac.yaml
             # k3s kubectl apply -f /tmp/deployment.yaml
@@ -13247,7 +13279,7 @@ topology:
 
     serf110:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -13366,7 +13398,7 @@ topology:
 
     serf111:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -13485,7 +13517,7 @@ topology:
 
     serf112:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -13604,7 +13636,7 @@ topology:
 
     serf113:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -13723,7 +13755,7 @@ topology:
 
     serf114:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -13781,7 +13813,7 @@ topology:
               # --kubelet-arg=enforce-node-allocatable= \
               # --v=0 &
 
-            # sleep 20
+            # until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             # chmod 666 /etc/rancher/k3s/k3s.yaml
             # export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -13798,6 +13830,7 @@ topology:
                 # /usr/local/bin/k3s ctr images import "$f" || true
             # done
 
+            # until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             # k3s kubectl apply -f /tmp/namespace.yaml
             # k3s kubectl apply -f /tmp/rbac.yaml
             # k3s kubectl apply -f /tmp/deployment.yaml
@@ -13843,7 +13876,7 @@ topology:
 
     serf115:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -13962,7 +13995,7 @@ topology:
 
     serf116:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -14081,7 +14114,7 @@ topology:
 
     serf117:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -14139,7 +14172,7 @@ topology:
               # --kubelet-arg=enforce-node-allocatable= \
               # --v=0 &
 
-            # sleep 20
+            # until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             # chmod 666 /etc/rancher/k3s/k3s.yaml
             # export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -14156,6 +14189,7 @@ topology:
                 # /usr/local/bin/k3s ctr images import "$f" || true
             # done
 
+            # until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             # k3s kubectl apply -f /tmp/namespace.yaml
             # k3s kubectl apply -f /tmp/rbac.yaml
             # k3s kubectl apply -f /tmp/deployment.yaml
@@ -14201,7 +14235,7 @@ topology:
 
     serf118:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -14320,7 +14354,7 @@ topology:
 
     serf119:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -14439,7 +14473,7 @@ topology:
 
     serf120:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -14497,7 +14531,7 @@ topology:
               # --kubelet-arg=enforce-node-allocatable= \
               # --v=0 &
 
-            # sleep 20
+            # until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             # chmod 666 /etc/rancher/k3s/k3s.yaml
             # export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -14514,6 +14548,7 @@ topology:
                 # /usr/local/bin/k3s ctr images import "$f" || true
             # done
 
+            # until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             # k3s kubectl apply -f /tmp/namespace.yaml
             # k3s kubectl apply -f /tmp/rbac.yaml
             # k3s kubectl apply -f /tmp/deployment.yaml
@@ -14559,7 +14594,7 @@ topology:
 
     serf121:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -14678,7 +14713,7 @@ topology:
 
     serf122:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -14797,7 +14832,7 @@ topology:
 
     serf123:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -14855,7 +14890,7 @@ topology:
               # --kubelet-arg=enforce-node-allocatable= \
               # --v=0 &
 
-            # sleep 20
+            # until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             # chmod 666 /etc/rancher/k3s/k3s.yaml
             # export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -14872,6 +14907,7 @@ topology:
                 # /usr/local/bin/k3s ctr images import "$f" || true
             # done
 
+            # until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             # k3s kubectl apply -f /tmp/namespace.yaml
             # k3s kubectl apply -f /tmp/rbac.yaml
             # k3s kubectl apply -f /tmp/deployment.yaml
@@ -14917,7 +14953,7 @@ topology:
 
     serf124:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -15036,7 +15072,7 @@ topology:
 
     serf125:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -15155,7 +15191,7 @@ topology:
 
     serf126:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -15274,7 +15310,7 @@ topology:
 
     serf127:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -15393,7 +15429,7 @@ topology:
 
     serf128:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -15451,7 +15487,7 @@ topology:
               # --kubelet-arg=enforce-node-allocatable= \
               # --v=0 &
 
-            # sleep 20
+            # until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             # chmod 666 /etc/rancher/k3s/k3s.yaml
             # export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -15468,6 +15504,7 @@ topology:
                 # /usr/local/bin/k3s ctr images import "$f" || true
             # done
 
+            # until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             # k3s kubectl apply -f /tmp/namespace.yaml
             # k3s kubectl apply -f /tmp/rbac.yaml
             # k3s kubectl apply -f /tmp/deployment.yaml
@@ -15513,7 +15550,7 @@ topology:
 
     serf129:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -15632,7 +15669,7 @@ topology:
 
     serf130:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -15751,7 +15788,7 @@ topology:
 
     serf131:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -15809,7 +15846,7 @@ topology:
               # --kubelet-arg=enforce-node-allocatable= \
               # --v=0 &
 
-            # sleep 20
+            # until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             # chmod 666 /etc/rancher/k3s/k3s.yaml
             # export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -15826,6 +15863,7 @@ topology:
                 # /usr/local/bin/k3s ctr images import "$f" || true
             # done
 
+            # until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             # k3s kubectl apply -f /tmp/namespace.yaml
             # k3s kubectl apply -f /tmp/rbac.yaml
             # k3s kubectl apply -f /tmp/deployment.yaml
@@ -15871,7 +15909,7 @@ topology:
 
     serf132:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -15990,7 +16028,7 @@ topology:
 
     serf133:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -16109,7 +16147,7 @@ topology:
 
     serf134:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -16167,7 +16205,7 @@ topology:
               # --kubelet-arg=enforce-node-allocatable= \
               # --v=0 &
 
-            # sleep 20
+            # until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             # chmod 666 /etc/rancher/k3s/k3s.yaml
             # export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -16184,6 +16222,7 @@ topology:
                 # /usr/local/bin/k3s ctr images import "$f" || true
             # done
 
+            # until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             # k3s kubectl apply -f /tmp/namespace.yaml
             # k3s kubectl apply -f /tmp/rbac.yaml
             # k3s kubectl apply -f /tmp/deployment.yaml
@@ -16229,7 +16268,7 @@ topology:
 
     serf135:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -16348,7 +16387,7 @@ topology:
 
     serf136:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -16467,7 +16506,7 @@ topology:
 
     serf137:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -16525,7 +16564,7 @@ topology:
               # --kubelet-arg=enforce-node-allocatable= \
               # --v=0 &
 
-            # sleep 20
+            # until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             # chmod 666 /etc/rancher/k3s/k3s.yaml
             # export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -16542,6 +16581,7 @@ topology:
                 # /usr/local/bin/k3s ctr images import "$f" || true
             # done
 
+            # until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             # k3s kubectl apply -f /tmp/namespace.yaml
             # k3s kubectl apply -f /tmp/rbac.yaml
             # k3s kubectl apply -f /tmp/deployment.yaml
@@ -16587,7 +16627,7 @@ topology:
 
     serf138:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -16706,7 +16746,7 @@ topology:
 
     serf139:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -16825,7 +16865,7 @@ topology:
 
     serf140:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -16944,7 +16984,7 @@ topology:
 
     serf141:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -17063,7 +17103,7 @@ topology:
 
     serf142:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -17121,7 +17161,7 @@ topology:
               # --kubelet-arg=enforce-node-allocatable= \
               # --v=0 &
 
-            # sleep 20
+            # until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             # chmod 666 /etc/rancher/k3s/k3s.yaml
             # export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -17138,6 +17178,7 @@ topology:
                 # /usr/local/bin/k3s ctr images import "$f" || true
             # done
 
+            # until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             # k3s kubectl apply -f /tmp/namespace.yaml
             # k3s kubectl apply -f /tmp/rbac.yaml
             # k3s kubectl apply -f /tmp/deployment.yaml
@@ -17183,7 +17224,7 @@ topology:
 
     serf143:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -17302,7 +17343,7 @@ topology:
 
     serf144:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -17421,7 +17462,7 @@ topology:
 
     serf145:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -17479,7 +17520,7 @@ topology:
               # --kubelet-arg=enforce-node-allocatable= \
               # --v=0 &
 
-            # sleep 20
+            # until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             # chmod 666 /etc/rancher/k3s/k3s.yaml
             # export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -17496,6 +17537,7 @@ topology:
                 # /usr/local/bin/k3s ctr images import "$f" || true
             # done
 
+            # until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             # k3s kubectl apply -f /tmp/namespace.yaml
             # k3s kubectl apply -f /tmp/rbac.yaml
             # k3s kubectl apply -f /tmp/deployment.yaml
@@ -17541,7 +17583,7 @@ topology:
 
     serf146:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -17660,7 +17702,7 @@ topology:
 
     serf147:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -17779,7 +17821,7 @@ topology:
 
     serf148:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -17837,7 +17879,7 @@ topology:
               # --kubelet-arg=enforce-node-allocatable= \
               # --v=0 &
 
-            # sleep 20
+            # until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             # chmod 666 /etc/rancher/k3s/k3s.yaml
             # export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -17854,6 +17896,7 @@ topology:
                 # /usr/local/bin/k3s ctr images import "$f" || true
             # done
 
+            # until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             # k3s kubectl apply -f /tmp/namespace.yaml
             # k3s kubectl apply -f /tmp/rbac.yaml
             # k3s kubectl apply -f /tmp/deployment.yaml
@@ -17899,7 +17942,7 @@ topology:
 
     serf149:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -18018,7 +18061,7 @@ topology:
 
     serf150:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -18137,7 +18180,7 @@ topology:
 
     serf151:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -18195,7 +18238,7 @@ topology:
               # --kubelet-arg=enforce-node-allocatable= \
               # --v=0 &
 
-            # sleep 20
+            # until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             # chmod 666 /etc/rancher/k3s/k3s.yaml
             # export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -18212,6 +18255,7 @@ topology:
                 # /usr/local/bin/k3s ctr images import "$f" || true
             # done
 
+            # until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             # k3s kubectl apply -f /tmp/namespace.yaml
             # k3s kubectl apply -f /tmp/rbac.yaml
             # k3s kubectl apply -f /tmp/deployment.yaml
@@ -18257,7 +18301,7 @@ topology:
 
     serf152:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -18376,7 +18420,7 @@ topology:
 
     serf153:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -18495,7 +18539,7 @@ topology:
 
     serf154:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -18614,7 +18658,7 @@ topology:
 
     serf155:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -18733,7 +18777,7 @@ topology:
 
     serf156:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -18791,7 +18835,7 @@ topology:
               # --kubelet-arg=enforce-node-allocatable= \
               # --v=0 &
 
-            # sleep 20
+            # until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             # chmod 666 /etc/rancher/k3s/k3s.yaml
             # export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -18808,6 +18852,7 @@ topology:
                 # /usr/local/bin/k3s ctr images import "$f" || true
             # done
 
+            # until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             # k3s kubectl apply -f /tmp/namespace.yaml
             # k3s kubectl apply -f /tmp/rbac.yaml
             # k3s kubectl apply -f /tmp/deployment.yaml
@@ -18853,7 +18898,7 @@ topology:
 
     serf157:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -18972,7 +19017,7 @@ topology:
 
     serf158:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -19030,7 +19075,7 @@ topology:
               # --kubelet-arg=enforce-node-allocatable= \
               # --v=0 &
 
-            # sleep 20
+            # until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             # chmod 666 /etc/rancher/k3s/k3s.yaml
             # export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -19047,6 +19092,7 @@ topology:
                 # /usr/local/bin/k3s ctr images import "$f" || true
             # done
 
+            # until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             # k3s kubectl apply -f /tmp/namespace.yaml
             # k3s kubectl apply -f /tmp/rbac.yaml
             # k3s kubectl apply -f /tmp/deployment.yaml
@@ -19092,7 +19138,7 @@ topology:
 
     serf159:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -19211,7 +19257,7 @@ topology:
 
     serf160:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -19269,7 +19315,7 @@ topology:
               # --kubelet-arg=enforce-node-allocatable= \
               # --v=0 &
 
-            # sleep 20
+            # until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             # chmod 666 /etc/rancher/k3s/k3s.yaml
             # export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -19286,6 +19332,7 @@ topology:
                 # /usr/local/bin/k3s ctr images import "$f" || true
             # done
 
+            # until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             # k3s kubectl apply -f /tmp/namespace.yaml
             # k3s kubectl apply -f /tmp/rbac.yaml
             # k3s kubectl apply -f /tmp/deployment.yaml
@@ -19331,7 +19378,7 @@ topology:
 
     serf161:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -19450,7 +19497,7 @@ topology:
 
     serf162:
       kind: linux
-      image: abdullahmuzlim279/k3s-serf-emulate:slim
+      image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
       binds:
@@ -19508,7 +19555,7 @@ topology:
               # --kubelet-arg=enforce-node-allocatable= \
               # --v=0 &
 
-            # sleep 20
+            # until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             # chmod 666 /etc/rancher/k3s/k3s.yaml
             # export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
@@ -19525,6 +19572,7 @@ topology:
                 # /usr/local/bin/k3s ctr images import "$f" || true
             # done
 
+            # until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
             # k3s kubectl apply -f /tmp/namespace.yaml
             # k3s kubectl apply -f /tmp/rbac.yaml
             # k3s kubectl apply -f /tmp/deployment.yaml
