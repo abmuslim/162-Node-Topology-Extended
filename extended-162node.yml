@@ -530,6 +530,9 @@ topology:
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
               --kubelet-arg=runtime-request-timeout=10m \
+              --kubelet-arg=node-status-update-frequency=30s \
+              --kubelet-arg=kube-api-qps=5 \
+              --kubelet-arg=kube-api-burst=10 \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -883,6 +886,9 @@ topology:
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
               --kubelet-arg=runtime-request-timeout=10m \
+              --kubelet-arg=node-status-update-frequency=30s \
+              --kubelet-arg=kube-api-qps=5 \
+              --kubelet-arg=kube-api-burst=10 \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -1236,6 +1242,9 @@ topology:
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
               --kubelet-arg=runtime-request-timeout=10m \
+              --kubelet-arg=node-status-update-frequency=30s \
+              --kubelet-arg=kube-api-qps=5 \
+              --kubelet-arg=kube-api-burst=10 \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -1589,6 +1598,9 @@ topology:
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
               --kubelet-arg=runtime-request-timeout=10m \
+              --kubelet-arg=node-status-update-frequency=30s \
+              --kubelet-arg=kube-api-qps=5 \
+              --kubelet-arg=kube-api-burst=10 \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -2058,6 +2070,9 @@ topology:
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
               --kubelet-arg=runtime-request-timeout=10m \
+              --kubelet-arg=node-status-update-frequency=30s \
+              --kubelet-arg=kube-api-qps=5 \
+              --kubelet-arg=kube-api-burst=10 \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -2411,6 +2426,9 @@ topology:
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
               --kubelet-arg=runtime-request-timeout=10m \
+              --kubelet-arg=node-status-update-frequency=30s \
+              --kubelet-arg=kube-api-qps=5 \
+              --kubelet-arg=kube-api-burst=10 \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -2764,6 +2782,9 @@ topology:
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
               --kubelet-arg=runtime-request-timeout=10m \
+              --kubelet-arg=node-status-update-frequency=30s \
+              --kubelet-arg=kube-api-qps=5 \
+              --kubelet-arg=kube-api-burst=10 \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -3117,6 +3138,9 @@ topology:
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
               --kubelet-arg=runtime-request-timeout=10m \
+              --kubelet-arg=node-status-update-frequency=30s \
+              --kubelet-arg=kube-api-qps=5 \
+              --kubelet-arg=kube-api-burst=10 \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -3702,6 +3726,9 @@ topology:
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
               --kubelet-arg=runtime-request-timeout=10m \
+              --kubelet-arg=node-status-update-frequency=30s \
+              --kubelet-arg=kube-api-qps=5 \
+              --kubelet-arg=kube-api-burst=10 \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -4055,6 +4082,9 @@ topology:
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
               --kubelet-arg=runtime-request-timeout=10m \
+              --kubelet-arg=node-status-update-frequency=30s \
+              --kubelet-arg=kube-api-qps=5 \
+              --kubelet-arg=kube-api-burst=10 \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -4408,6 +4438,9 @@ topology:
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
               --kubelet-arg=runtime-request-timeout=10m \
+              --kubelet-arg=node-status-update-frequency=30s \
+              --kubelet-arg=kube-api-qps=5 \
+              --kubelet-arg=kube-api-burst=10 \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -4761,6 +4794,9 @@ topology:
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
               --kubelet-arg=runtime-request-timeout=10m \
+              --kubelet-arg=node-status-update-frequency=30s \
+              --kubelet-arg=kube-api-qps=5 \
+              --kubelet-arg=kube-api-burst=10 \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -5346,6 +5382,9 @@ topology:
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
               --kubelet-arg=runtime-request-timeout=10m \
+              --kubelet-arg=node-status-update-frequency=30s \
+              --kubelet-arg=kube-api-qps=5 \
+              --kubelet-arg=kube-api-burst=10 \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -5699,6 +5738,9 @@ topology:
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
               --kubelet-arg=runtime-request-timeout=10m \
+              --kubelet-arg=node-status-update-frequency=30s \
+              --kubelet-arg=kube-api-qps=5 \
+              --kubelet-arg=kube-api-burst=10 \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -6052,6 +6094,9 @@ topology:
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
               --kubelet-arg=runtime-request-timeout=10m \
+              --kubelet-arg=node-status-update-frequency=30s \
+              --kubelet-arg=kube-api-qps=5 \
+              --kubelet-arg=kube-api-burst=10 \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -6405,6 +6450,9 @@ topology:
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
               --kubelet-arg=runtime-request-timeout=10m \
+              --kubelet-arg=node-status-update-frequency=30s \
+              --kubelet-arg=kube-api-qps=5 \
+              --kubelet-arg=kube-api-burst=10 \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -6990,6 +7038,9 @@ topology:
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
               --kubelet-arg=runtime-request-timeout=10m \
+              --kubelet-arg=node-status-update-frequency=30s \
+              --kubelet-arg=kube-api-qps=5 \
+              --kubelet-arg=kube-api-burst=10 \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -7343,6 +7394,9 @@ topology:
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
               --kubelet-arg=runtime-request-timeout=10m \
+              --kubelet-arg=node-status-update-frequency=30s \
+              --kubelet-arg=kube-api-qps=5 \
+              --kubelet-arg=kube-api-burst=10 \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -7696,6 +7750,9 @@ topology:
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
               --kubelet-arg=runtime-request-timeout=10m \
+              --kubelet-arg=node-status-update-frequency=30s \
+              --kubelet-arg=kube-api-qps=5 \
+              --kubelet-arg=kube-api-burst=10 \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -8049,6 +8106,9 @@ topology:
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
               --kubelet-arg=runtime-request-timeout=10m \
+              --kubelet-arg=node-status-update-frequency=30s \
+              --kubelet-arg=kube-api-qps=5 \
+              --kubelet-arg=kube-api-burst=10 \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -8634,6 +8694,9 @@ topology:
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
               --kubelet-arg=runtime-request-timeout=10m \
+              --kubelet-arg=node-status-update-frequency=30s \
+              --kubelet-arg=kube-api-qps=5 \
+              --kubelet-arg=kube-api-burst=10 \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -8987,6 +9050,9 @@ topology:
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
               --kubelet-arg=runtime-request-timeout=10m \
+              --kubelet-arg=node-status-update-frequency=30s \
+              --kubelet-arg=kube-api-qps=5 \
+              --kubelet-arg=kube-api-burst=10 \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -9340,6 +9406,9 @@ topology:
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
               --kubelet-arg=runtime-request-timeout=10m \
+              --kubelet-arg=node-status-update-frequency=30s \
+              --kubelet-arg=kube-api-qps=5 \
+              --kubelet-arg=kube-api-burst=10 \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -9693,6 +9762,9 @@ topology:
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
               --kubelet-arg=runtime-request-timeout=10m \
+              --kubelet-arg=node-status-update-frequency=30s \
+              --kubelet-arg=kube-api-qps=5 \
+              --kubelet-arg=kube-api-burst=10 \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -10278,6 +10350,9 @@ topology:
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
               --kubelet-arg=runtime-request-timeout=10m \
+              --kubelet-arg=node-status-update-frequency=30s \
+              --kubelet-arg=kube-api-qps=5 \
+              --kubelet-arg=kube-api-burst=10 \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -10631,6 +10706,9 @@ topology:
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
               --kubelet-arg=runtime-request-timeout=10m \
+              --kubelet-arg=node-status-update-frequency=30s \
+              --kubelet-arg=kube-api-qps=5 \
+              --kubelet-arg=kube-api-burst=10 \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -10984,6 +11062,9 @@ topology:
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
               --kubelet-arg=runtime-request-timeout=10m \
+              --kubelet-arg=node-status-update-frequency=30s \
+              --kubelet-arg=kube-api-qps=5 \
+              --kubelet-arg=kube-api-burst=10 \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -11337,6 +11418,9 @@ topology:
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
               --kubelet-arg=runtime-request-timeout=10m \
+              --kubelet-arg=node-status-update-frequency=30s \
+              --kubelet-arg=kube-api-qps=5 \
+              --kubelet-arg=kube-api-burst=10 \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -11922,6 +12006,9 @@ topology:
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
               --kubelet-arg=runtime-request-timeout=10m \
+              --kubelet-arg=node-status-update-frequency=30s \
+              --kubelet-arg=kube-api-qps=5 \
+              --kubelet-arg=kube-api-burst=10 \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -12275,6 +12362,9 @@ topology:
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
               --kubelet-arg=runtime-request-timeout=10m \
+              --kubelet-arg=node-status-update-frequency=30s \
+              --kubelet-arg=kube-api-qps=5 \
+              --kubelet-arg=kube-api-burst=10 \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
