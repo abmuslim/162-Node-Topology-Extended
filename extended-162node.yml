@@ -490,6 +490,7 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
+        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
@@ -524,9 +525,6 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            { echo '{{"{{"}} template "base" . {{"}}"}}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
-
             k3s server \
               --node-name serf3 \
               --disable traefik \
@@ -852,6 +850,7 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
+        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
@@ -886,9 +885,6 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            { echo '{{"{{"}} template "base" . {{"}}"}}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
-
             k3s server \
               --node-name serf6 \
               --disable traefik \
@@ -1214,6 +1210,7 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
+        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
@@ -1248,9 +1245,6 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            { echo '{{"{{"}} template "base" . {{"}}"}}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
-
             k3s server \
               --node-name serf9 \
               --disable traefik \
@@ -1576,6 +1570,7 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
+        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
@@ -1610,9 +1605,6 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            { echo '{{"{{"}} template "base" . {{"}}"}}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
-
             k3s server \
               --node-name serf12 \
               --disable traefik \
@@ -2057,6 +2049,7 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
+        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
@@ -2091,9 +2084,6 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            { echo '{{"{{"}} template "base" . {{"}}"}}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
-
             k3s server \
               --node-name serf16 \
               --disable traefik \
@@ -2419,6 +2409,7 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
+        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
@@ -2453,9 +2444,6 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            { echo '{{"{{"}} template "base" . {{"}}"}}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
-
             k3s server \
               --node-name serf19 \
               --disable traefik \
@@ -2781,6 +2769,7 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
+        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
@@ -2815,9 +2804,6 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            { echo '{{"{{"}} template "base" . {{"}}"}}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
-
             k3s server \
               --node-name serf22 \
               --disable traefik \
@@ -3143,6 +3129,7 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
+        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
@@ -3177,9 +3164,6 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            { echo '{{"{{"}} template "base" . {{"}}"}}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
-
             k3s server \
               --node-name serf25 \
               --disable traefik \
@@ -3743,6 +3727,7 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
+        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
@@ -3777,9 +3762,6 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            { echo '{{"{{"}} template "base" . {{"}}"}}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
-
             k3s server \
               --node-name serf30 \
               --disable traefik \
@@ -4105,6 +4087,7 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
+        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
@@ -4139,9 +4122,6 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            { echo '{{"{{"}} template "base" . {{"}}"}}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
-
             k3s server \
               --node-name serf33 \
               --disable traefik \
@@ -4467,6 +4447,7 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
+        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
@@ -4501,9 +4482,6 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            { echo '{{"{{"}} template "base" . {{"}}"}}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
-
             k3s server \
               --node-name serf36 \
               --disable traefik \
@@ -4829,6 +4807,7 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
+        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
@@ -4863,9 +4842,6 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            { echo '{{"{{"}} template "base" . {{"}}"}}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
-
             k3s server \
               --node-name serf39 \
               --disable traefik \
@@ -5429,6 +5405,7 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
+        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
@@ -5463,9 +5440,6 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            { echo '{{"{{"}} template "base" . {{"}}"}}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
-
             k3s server \
               --node-name serf44 \
               --disable traefik \
@@ -5791,6 +5765,7 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
+        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
@@ -5825,9 +5800,6 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            { echo '{{"{{"}} template "base" . {{"}}"}}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
-
             k3s server \
               --node-name serf47 \
               --disable traefik \
@@ -6153,6 +6125,7 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
+        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
@@ -6187,9 +6160,6 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            { echo '{{"{{"}} template "base" . {{"}}"}}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
-
             k3s server \
               --node-name serf50 \
               --disable traefik \
@@ -6515,6 +6485,7 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
+        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
@@ -6549,9 +6520,6 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            { echo '{{"{{"}} template "base" . {{"}}"}}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
-
             k3s server \
               --node-name serf53 \
               --disable traefik \
@@ -7115,6 +7083,7 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
+        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
@@ -7149,9 +7118,6 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            { echo '{{"{{"}} template "base" . {{"}}"}}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
-
             k3s server \
               --node-name serf58 \
               --disable traefik \
@@ -7477,6 +7443,7 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
+        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
@@ -7511,9 +7478,6 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            { echo '{{"{{"}} template "base" . {{"}}"}}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
-
             k3s server \
               --node-name serf61 \
               --disable traefik \
@@ -7839,6 +7803,7 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
+        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
@@ -7873,9 +7838,6 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            { echo '{{"{{"}} template "base" . {{"}}"}}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
-
             k3s server \
               --node-name serf64 \
               --disable traefik \
@@ -8201,6 +8163,7 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
+        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
@@ -8235,9 +8198,6 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            { echo '{{"{{"}} template "base" . {{"}}"}}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
-
             k3s server \
               --node-name serf67 \
               --disable traefik \
@@ -8801,6 +8761,7 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
+        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
@@ -8835,9 +8796,6 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            { echo '{{"{{"}} template "base" . {{"}}"}}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
-
             k3s server \
               --node-name serf72 \
               --disable traefik \
@@ -9163,6 +9121,7 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
+        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
@@ -9197,9 +9156,6 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            { echo '{{"{{"}} template "base" . {{"}}"}}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
-
             k3s server \
               --node-name serf75 \
               --disable traefik \
@@ -9525,6 +9481,7 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
+        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
@@ -9559,9 +9516,6 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            { echo '{{"{{"}} template "base" . {{"}}"}}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
-
             k3s server \
               --node-name serf78 \
               --disable traefik \
@@ -9887,6 +9841,7 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
+        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
@@ -9921,9 +9876,6 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            { echo '{{"{{"}} template "base" . {{"}}"}}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
-
             k3s server \
               --node-name serf81 \
               --disable traefik \
@@ -10487,6 +10439,7 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
+        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
@@ -10521,9 +10474,6 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            { echo '{{"{{"}} template "base" . {{"}}"}}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
-
             k3s server \
               --node-name serf86 \
               --disable traefik \
@@ -10849,6 +10799,7 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
+        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
@@ -10883,9 +10834,6 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            { echo '{{"{{"}} template "base" . {{"}}"}}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
-
             k3s server \
               --node-name serf89 \
               --disable traefik \
@@ -11211,6 +11159,7 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
+        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
@@ -11245,9 +11194,6 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            { echo '{{"{{"}} template "base" . {{"}}"}}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
-
             k3s server \
               --node-name serf92 \
               --disable traefik \
@@ -11573,6 +11519,7 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
+        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
@@ -11607,9 +11554,6 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            { echo '{{"{{"}} template "base" . {{"}}"}}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
-
             k3s server \
               --node-name serf95 \
               --disable traefik \
@@ -12173,6 +12117,7 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
+        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
@@ -12207,9 +12152,6 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            { echo '{{"{{"}} template "base" . {{"}}"}}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
-
             k3s server \
               --node-name serf100 \
               --disable traefik \
@@ -12535,6 +12477,7 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/opt/k3s-images:ro
+        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
@@ -12569,9 +12512,6 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
-            mkdir -p /var/lib/rancher/k3s/agent/etc/containerd
-            { echo '{{"{{"}} template "base" . {{"}}"}}'; echo ''; echo "[[plugins.'io.containerd.cri.v1.images'.unpack_platforms]]"; echo '  platform = "linux/amd64"'; echo '  snapshotter = "native"'; } > /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
-
             k3s server \
               --node-name serf103 \
               --disable traefik \
