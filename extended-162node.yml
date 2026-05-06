@@ -482,6 +482,7 @@ topology:
 
     serf3:
       kind: linux
+      restart: "no"
       image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
@@ -490,11 +491,10 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
-        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -559,6 +559,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -577,19 +578,19 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            pip install kubernetes || true
             # Install KWOK
             echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             echo "[KWOK] Installation complete!"
             
@@ -842,6 +843,7 @@ topology:
 
     serf6:
       kind: linux
+      restart: "no"
       image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
@@ -850,11 +852,10 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
-        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -919,6 +920,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -937,19 +939,19 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            pip install kubernetes || true
             # Install KWOK
             echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             echo "[KWOK] Installation complete!"
             
@@ -1202,6 +1204,7 @@ topology:
 
     serf9:
       kind: linux
+      restart: "no"
       image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
@@ -1210,11 +1213,10 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
-        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -1279,6 +1281,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -1297,19 +1300,19 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            pip install kubernetes || true
             # Install KWOK
             echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             echo "[KWOK] Installation complete!"
             
@@ -1562,6 +1565,7 @@ topology:
 
     serf12:
       kind: linux
+      restart: "no"
       image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
@@ -1570,11 +1574,10 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
-        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -1639,6 +1642,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -1657,19 +1661,19 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            pip install kubernetes || true
             # Install KWOK
             echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             echo "[KWOK] Installation complete!"
             
@@ -2041,6 +2045,7 @@ topology:
 
     serf16:
       kind: linux
+      restart: "no"
       image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
@@ -2049,11 +2054,10 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
-        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -2118,6 +2122,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -2136,19 +2141,19 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            pip install kubernetes || true
             # Install KWOK
             echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             echo "[KWOK] Installation complete!"
             
@@ -2401,6 +2406,7 @@ topology:
 
     serf19:
       kind: linux
+      restart: "no"
       image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
@@ -2409,11 +2415,10 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
-        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -2478,6 +2483,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -2496,19 +2502,19 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            pip install kubernetes || true
             # Install KWOK
             echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             echo "[KWOK] Installation complete!"
             
@@ -2761,6 +2767,7 @@ topology:
 
     serf22:
       kind: linux
+      restart: "no"
       image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
@@ -2769,11 +2776,10 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
-        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -2838,6 +2844,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -2856,19 +2863,19 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            pip install kubernetes || true
             # Install KWOK
             echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             echo "[KWOK] Installation complete!"
             
@@ -3121,6 +3128,7 @@ topology:
 
     serf25:
       kind: linux
+      restart: "no"
       image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
@@ -3129,11 +3137,10 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
-        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -3198,6 +3205,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -3216,19 +3224,19 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            pip install kubernetes || true
             # Install KWOK
             echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             echo "[KWOK] Installation complete!"
             
@@ -3719,6 +3727,7 @@ topology:
 
     serf30:
       kind: linux
+      restart: "no"
       image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
@@ -3727,11 +3736,10 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
-        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -3796,6 +3804,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -3814,19 +3823,19 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            pip install kubernetes || true
             # Install KWOK
             echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             echo "[KWOK] Installation complete!"
             
@@ -4079,6 +4088,7 @@ topology:
 
     serf33:
       kind: linux
+      restart: "no"
       image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
@@ -4087,11 +4097,10 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
-        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -4156,6 +4165,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -4174,19 +4184,19 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            pip install kubernetes || true
             # Install KWOK
             echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             echo "[KWOK] Installation complete!"
             
@@ -4439,6 +4449,7 @@ topology:
 
     serf36:
       kind: linux
+      restart: "no"
       image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
@@ -4447,11 +4458,10 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
-        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -4516,6 +4526,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -4534,19 +4545,19 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            pip install kubernetes || true
             # Install KWOK
             echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             echo "[KWOK] Installation complete!"
             
@@ -4799,6 +4810,7 @@ topology:
 
     serf39:
       kind: linux
+      restart: "no"
       image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
@@ -4807,11 +4819,10 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
-        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -4876,6 +4887,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -4894,19 +4906,19 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            pip install kubernetes || true
             # Install KWOK
             echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             echo "[KWOK] Installation complete!"
             
@@ -5397,6 +5409,7 @@ topology:
 
     serf44:
       kind: linux
+      restart: "no"
       image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
@@ -5405,11 +5418,10 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
-        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -5474,6 +5486,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -5492,19 +5505,19 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            pip install kubernetes || true
             # Install KWOK
             echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             echo "[KWOK] Installation complete!"
             
@@ -5757,6 +5770,7 @@ topology:
 
     serf47:
       kind: linux
+      restart: "no"
       image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
@@ -5765,11 +5779,10 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
-        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -5834,6 +5847,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -5852,19 +5866,19 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            pip install kubernetes || true
             # Install KWOK
             echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             echo "[KWOK] Installation complete!"
             
@@ -6117,6 +6131,7 @@ topology:
 
     serf50:
       kind: linux
+      restart: "no"
       image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
@@ -6125,11 +6140,10 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
-        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -6194,6 +6208,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -6212,19 +6227,19 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            pip install kubernetes || true
             # Install KWOK
             echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             echo "[KWOK] Installation complete!"
             
@@ -6477,6 +6492,7 @@ topology:
 
     serf53:
       kind: linux
+      restart: "no"
       image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
@@ -6485,11 +6501,10 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
-        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -6554,6 +6569,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -6572,19 +6588,19 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            pip install kubernetes || true
             # Install KWOK
             echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             echo "[KWOK] Installation complete!"
             
@@ -7075,6 +7091,7 @@ topology:
 
     serf58:
       kind: linux
+      restart: "no"
       image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
@@ -7083,11 +7100,10 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
-        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -7152,6 +7168,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -7170,19 +7187,19 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            pip install kubernetes || true
             # Install KWOK
             echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             echo "[KWOK] Installation complete!"
             
@@ -7435,6 +7452,7 @@ topology:
 
     serf61:
       kind: linux
+      restart: "no"
       image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
@@ -7443,11 +7461,10 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
-        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -7512,6 +7529,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -7530,19 +7548,19 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            pip install kubernetes || true
             # Install KWOK
             echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             echo "[KWOK] Installation complete!"
             
@@ -7795,6 +7813,7 @@ topology:
 
     serf64:
       kind: linux
+      restart: "no"
       image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
@@ -7803,11 +7822,10 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
-        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -7872,6 +7890,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -7890,19 +7909,19 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            pip install kubernetes || true
             # Install KWOK
             echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             echo "[KWOK] Installation complete!"
             
@@ -8155,6 +8174,7 @@ topology:
 
     serf67:
       kind: linux
+      restart: "no"
       image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
@@ -8163,11 +8183,10 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
-        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -8232,6 +8251,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -8250,19 +8270,19 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            pip install kubernetes || true
             # Install KWOK
             echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             echo "[KWOK] Installation complete!"
             
@@ -8753,6 +8773,7 @@ topology:
 
     serf72:
       kind: linux
+      restart: "no"
       image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
@@ -8761,11 +8782,10 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
-        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -8830,6 +8850,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -8848,19 +8869,19 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            pip install kubernetes || true
             # Install KWOK
             echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             echo "[KWOK] Installation complete!"
             
@@ -9113,6 +9134,7 @@ topology:
 
     serf75:
       kind: linux
+      restart: "no"
       image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
@@ -9121,11 +9143,10 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
-        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -9190,6 +9211,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -9208,19 +9230,19 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            pip install kubernetes || true
             # Install KWOK
             echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             echo "[KWOK] Installation complete!"
             
@@ -9473,6 +9495,7 @@ topology:
 
     serf78:
       kind: linux
+      restart: "no"
       image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
@@ -9481,11 +9504,10 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
-        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -9550,6 +9572,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -9568,19 +9591,19 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            pip install kubernetes || true
             # Install KWOK
             echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             echo "[KWOK] Installation complete!"
             
@@ -9833,6 +9856,7 @@ topology:
 
     serf81:
       kind: linux
+      restart: "no"
       image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
@@ -9841,11 +9865,10 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
-        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -9910,6 +9933,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -9928,19 +9952,19 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            pip install kubernetes || true
             # Install KWOK
             echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             echo "[KWOK] Installation complete!"
             
@@ -10431,6 +10455,7 @@ topology:
 
     serf86:
       kind: linux
+      restart: "no"
       image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
@@ -10439,11 +10464,10 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
-        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -10508,6 +10532,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -10526,19 +10551,19 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            pip install kubernetes || true
             # Install KWOK
             echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             echo "[KWOK] Installation complete!"
             
@@ -10791,6 +10816,7 @@ topology:
 
     serf89:
       kind: linux
+      restart: "no"
       image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
@@ -10799,11 +10825,10 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
-        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -10868,6 +10893,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -10886,19 +10912,19 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            pip install kubernetes || true
             # Install KWOK
             echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             echo "[KWOK] Installation complete!"
             
@@ -11151,6 +11177,7 @@ topology:
 
     serf92:
       kind: linux
+      restart: "no"
       image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
@@ -11159,11 +11186,10 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
-        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -11228,6 +11254,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -11246,19 +11273,19 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            pip install kubernetes || true
             # Install KWOK
             echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             echo "[KWOK] Installation complete!"
             
@@ -11511,6 +11538,7 @@ topology:
 
     serf95:
       kind: linux
+      restart: "no"
       image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
@@ -11519,11 +11547,10 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
-        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -11588,6 +11615,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -11606,19 +11634,19 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            pip install kubernetes || true
             # Install KWOK
             echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             echo "[KWOK] Installation complete!"
             
@@ -12109,6 +12137,7 @@ topology:
 
     serf100:
       kind: linux
+      restart: "no"
       image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
@@ -12117,11 +12146,10 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
-        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -12186,6 +12214,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -12204,19 +12233,19 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            pip install kubernetes || true
             # Install KWOK
             echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             echo "[KWOK] Installation complete!"
             
@@ -12469,6 +12498,7 @@ topology:
 
     serf103:
       kind: linux
+      restart: "no"
       image: abdullahmuzlim279/k3s-serf-emulate:slim-csi-patched
       env:
         CLAB_LINUX_PRIVILEGED: "true"
@@ -12477,11 +12507,10 @@ topology:
         - /lib/modules:/lib/modules:ro
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
-        - /home/user/topology/162-Node-Topology-Extended/config.toml.tmpl:/var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl:ro
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -12546,6 +12575,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
             k3s kubectl apply -f /tmp/deployment.yaml
@@ -12564,19 +12594,19 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes
+            pip install kubernetes || true
             # Install KWOK
             echo "[KWOK] Installing KWOK controller..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             echo "[KWOK] Waiting for KWOK controller to be ready..."
-            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             echo "[KWOK] Applying stage-fast configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             echo "[KWOK] Applying metrics-usage configuration..."
-            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             echo "[KWOK] Installation complete!"
             
