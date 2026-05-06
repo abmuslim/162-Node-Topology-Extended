@@ -12675,7 +12675,7 @@ topology:
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -12717,6 +12717,10 @@ topology:
               # --kubelet-arg=cgroup-root=/ \
               # --kubelet-arg=cgroups-per-qos=false \
               # --kubelet-arg=enforce-node-allocatable= \
+              # --kubelet-arg=runtime-request-timeout=10m \
+              # --kubelet-arg=node-status-update-frequency=30s \
+              # --kubelet-arg=kube-api-qps=5 \
+              # --kubelet-arg=kube-api-burst=10 \
               # --v=0 &
 
             # until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -12737,6 +12741,8 @@ topology:
             # done
 
             # until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            # sleep $(( (NODE_NUM - 1) * 3 + 10 ))
+            # k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             # k3s kubectl apply -f /tmp/namespace.yaml
             # k3s kubectl apply -f /tmp/rbac.yaml
             # k3s kubectl apply -f /tmp/deployment.yaml
@@ -12755,19 +12761,19 @@ topology:
 
             # echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            # pip install kubernetes
+            # pip install kubernetes || true
             # Install KWOK
             # echo "[KWOK] Installing KWOK controller..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             # echo "[KWOK] Waiting for KWOK controller to be ready..."
-            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             # echo "[KWOK] Applying stage-fast configuration..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             # echo "[KWOK] Applying metrics-usage configuration..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             # echo "[KWOK] Installation complete!"
             
@@ -13025,7 +13031,7 @@ topology:
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -13067,6 +13073,10 @@ topology:
               # --kubelet-arg=cgroup-root=/ \
               # --kubelet-arg=cgroups-per-qos=false \
               # --kubelet-arg=enforce-node-allocatable= \
+              # --kubelet-arg=runtime-request-timeout=10m \
+              # --kubelet-arg=node-status-update-frequency=30s \
+              # --kubelet-arg=kube-api-qps=5 \
+              # --kubelet-arg=kube-api-burst=10 \
               # --v=0 &
 
             # until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -13087,6 +13097,8 @@ topology:
             # done
 
             # until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            # sleep $(( (NODE_NUM - 1) * 3 + 10 ))
+            # k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             # k3s kubectl apply -f /tmp/namespace.yaml
             # k3s kubectl apply -f /tmp/rbac.yaml
             # k3s kubectl apply -f /tmp/deployment.yaml
@@ -13105,19 +13117,19 @@ topology:
 
             # echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            # pip install kubernetes
+            # pip install kubernetes || true
             # Install KWOK
             # echo "[KWOK] Installing KWOK controller..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             # echo "[KWOK] Waiting for KWOK controller to be ready..."
-            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             # echo "[KWOK] Applying stage-fast configuration..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             # echo "[KWOK] Applying metrics-usage configuration..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             # echo "[KWOK] Installation complete!"
             
@@ -13607,7 +13619,7 @@ topology:
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -13649,6 +13661,10 @@ topology:
               # --kubelet-arg=cgroup-root=/ \
               # --kubelet-arg=cgroups-per-qos=false \
               # --kubelet-arg=enforce-node-allocatable= \
+              # --kubelet-arg=runtime-request-timeout=10m \
+              # --kubelet-arg=node-status-update-frequency=30s \
+              # --kubelet-arg=kube-api-qps=5 \
+              # --kubelet-arg=kube-api-burst=10 \
               # --v=0 &
 
             # until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -13669,6 +13685,8 @@ topology:
             # done
 
             # until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            # sleep $(( (NODE_NUM - 1) * 3 + 10 ))
+            # k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             # k3s kubectl apply -f /tmp/namespace.yaml
             # k3s kubectl apply -f /tmp/rbac.yaml
             # k3s kubectl apply -f /tmp/deployment.yaml
@@ -13687,19 +13705,19 @@ topology:
 
             # echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            # pip install kubernetes
+            # pip install kubernetes || true
             # Install KWOK
             # echo "[KWOK] Installing KWOK controller..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             # echo "[KWOK] Waiting for KWOK controller to be ready..."
-            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             # echo "[KWOK] Applying stage-fast configuration..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             # echo "[KWOK] Applying metrics-usage configuration..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             # echo "[KWOK] Installation complete!"
             
@@ -13957,7 +13975,7 @@ topology:
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -13999,6 +14017,10 @@ topology:
               # --kubelet-arg=cgroup-root=/ \
               # --kubelet-arg=cgroups-per-qos=false \
               # --kubelet-arg=enforce-node-allocatable= \
+              # --kubelet-arg=runtime-request-timeout=10m \
+              # --kubelet-arg=node-status-update-frequency=30s \
+              # --kubelet-arg=kube-api-qps=5 \
+              # --kubelet-arg=kube-api-burst=10 \
               # --v=0 &
 
             # until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -14019,6 +14041,8 @@ topology:
             # done
 
             # until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            # sleep $(( (NODE_NUM - 1) * 3 + 10 ))
+            # k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             # k3s kubectl apply -f /tmp/namespace.yaml
             # k3s kubectl apply -f /tmp/rbac.yaml
             # k3s kubectl apply -f /tmp/deployment.yaml
@@ -14037,19 +14061,19 @@ topology:
 
             # echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            # pip install kubernetes
+            # pip install kubernetes || true
             # Install KWOK
             # echo "[KWOK] Installing KWOK controller..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             # echo "[KWOK] Waiting for KWOK controller to be ready..."
-            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             # echo "[KWOK] Applying stage-fast configuration..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             # echo "[KWOK] Applying metrics-usage configuration..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             # echo "[KWOK] Installation complete!"
             
@@ -14307,7 +14331,7 @@ topology:
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -14349,6 +14373,10 @@ topology:
               # --kubelet-arg=cgroup-root=/ \
               # --kubelet-arg=cgroups-per-qos=false \
               # --kubelet-arg=enforce-node-allocatable= \
+              # --kubelet-arg=runtime-request-timeout=10m \
+              # --kubelet-arg=node-status-update-frequency=30s \
+              # --kubelet-arg=kube-api-qps=5 \
+              # --kubelet-arg=kube-api-burst=10 \
               # --v=0 &
 
             # until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -14369,6 +14397,8 @@ topology:
             # done
 
             # until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            # sleep $(( (NODE_NUM - 1) * 3 + 10 ))
+            # k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             # k3s kubectl apply -f /tmp/namespace.yaml
             # k3s kubectl apply -f /tmp/rbac.yaml
             # k3s kubectl apply -f /tmp/deployment.yaml
@@ -14387,19 +14417,19 @@ topology:
 
             # echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            # pip install kubernetes
+            # pip install kubernetes || true
             # Install KWOK
             # echo "[KWOK] Installing KWOK controller..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             # echo "[KWOK] Waiting for KWOK controller to be ready..."
-            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             # echo "[KWOK] Applying stage-fast configuration..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             # echo "[KWOK] Applying metrics-usage configuration..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             # echo "[KWOK] Installation complete!"
             
@@ -14657,7 +14687,7 @@ topology:
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -14699,6 +14729,10 @@ topology:
               # --kubelet-arg=cgroup-root=/ \
               # --kubelet-arg=cgroups-per-qos=false \
               # --kubelet-arg=enforce-node-allocatable= \
+              # --kubelet-arg=runtime-request-timeout=10m \
+              # --kubelet-arg=node-status-update-frequency=30s \
+              # --kubelet-arg=kube-api-qps=5 \
+              # --kubelet-arg=kube-api-burst=10 \
               # --v=0 &
 
             # until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -14719,6 +14753,8 @@ topology:
             # done
 
             # until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            # sleep $(( (NODE_NUM - 1) * 3 + 10 ))
+            # k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             # k3s kubectl apply -f /tmp/namespace.yaml
             # k3s kubectl apply -f /tmp/rbac.yaml
             # k3s kubectl apply -f /tmp/deployment.yaml
@@ -14737,19 +14773,19 @@ topology:
 
             # echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            # pip install kubernetes
+            # pip install kubernetes || true
             # Install KWOK
             # echo "[KWOK] Installing KWOK controller..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             # echo "[KWOK] Waiting for KWOK controller to be ready..."
-            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             # echo "[KWOK] Applying stage-fast configuration..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             # echo "[KWOK] Applying metrics-usage configuration..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             # echo "[KWOK] Installation complete!"
             
@@ -15239,7 +15275,7 @@ topology:
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -15281,6 +15317,10 @@ topology:
               # --kubelet-arg=cgroup-root=/ \
               # --kubelet-arg=cgroups-per-qos=false \
               # --kubelet-arg=enforce-node-allocatable= \
+              # --kubelet-arg=runtime-request-timeout=10m \
+              # --kubelet-arg=node-status-update-frequency=30s \
+              # --kubelet-arg=kube-api-qps=5 \
+              # --kubelet-arg=kube-api-burst=10 \
               # --v=0 &
 
             # until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -15301,6 +15341,8 @@ topology:
             # done
 
             # until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            # sleep $(( (NODE_NUM - 1) * 3 + 10 ))
+            # k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             # k3s kubectl apply -f /tmp/namespace.yaml
             # k3s kubectl apply -f /tmp/rbac.yaml
             # k3s kubectl apply -f /tmp/deployment.yaml
@@ -15319,19 +15361,19 @@ topology:
 
             # echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            # pip install kubernetes
+            # pip install kubernetes || true
             # Install KWOK
             # echo "[KWOK] Installing KWOK controller..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             # echo "[KWOK] Waiting for KWOK controller to be ready..."
-            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             # echo "[KWOK] Applying stage-fast configuration..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             # echo "[KWOK] Applying metrics-usage configuration..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             # echo "[KWOK] Installation complete!"
             
@@ -15589,7 +15631,7 @@ topology:
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -15631,6 +15673,10 @@ topology:
               # --kubelet-arg=cgroup-root=/ \
               # --kubelet-arg=cgroups-per-qos=false \
               # --kubelet-arg=enforce-node-allocatable= \
+              # --kubelet-arg=runtime-request-timeout=10m \
+              # --kubelet-arg=node-status-update-frequency=30s \
+              # --kubelet-arg=kube-api-qps=5 \
+              # --kubelet-arg=kube-api-burst=10 \
               # --v=0 &
 
             # until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -15651,6 +15697,8 @@ topology:
             # done
 
             # until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            # sleep $(( (NODE_NUM - 1) * 3 + 10 ))
+            # k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             # k3s kubectl apply -f /tmp/namespace.yaml
             # k3s kubectl apply -f /tmp/rbac.yaml
             # k3s kubectl apply -f /tmp/deployment.yaml
@@ -15669,19 +15717,19 @@ topology:
 
             # echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            # pip install kubernetes
+            # pip install kubernetes || true
             # Install KWOK
             # echo "[KWOK] Installing KWOK controller..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             # echo "[KWOK] Waiting for KWOK controller to be ready..."
-            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             # echo "[KWOK] Applying stage-fast configuration..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             # echo "[KWOK] Applying metrics-usage configuration..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             # echo "[KWOK] Installation complete!"
             
@@ -15939,7 +15987,7 @@ topology:
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -15981,6 +16029,10 @@ topology:
               # --kubelet-arg=cgroup-root=/ \
               # --kubelet-arg=cgroups-per-qos=false \
               # --kubelet-arg=enforce-node-allocatable= \
+              # --kubelet-arg=runtime-request-timeout=10m \
+              # --kubelet-arg=node-status-update-frequency=30s \
+              # --kubelet-arg=kube-api-qps=5 \
+              # --kubelet-arg=kube-api-burst=10 \
               # --v=0 &
 
             # until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -16001,6 +16053,8 @@ topology:
             # done
 
             # until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            # sleep $(( (NODE_NUM - 1) * 3 + 10 ))
+            # k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             # k3s kubectl apply -f /tmp/namespace.yaml
             # k3s kubectl apply -f /tmp/rbac.yaml
             # k3s kubectl apply -f /tmp/deployment.yaml
@@ -16019,19 +16073,19 @@ topology:
 
             # echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            # pip install kubernetes
+            # pip install kubernetes || true
             # Install KWOK
             # echo "[KWOK] Installing KWOK controller..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             # echo "[KWOK] Waiting for KWOK controller to be ready..."
-            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             # echo "[KWOK] Applying stage-fast configuration..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             # echo "[KWOK] Applying metrics-usage configuration..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             # echo "[KWOK] Installation complete!"
             
@@ -16289,7 +16343,7 @@ topology:
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -16331,6 +16385,10 @@ topology:
               # --kubelet-arg=cgroup-root=/ \
               # --kubelet-arg=cgroups-per-qos=false \
               # --kubelet-arg=enforce-node-allocatable= \
+              # --kubelet-arg=runtime-request-timeout=10m \
+              # --kubelet-arg=node-status-update-frequency=30s \
+              # --kubelet-arg=kube-api-qps=5 \
+              # --kubelet-arg=kube-api-burst=10 \
               # --v=0 &
 
             # until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -16351,6 +16409,8 @@ topology:
             # done
 
             # until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            # sleep $(( (NODE_NUM - 1) * 3 + 10 ))
+            # k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             # k3s kubectl apply -f /tmp/namespace.yaml
             # k3s kubectl apply -f /tmp/rbac.yaml
             # k3s kubectl apply -f /tmp/deployment.yaml
@@ -16369,19 +16429,19 @@ topology:
 
             # echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            # pip install kubernetes
+            # pip install kubernetes || true
             # Install KWOK
             # echo "[KWOK] Installing KWOK controller..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             # echo "[KWOK] Waiting for KWOK controller to be ready..."
-            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             # echo "[KWOK] Applying stage-fast configuration..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             # echo "[KWOK] Applying metrics-usage configuration..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             # echo "[KWOK] Installation complete!"
             
@@ -16871,7 +16931,7 @@ topology:
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -16913,6 +16973,10 @@ topology:
               # --kubelet-arg=cgroup-root=/ \
               # --kubelet-arg=cgroups-per-qos=false \
               # --kubelet-arg=enforce-node-allocatable= \
+              # --kubelet-arg=runtime-request-timeout=10m \
+              # --kubelet-arg=node-status-update-frequency=30s \
+              # --kubelet-arg=kube-api-qps=5 \
+              # --kubelet-arg=kube-api-burst=10 \
               # --v=0 &
 
             # until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -16933,6 +16997,8 @@ topology:
             # done
 
             # until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            # sleep $(( (NODE_NUM - 1) * 3 + 10 ))
+            # k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             # k3s kubectl apply -f /tmp/namespace.yaml
             # k3s kubectl apply -f /tmp/rbac.yaml
             # k3s kubectl apply -f /tmp/deployment.yaml
@@ -16951,19 +17017,19 @@ topology:
 
             # echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            # pip install kubernetes
+            # pip install kubernetes || true
             # Install KWOK
             # echo "[KWOK] Installing KWOK controller..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             # echo "[KWOK] Waiting for KWOK controller to be ready..."
-            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             # echo "[KWOK] Applying stage-fast configuration..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             # echo "[KWOK] Applying metrics-usage configuration..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             # echo "[KWOK] Installation complete!"
             
@@ -17221,7 +17287,7 @@ topology:
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -17263,6 +17329,10 @@ topology:
               # --kubelet-arg=cgroup-root=/ \
               # --kubelet-arg=cgroups-per-qos=false \
               # --kubelet-arg=enforce-node-allocatable= \
+              # --kubelet-arg=runtime-request-timeout=10m \
+              # --kubelet-arg=node-status-update-frequency=30s \
+              # --kubelet-arg=kube-api-qps=5 \
+              # --kubelet-arg=kube-api-burst=10 \
               # --v=0 &
 
             # until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -17283,6 +17353,8 @@ topology:
             # done
 
             # until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            # sleep $(( (NODE_NUM - 1) * 3 + 10 ))
+            # k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             # k3s kubectl apply -f /tmp/namespace.yaml
             # k3s kubectl apply -f /tmp/rbac.yaml
             # k3s kubectl apply -f /tmp/deployment.yaml
@@ -17301,19 +17373,19 @@ topology:
 
             # echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            # pip install kubernetes
+            # pip install kubernetes || true
             # Install KWOK
             # echo "[KWOK] Installing KWOK controller..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             # echo "[KWOK] Waiting for KWOK controller to be ready..."
-            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             # echo "[KWOK] Applying stage-fast configuration..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             # echo "[KWOK] Applying metrics-usage configuration..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             # echo "[KWOK] Installation complete!"
             
@@ -17571,7 +17643,7 @@ topology:
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -17613,6 +17685,10 @@ topology:
               # --kubelet-arg=cgroup-root=/ \
               # --kubelet-arg=cgroups-per-qos=false \
               # --kubelet-arg=enforce-node-allocatable= \
+              # --kubelet-arg=runtime-request-timeout=10m \
+              # --kubelet-arg=node-status-update-frequency=30s \
+              # --kubelet-arg=kube-api-qps=5 \
+              # --kubelet-arg=kube-api-burst=10 \
               # --v=0 &
 
             # until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -17633,6 +17709,8 @@ topology:
             # done
 
             # until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            # sleep $(( (NODE_NUM - 1) * 3 + 10 ))
+            # k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             # k3s kubectl apply -f /tmp/namespace.yaml
             # k3s kubectl apply -f /tmp/rbac.yaml
             # k3s kubectl apply -f /tmp/deployment.yaml
@@ -17651,19 +17729,19 @@ topology:
 
             # echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            # pip install kubernetes
+            # pip install kubernetes || true
             # Install KWOK
             # echo "[KWOK] Installing KWOK controller..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             # echo "[KWOK] Waiting for KWOK controller to be ready..."
-            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             # echo "[KWOK] Applying stage-fast configuration..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             # echo "[KWOK] Applying metrics-usage configuration..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             # echo "[KWOK] Installation complete!"
             
@@ -17921,7 +17999,7 @@ topology:
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -17963,6 +18041,10 @@ topology:
               # --kubelet-arg=cgroup-root=/ \
               # --kubelet-arg=cgroups-per-qos=false \
               # --kubelet-arg=enforce-node-allocatable= \
+              # --kubelet-arg=runtime-request-timeout=10m \
+              # --kubelet-arg=node-status-update-frequency=30s \
+              # --kubelet-arg=kube-api-qps=5 \
+              # --kubelet-arg=kube-api-burst=10 \
               # --v=0 &
 
             # until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -17983,6 +18065,8 @@ topology:
             # done
 
             # until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            # sleep $(( (NODE_NUM - 1) * 3 + 10 ))
+            # k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             # k3s kubectl apply -f /tmp/namespace.yaml
             # k3s kubectl apply -f /tmp/rbac.yaml
             # k3s kubectl apply -f /tmp/deployment.yaml
@@ -18001,19 +18085,19 @@ topology:
 
             # echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            # pip install kubernetes
+            # pip install kubernetes || true
             # Install KWOK
             # echo "[KWOK] Installing KWOK controller..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             # echo "[KWOK] Waiting for KWOK controller to be ready..."
-            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             # echo "[KWOK] Applying stage-fast configuration..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             # echo "[KWOK] Applying metrics-usage configuration..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             # echo "[KWOK] Installation complete!"
             
@@ -18503,7 +18587,7 @@ topology:
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -18545,6 +18629,10 @@ topology:
               # --kubelet-arg=cgroup-root=/ \
               # --kubelet-arg=cgroups-per-qos=false \
               # --kubelet-arg=enforce-node-allocatable= \
+              # --kubelet-arg=runtime-request-timeout=10m \
+              # --kubelet-arg=node-status-update-frequency=30s \
+              # --kubelet-arg=kube-api-qps=5 \
+              # --kubelet-arg=kube-api-burst=10 \
               # --v=0 &
 
             # until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -18565,6 +18653,8 @@ topology:
             # done
 
             # until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            # sleep $(( (NODE_NUM - 1) * 3 + 10 ))
+            # k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             # k3s kubectl apply -f /tmp/namespace.yaml
             # k3s kubectl apply -f /tmp/rbac.yaml
             # k3s kubectl apply -f /tmp/deployment.yaml
@@ -18583,19 +18673,19 @@ topology:
 
             # echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            # pip install kubernetes
+            # pip install kubernetes || true
             # Install KWOK
             # echo "[KWOK] Installing KWOK controller..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             # echo "[KWOK] Waiting for KWOK controller to be ready..."
-            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             # echo "[KWOK] Applying stage-fast configuration..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             # echo "[KWOK] Applying metrics-usage configuration..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             # echo "[KWOK] Installation complete!"
             
@@ -18737,7 +18827,7 @@ topology:
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -18779,6 +18869,10 @@ topology:
               # --kubelet-arg=cgroup-root=/ \
               # --kubelet-arg=cgroups-per-qos=false \
               # --kubelet-arg=enforce-node-allocatable= \
+              # --kubelet-arg=runtime-request-timeout=10m \
+              # --kubelet-arg=node-status-update-frequency=30s \
+              # --kubelet-arg=kube-api-qps=5 \
+              # --kubelet-arg=kube-api-burst=10 \
               # --v=0 &
 
             # until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -18799,6 +18893,8 @@ topology:
             # done
 
             # until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            # sleep $(( (NODE_NUM - 1) * 3 + 10 ))
+            # k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             # k3s kubectl apply -f /tmp/namespace.yaml
             # k3s kubectl apply -f /tmp/rbac.yaml
             # k3s kubectl apply -f /tmp/deployment.yaml
@@ -18817,19 +18913,19 @@ topology:
 
             # echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            # pip install kubernetes
+            # pip install kubernetes || true
             # Install KWOK
             # echo "[KWOK] Installing KWOK controller..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             # echo "[KWOK] Waiting for KWOK controller to be ready..."
-            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             # echo "[KWOK] Applying stage-fast configuration..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             # echo "[KWOK] Applying metrics-usage configuration..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             # echo "[KWOK] Installation complete!"
             
@@ -18971,7 +19067,7 @@ topology:
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -19013,6 +19109,10 @@ topology:
               # --kubelet-arg=cgroup-root=/ \
               # --kubelet-arg=cgroups-per-qos=false \
               # --kubelet-arg=enforce-node-allocatable= \
+              # --kubelet-arg=runtime-request-timeout=10m \
+              # --kubelet-arg=node-status-update-frequency=30s \
+              # --kubelet-arg=kube-api-qps=5 \
+              # --kubelet-arg=kube-api-burst=10 \
               # --v=0 &
 
             # until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -19033,6 +19133,8 @@ topology:
             # done
 
             # until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            # sleep $(( (NODE_NUM - 1) * 3 + 10 ))
+            # k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             # k3s kubectl apply -f /tmp/namespace.yaml
             # k3s kubectl apply -f /tmp/rbac.yaml
             # k3s kubectl apply -f /tmp/deployment.yaml
@@ -19051,19 +19153,19 @@ topology:
 
             # echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            # pip install kubernetes
+            # pip install kubernetes || true
             # Install KWOK
             # echo "[KWOK] Installing KWOK controller..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             # echo "[KWOK] Waiting for KWOK controller to be ready..."
-            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             # echo "[KWOK] Applying stage-fast configuration..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             # echo "[KWOK] Applying metrics-usage configuration..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             # echo "[KWOK] Installation complete!"
             
@@ -19205,7 +19307,7 @@ topology:
 
       cmd: >
           bash -c '
-            set -e
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -19247,6 +19349,10 @@ topology:
               # --kubelet-arg=cgroup-root=/ \
               # --kubelet-arg=cgroups-per-qos=false \
               # --kubelet-arg=enforce-node-allocatable= \
+              # --kubelet-arg=runtime-request-timeout=10m \
+              # --kubelet-arg=node-status-update-frequency=30s \
+              # --kubelet-arg=kube-api-qps=5 \
+              # --kubelet-arg=kube-api-burst=10 \
               # --v=0 &
 
             # until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -19267,6 +19373,8 @@ topology:
             # done
 
             # until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            # sleep $(( (NODE_NUM - 1) * 3 + 10 ))
+            # k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             # k3s kubectl apply -f /tmp/namespace.yaml
             # k3s kubectl apply -f /tmp/rbac.yaml
             # k3s kubectl apply -f /tmp/deployment.yaml
@@ -19285,19 +19393,19 @@ topology:
 
             # echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            # pip install kubernetes
+            # pip install kubernetes || true
             # Install KWOK
             # echo "[KWOK] Installing KWOK controller..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/kwok.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
             # echo "[KWOK] Waiting for KWOK controller to be ready..."
-            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s
+            # k3s kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
             
             # echo "[KWOK] Applying stage-fast configuration..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/stage-fast.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml
             
             # echo "[KWOK] Applying metrics-usage configuration..."
-            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/latest/download/metrics-usage.yaml
+            # k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml
             
             # echo "[KWOK] Installation complete!"
             
