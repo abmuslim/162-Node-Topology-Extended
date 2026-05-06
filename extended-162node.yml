@@ -494,7 +494,7 @@ topology:
 
       cmd: >
           bash -c '
-            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -539,6 +539,7 @@ topology:
               --kubelet-arg=cgroup-root=/ \
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
+              --kubelet-arg=runtime-request-timeout=10m \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -559,6 +560,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            sleep $(( (NODE_NUM - 1) * 3 + 10 ))
             k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
@@ -855,7 +857,7 @@ topology:
 
       cmd: >
           bash -c '
-            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -900,6 +902,7 @@ topology:
               --kubelet-arg=cgroup-root=/ \
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
+              --kubelet-arg=runtime-request-timeout=10m \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -920,6 +923,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            sleep $(( (NODE_NUM - 1) * 3 + 10 ))
             k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
@@ -1216,7 +1220,7 @@ topology:
 
       cmd: >
           bash -c '
-            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -1261,6 +1265,7 @@ topology:
               --kubelet-arg=cgroup-root=/ \
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
+              --kubelet-arg=runtime-request-timeout=10m \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -1281,6 +1286,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            sleep $(( (NODE_NUM - 1) * 3 + 10 ))
             k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
@@ -1577,7 +1583,7 @@ topology:
 
       cmd: >
           bash -c '
-            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -1622,6 +1628,7 @@ topology:
               --kubelet-arg=cgroup-root=/ \
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
+              --kubelet-arg=runtime-request-timeout=10m \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -1642,6 +1649,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            sleep $(( (NODE_NUM - 1) * 3 + 10 ))
             k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
@@ -2057,7 +2065,7 @@ topology:
 
       cmd: >
           bash -c '
-            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -2102,6 +2110,7 @@ topology:
               --kubelet-arg=cgroup-root=/ \
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
+              --kubelet-arg=runtime-request-timeout=10m \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -2122,6 +2131,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            sleep $(( (NODE_NUM - 1) * 3 + 10 ))
             k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
@@ -2418,7 +2428,7 @@ topology:
 
       cmd: >
           bash -c '
-            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -2463,6 +2473,7 @@ topology:
               --kubelet-arg=cgroup-root=/ \
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
+              --kubelet-arg=runtime-request-timeout=10m \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -2483,6 +2494,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            sleep $(( (NODE_NUM - 1) * 3 + 10 ))
             k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
@@ -2779,7 +2791,7 @@ topology:
 
       cmd: >
           bash -c '
-            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -2824,6 +2836,7 @@ topology:
               --kubelet-arg=cgroup-root=/ \
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
+              --kubelet-arg=runtime-request-timeout=10m \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -2844,6 +2857,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            sleep $(( (NODE_NUM - 1) * 3 + 10 ))
             k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
@@ -3140,7 +3154,7 @@ topology:
 
       cmd: >
           bash -c '
-            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -3185,6 +3199,7 @@ topology:
               --kubelet-arg=cgroup-root=/ \
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
+              --kubelet-arg=runtime-request-timeout=10m \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -3205,6 +3220,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            sleep $(( (NODE_NUM - 1) * 3 + 10 ))
             k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
@@ -3739,7 +3755,7 @@ topology:
 
       cmd: >
           bash -c '
-            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -3784,6 +3800,7 @@ topology:
               --kubelet-arg=cgroup-root=/ \
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
+              --kubelet-arg=runtime-request-timeout=10m \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -3804,6 +3821,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            sleep $(( (NODE_NUM - 1) * 3 + 10 ))
             k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
@@ -4100,7 +4118,7 @@ topology:
 
       cmd: >
           bash -c '
-            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -4145,6 +4163,7 @@ topology:
               --kubelet-arg=cgroup-root=/ \
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
+              --kubelet-arg=runtime-request-timeout=10m \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -4165,6 +4184,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            sleep $(( (NODE_NUM - 1) * 3 + 10 ))
             k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
@@ -4461,7 +4481,7 @@ topology:
 
       cmd: >
           bash -c '
-            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -4506,6 +4526,7 @@ topology:
               --kubelet-arg=cgroup-root=/ \
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
+              --kubelet-arg=runtime-request-timeout=10m \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -4526,6 +4547,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            sleep $(( (NODE_NUM - 1) * 3 + 10 ))
             k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
@@ -4822,7 +4844,7 @@ topology:
 
       cmd: >
           bash -c '
-            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -4867,6 +4889,7 @@ topology:
               --kubelet-arg=cgroup-root=/ \
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
+              --kubelet-arg=runtime-request-timeout=10m \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -4887,6 +4910,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            sleep $(( (NODE_NUM - 1) * 3 + 10 ))
             k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
@@ -5421,7 +5445,7 @@ topology:
 
       cmd: >
           bash -c '
-            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -5466,6 +5490,7 @@ topology:
               --kubelet-arg=cgroup-root=/ \
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
+              --kubelet-arg=runtime-request-timeout=10m \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -5486,6 +5511,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            sleep $(( (NODE_NUM - 1) * 3 + 10 ))
             k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
@@ -5782,7 +5808,7 @@ topology:
 
       cmd: >
           bash -c '
-            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -5827,6 +5853,7 @@ topology:
               --kubelet-arg=cgroup-root=/ \
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
+              --kubelet-arg=runtime-request-timeout=10m \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -5847,6 +5874,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            sleep $(( (NODE_NUM - 1) * 3 + 10 ))
             k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
@@ -6143,7 +6171,7 @@ topology:
 
       cmd: >
           bash -c '
-            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -6188,6 +6216,7 @@ topology:
               --kubelet-arg=cgroup-root=/ \
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
+              --kubelet-arg=runtime-request-timeout=10m \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -6208,6 +6237,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            sleep $(( (NODE_NUM - 1) * 3 + 10 ))
             k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
@@ -6504,7 +6534,7 @@ topology:
 
       cmd: >
           bash -c '
-            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -6549,6 +6579,7 @@ topology:
               --kubelet-arg=cgroup-root=/ \
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
+              --kubelet-arg=runtime-request-timeout=10m \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -6569,6 +6600,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            sleep $(( (NODE_NUM - 1) * 3 + 10 ))
             k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
@@ -7103,7 +7135,7 @@ topology:
 
       cmd: >
           bash -c '
-            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -7148,6 +7180,7 @@ topology:
               --kubelet-arg=cgroup-root=/ \
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
+              --kubelet-arg=runtime-request-timeout=10m \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -7168,6 +7201,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            sleep $(( (NODE_NUM - 1) * 3 + 10 ))
             k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
@@ -7464,7 +7498,7 @@ topology:
 
       cmd: >
           bash -c '
-            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -7509,6 +7543,7 @@ topology:
               --kubelet-arg=cgroup-root=/ \
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
+              --kubelet-arg=runtime-request-timeout=10m \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -7529,6 +7564,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            sleep $(( (NODE_NUM - 1) * 3 + 10 ))
             k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
@@ -7825,7 +7861,7 @@ topology:
 
       cmd: >
           bash -c '
-            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -7870,6 +7906,7 @@ topology:
               --kubelet-arg=cgroup-root=/ \
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
+              --kubelet-arg=runtime-request-timeout=10m \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -7890,6 +7927,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            sleep $(( (NODE_NUM - 1) * 3 + 10 ))
             k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
@@ -8186,7 +8224,7 @@ topology:
 
       cmd: >
           bash -c '
-            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -8231,6 +8269,7 @@ topology:
               --kubelet-arg=cgroup-root=/ \
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
+              --kubelet-arg=runtime-request-timeout=10m \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -8251,6 +8290,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            sleep $(( (NODE_NUM - 1) * 3 + 10 ))
             k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
@@ -8785,7 +8825,7 @@ topology:
 
       cmd: >
           bash -c '
-            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -8830,6 +8870,7 @@ topology:
               --kubelet-arg=cgroup-root=/ \
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
+              --kubelet-arg=runtime-request-timeout=10m \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -8850,6 +8891,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            sleep $(( (NODE_NUM - 1) * 3 + 10 ))
             k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
@@ -9146,7 +9188,7 @@ topology:
 
       cmd: >
           bash -c '
-            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -9191,6 +9233,7 @@ topology:
               --kubelet-arg=cgroup-root=/ \
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
+              --kubelet-arg=runtime-request-timeout=10m \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -9211,6 +9254,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            sleep $(( (NODE_NUM - 1) * 3 + 10 ))
             k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
@@ -9507,7 +9551,7 @@ topology:
 
       cmd: >
           bash -c '
-            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -9552,6 +9596,7 @@ topology:
               --kubelet-arg=cgroup-root=/ \
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
+              --kubelet-arg=runtime-request-timeout=10m \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -9572,6 +9617,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            sleep $(( (NODE_NUM - 1) * 3 + 10 ))
             k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
@@ -9868,7 +9914,7 @@ topology:
 
       cmd: >
           bash -c '
-            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -9913,6 +9959,7 @@ topology:
               --kubelet-arg=cgroup-root=/ \
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
+              --kubelet-arg=runtime-request-timeout=10m \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -9933,6 +9980,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            sleep $(( (NODE_NUM - 1) * 3 + 10 ))
             k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
@@ -10467,7 +10515,7 @@ topology:
 
       cmd: >
           bash -c '
-            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -10512,6 +10560,7 @@ topology:
               --kubelet-arg=cgroup-root=/ \
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
+              --kubelet-arg=runtime-request-timeout=10m \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -10532,6 +10581,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            sleep $(( (NODE_NUM - 1) * 3 + 10 ))
             k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
@@ -10828,7 +10878,7 @@ topology:
 
       cmd: >
           bash -c '
-            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -10873,6 +10923,7 @@ topology:
               --kubelet-arg=cgroup-root=/ \
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
+              --kubelet-arg=runtime-request-timeout=10m \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -10893,6 +10944,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            sleep $(( (NODE_NUM - 1) * 3 + 10 ))
             k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
@@ -11189,7 +11241,7 @@ topology:
 
       cmd: >
           bash -c '
-            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -11234,6 +11286,7 @@ topology:
               --kubelet-arg=cgroup-root=/ \
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
+              --kubelet-arg=runtime-request-timeout=10m \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -11254,6 +11307,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            sleep $(( (NODE_NUM - 1) * 3 + 10 ))
             k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
@@ -11550,7 +11604,7 @@ topology:
 
       cmd: >
           bash -c '
-            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -11595,6 +11649,7 @@ topology:
               --kubelet-arg=cgroup-root=/ \
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
+              --kubelet-arg=runtime-request-timeout=10m \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -11615,6 +11670,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            sleep $(( (NODE_NUM - 1) * 3 + 10 ))
             k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
@@ -12149,7 +12205,7 @@ topology:
 
       cmd: >
           bash -c '
-            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -12194,6 +12250,7 @@ topology:
               --kubelet-arg=cgroup-root=/ \
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
+              --kubelet-arg=runtime-request-timeout=10m \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -12214,6 +12271,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            sleep $(( (NODE_NUM - 1) * 3 + 10 ))
             k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
@@ -12510,7 +12568,7 @@ topology:
 
       cmd: >
           bash -c '
-            rm -rf /var/lib/rancher/k3s/server /var/lib/rancher/k3s/agent /run/k3s 2>/dev/null || true
+            rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -12555,6 +12613,7 @@ topology:
               --kubelet-arg=cgroup-root=/ \
               --kubelet-arg=cgroups-per-qos=false \
               --kubelet-arg=enforce-node-allocatable= \
+              --kubelet-arg=runtime-request-timeout=10m \
               --v=0 &
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
@@ -12575,6 +12634,7 @@ topology:
             done
 
             until kubectl get nodes 2>/dev/null | grep -q Ready; do sleep 5; done
+            sleep $(( (NODE_NUM - 1) * 3 + 10 ))
             k3s kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=dummy --docker-password=dummy -n default || true
             k3s kubectl apply -f /tmp/namespace.yaml
             k3s kubectl apply -f /tmp/rbac.yaml
