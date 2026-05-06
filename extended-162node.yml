@@ -488,6 +488,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -844,6 +847,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -1200,6 +1206,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -1556,6 +1565,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -2028,6 +2040,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -2384,6 +2399,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -2740,6 +2758,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -3096,6 +3117,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -3684,6 +3708,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -4040,6 +4067,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -4396,6 +4426,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -4752,6 +4785,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -5340,6 +5376,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -5696,6 +5735,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -6052,6 +6094,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -6408,6 +6453,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -6996,6 +7044,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -7352,6 +7403,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -7708,6 +7762,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -8064,6 +8121,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -8652,6 +8712,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -9008,6 +9071,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -9364,6 +9430,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -9720,6 +9789,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -10308,6 +10380,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -10664,6 +10739,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -11020,6 +11098,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -11376,6 +11457,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -11964,6 +12048,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -12320,6 +12407,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -12676,6 +12766,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -13032,6 +13125,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -13620,6 +13716,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -13976,6 +14075,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -14332,6 +14434,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -14688,6 +14793,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -15276,6 +15384,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -15632,6 +15743,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -15988,6 +16102,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -16344,6 +16461,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -16932,6 +17052,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -17288,6 +17411,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -17644,6 +17770,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -18000,6 +18129,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -18588,6 +18720,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -18828,6 +18963,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -19068,6 +19206,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
@@ -19308,6 +19449,9 @@ topology:
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
+            # Put K3s SQLite database in RAM to eliminate Slow SQL
+            mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
+            ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
             sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
