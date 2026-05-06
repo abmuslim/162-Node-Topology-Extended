@@ -262,9 +262,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -281,7 +278,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -381,9 +378,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -400,7 +394,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -501,9 +495,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -520,7 +511,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -624,9 +615,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -643,7 +631,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -743,9 +731,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -762,7 +747,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -863,9 +848,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -882,7 +864,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -986,9 +968,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -1005,7 +984,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -1105,9 +1084,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -1124,7 +1100,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -1225,9 +1201,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -1244,7 +1217,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -1348,9 +1321,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -1367,7 +1337,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -1467,9 +1437,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -1486,7 +1453,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -1587,9 +1554,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -1606,7 +1570,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -1710,9 +1674,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -1729,7 +1690,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -1829,9 +1790,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -1848,7 +1806,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -1948,9 +1906,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -1967,7 +1922,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -2068,9 +2023,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -2087,7 +2039,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -2191,9 +2143,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -2210,7 +2159,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -2310,9 +2259,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -2329,7 +2275,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -2430,9 +2376,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -2449,7 +2392,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -2553,9 +2496,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -2572,7 +2512,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -2672,9 +2612,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -2691,7 +2628,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -2792,9 +2729,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -2811,7 +2745,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -2915,9 +2849,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -2934,7 +2865,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -3034,9 +2965,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -3053,7 +2981,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -3154,9 +3082,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -3173,7 +3098,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -3277,9 +3202,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -3296,7 +3218,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -3396,9 +3318,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -3415,7 +3334,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -3515,9 +3434,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -3534,7 +3450,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -3634,9 +3550,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -3653,7 +3566,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -3754,9 +3667,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -3773,7 +3683,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -3877,9 +3787,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -3896,7 +3803,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -3996,9 +3903,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -4015,7 +3919,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -4116,9 +4020,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -4135,7 +4036,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -4239,9 +4140,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -4258,7 +4156,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -4358,9 +4256,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -4377,7 +4272,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -4478,9 +4373,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -4497,7 +4389,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -4601,9 +4493,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -4620,7 +4509,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -4720,9 +4609,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -4739,7 +4625,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -4840,9 +4726,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -4859,7 +4742,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -4963,9 +4846,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -4982,7 +4862,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -5082,9 +4962,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -5101,7 +4978,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -5201,9 +5078,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -5220,7 +5094,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -5320,9 +5194,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -5339,7 +5210,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -5440,9 +5311,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -5459,7 +5327,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -5563,9 +5431,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -5582,7 +5447,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -5682,9 +5547,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -5701,7 +5563,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -5802,9 +5664,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -5821,7 +5680,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -5925,9 +5784,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -5944,7 +5800,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -6044,9 +5900,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -6063,7 +5916,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -6164,9 +6017,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -6183,7 +6033,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -6287,9 +6137,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -6306,7 +6153,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -6406,9 +6253,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -6425,7 +6269,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -6526,9 +6370,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -6545,7 +6386,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -6649,9 +6490,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -6668,7 +6506,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -6768,9 +6606,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -6787,7 +6622,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -6887,9 +6722,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -6906,7 +6738,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -7006,9 +6838,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -7025,7 +6854,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -7126,9 +6955,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -7145,7 +6971,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -7249,9 +7075,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -7268,7 +7091,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -7368,9 +7191,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -7387,7 +7207,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -7488,9 +7308,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -7507,7 +7324,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -7611,9 +7428,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -7630,7 +7444,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -7730,9 +7544,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -7749,7 +7560,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -7850,9 +7661,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -7869,7 +7677,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -7973,9 +7781,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -7992,7 +7797,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -8092,9 +7897,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -8111,7 +7913,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -8212,9 +8014,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -8231,7 +8030,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -8335,9 +8134,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -8354,7 +8150,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -8454,9 +8250,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -8473,7 +8266,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -8573,9 +8366,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -8592,7 +8382,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -8692,9 +8482,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -8711,7 +8498,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -8812,9 +8599,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -8831,7 +8615,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -8935,9 +8719,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -8954,7 +8735,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -9054,9 +8835,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -9073,7 +8851,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -9174,9 +8952,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -9193,7 +8968,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -9297,9 +9072,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -9316,7 +9088,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -9416,9 +9188,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -9435,7 +9204,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -9536,9 +9305,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -9555,7 +9321,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -9659,9 +9425,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -9678,7 +9441,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -9778,9 +9541,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -9797,7 +9557,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -9898,9 +9658,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -9917,7 +9674,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -10021,9 +9778,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -10040,7 +9794,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -10140,9 +9894,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -10159,7 +9910,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -10259,9 +10010,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -10278,7 +10026,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -10378,9 +10126,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -10397,7 +10142,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -10498,9 +10243,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -10517,7 +10259,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -10621,9 +10363,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -10640,7 +10379,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -10740,9 +10479,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -10759,7 +10495,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -10860,9 +10596,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -10879,7 +10612,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -10983,9 +10716,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -11002,7 +10732,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -11102,9 +10832,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -11121,7 +10848,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -11222,9 +10949,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -11241,7 +10965,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -11345,9 +11069,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -11364,7 +11085,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -11464,9 +11185,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -11483,7 +11201,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -11584,9 +11302,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -11603,7 +11318,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -11707,9 +11422,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -11726,7 +11438,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -11826,9 +11538,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -11845,7 +11554,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -11945,9 +11654,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -11964,7 +11670,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -12064,9 +11770,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -12083,7 +11786,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -12184,9 +11887,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -12203,7 +11903,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -12307,9 +12007,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -12326,7 +12023,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -12426,9 +12123,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -12445,7 +12139,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -12546,9 +12240,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -12565,7 +12256,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -12669,9 +12360,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -12688,7 +12376,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -12788,9 +12476,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -12807,7 +12492,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -12908,9 +12593,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -12927,7 +12609,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -13028,9 +12710,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -13047,7 +12726,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -13147,9 +12826,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -13166,7 +12842,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -13267,9 +12943,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -13286,7 +12959,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -13387,9 +13060,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -13406,7 +13076,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -13506,9 +13176,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -13525,7 +13192,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -13625,9 +13292,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -13644,7 +13308,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -13744,9 +13408,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -13763,7 +13424,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -13864,9 +13525,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -13883,7 +13541,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -13984,9 +13642,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -14003,7 +13658,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -14103,9 +13758,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -14122,7 +13774,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -14223,9 +13875,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -14242,7 +13891,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -14343,9 +13992,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -14362,7 +14008,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -14462,9 +14108,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -14481,7 +14124,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -14582,9 +14225,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -14601,7 +14241,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -14702,9 +14342,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -14721,7 +14358,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -14821,9 +14458,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -14840,7 +14474,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -14941,9 +14575,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -14960,7 +14591,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -15061,9 +14692,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -15080,7 +14708,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -15180,9 +14808,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -15199,7 +14824,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -15299,9 +14924,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -15318,7 +14940,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -15418,9 +15040,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -15437,7 +15056,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -15538,9 +15157,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -15557,7 +15173,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -15658,9 +15274,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -15677,7 +15290,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -15777,9 +15390,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -15796,7 +15406,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -15897,9 +15507,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -15916,7 +15523,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -16017,9 +15624,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -16036,7 +15640,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -16136,9 +15740,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -16155,7 +15756,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -16256,9 +15857,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -16275,7 +15873,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -16376,9 +15974,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -16395,7 +15990,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -16495,9 +16090,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -16514,7 +16106,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -16615,9 +16207,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -16634,7 +16223,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -16735,9 +16324,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -16754,7 +16340,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -16854,9 +16440,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -16873,7 +16456,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -16973,9 +16556,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -16992,7 +16572,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -17092,9 +16672,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -17111,7 +16688,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -17212,9 +16789,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -17231,7 +16805,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -17332,9 +16906,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -17351,7 +16922,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -17451,9 +17022,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -17470,7 +17038,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -17571,9 +17139,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -17590,7 +17155,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -17691,9 +17256,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -17710,7 +17272,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -17810,9 +17372,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -17829,7 +17388,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -17930,9 +17489,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -17949,7 +17505,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -18050,9 +17606,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -18069,7 +17622,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -18169,9 +17722,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -18188,7 +17738,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -18289,9 +17839,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -18308,7 +17855,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -18409,9 +17956,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -18428,7 +17972,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -18528,9 +18072,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -18547,7 +18088,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -18647,9 +18188,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -18666,7 +18204,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -18766,9 +18304,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -18785,7 +18320,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -18886,9 +18421,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -18905,7 +18437,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -19006,9 +18538,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -19025,7 +18554,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -19126,9 +18655,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -19145,7 +18671,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -19246,9 +18772,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -19265,7 +18788,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -19366,9 +18889,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -19385,7 +18905,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -19486,9 +19006,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -19505,7 +19022,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -19606,9 +19123,6 @@ topology:
             sysctl -w fs.inotify.max_user_watches=524288
             sysctl -w fs.file-max=2097152
 
-            # Disable PSI reporting to avoid issues with cgroup enforcement
-            echo 0 > /sys/fs/cgroup/cpu.pressure || true
-            echo 0 > /sys/fs/cgroup/memory.pressure || true
 
             # Wait for eth1 to appear
             echo "[NET] Waiting for eth1 to be created..."
@@ -19625,7 +19139,7 @@ topology:
             # Small randomized delay
             NODE_NUM=$(hostname | grep -o '[0-9]*$')
             BATCH=$(( (NODE_NUM - 1) / 5 ))
-            sleep $(( BATCH * 60 + 60 + RANDOM % 20 ))
+            sleep $(( BATCH * 120 + 60 + RANDOM % 20 ))
 
             # Start K3s (with cgroup enforcement disabled)
             # echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
