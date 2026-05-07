@@ -312,7 +312,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -428,7 +428,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -534,6 +534,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.1.12 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -577,7 +578,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -708,7 +709,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -824,7 +825,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -930,6 +931,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.1.15 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -973,7 +975,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -1104,7 +1106,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -1220,7 +1222,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -1326,6 +1328,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.1.18 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -1369,7 +1372,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -1500,7 +1503,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -1616,7 +1619,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -1722,6 +1725,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.1.21 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -1765,7 +1769,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -1896,7 +1900,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -2012,7 +2016,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -2128,7 +2132,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -2234,6 +2238,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.3.10 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -2277,7 +2282,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -2408,7 +2413,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -2524,7 +2529,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -2630,6 +2635,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.6.10 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -2673,7 +2679,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -2804,7 +2810,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -2920,7 +2926,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -3026,6 +3032,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.8.10 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -3069,7 +3076,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -3200,7 +3207,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -3316,7 +3323,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -3422,6 +3429,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.8.13 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -3465,7 +3473,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -3596,7 +3604,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -3712,7 +3720,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -3828,7 +3836,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -3944,7 +3952,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -4050,6 +4058,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.11.10 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -4093,7 +4102,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -4224,7 +4233,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -4340,7 +4349,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -4446,6 +4455,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.14.10 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -4489,7 +4499,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -4620,7 +4630,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -4736,7 +4746,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -4842,6 +4852,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.15.11 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -4885,7 +4896,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -5016,7 +5027,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -5132,7 +5143,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -5238,6 +5249,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.15.14 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -5281,7 +5293,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -5412,7 +5424,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -5528,7 +5540,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -5644,7 +5656,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -5760,7 +5772,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -5866,6 +5878,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.16.11 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -5909,7 +5922,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -6040,7 +6053,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -6156,7 +6169,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -6262,6 +6275,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.18.10 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -6305,7 +6319,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -6436,7 +6450,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -6552,7 +6566,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -6658,6 +6672,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.21.10 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -6701,7 +6716,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -6832,7 +6847,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -6948,7 +6963,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -7054,6 +7069,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.24.10 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -7097,7 +7113,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -7228,7 +7244,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -7344,7 +7360,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -7460,7 +7476,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -7576,7 +7592,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -7682,6 +7698,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.29.10 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -7725,7 +7742,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -7856,7 +7873,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -7972,7 +7989,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -8078,6 +8095,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.32.10 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -8121,7 +8139,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -8252,7 +8270,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -8368,7 +8386,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -8474,6 +8492,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.35.10 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -8517,7 +8536,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -8648,7 +8667,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -8764,7 +8783,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -8870,6 +8889,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.37.11 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -8913,7 +8933,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -9044,7 +9064,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -9160,7 +9180,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -9276,7 +9296,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -9392,7 +9412,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -9498,6 +9518,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.38.13 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -9541,7 +9562,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -9672,7 +9693,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -9788,7 +9809,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -9894,6 +9915,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.38.16 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -9937,7 +9959,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -10068,7 +10090,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -10184,7 +10206,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -10290,6 +10312,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.38.19 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -10333,7 +10356,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -10464,7 +10487,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -10580,7 +10603,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -10686,6 +10709,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.40.10 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -10729,7 +10753,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -10860,7 +10884,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -10976,7 +11000,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -11092,7 +11116,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -11208,7 +11232,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -11314,6 +11338,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.42.13 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -11357,7 +11382,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -11488,7 +11513,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -11604,7 +11629,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -11710,6 +11735,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.42.16 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -11753,7 +11779,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -11884,7 +11910,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -12000,7 +12026,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -12106,6 +12132,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.45.10 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -12149,7 +12176,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -12280,7 +12307,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -12396,7 +12423,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -12502,6 +12529,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.48.10 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -12545,7 +12573,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -12676,7 +12704,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -12792,7 +12820,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -12908,7 +12936,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -13024,7 +13052,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -13130,6 +13158,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.51.10 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -13173,7 +13202,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -13304,7 +13333,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -13420,7 +13449,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -13526,6 +13555,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.54.10 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -13569,7 +13599,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -13700,7 +13730,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -13816,7 +13846,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -13922,6 +13952,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.57.10 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -13965,7 +13996,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -14096,7 +14127,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -14212,7 +14243,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -14318,6 +14349,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.60.10 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -14361,7 +14393,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -14492,7 +14524,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -14608,7 +14640,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -14724,7 +14756,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -14840,7 +14872,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -14946,6 +14978,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.63.12 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -14989,7 +15022,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -15120,7 +15153,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -15236,7 +15269,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -15342,6 +15375,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.65.10 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -15385,7 +15419,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -15516,7 +15550,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -15632,7 +15666,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -15738,6 +15772,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.65.13 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -15781,7 +15816,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -15912,7 +15947,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -16028,7 +16063,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -16134,6 +16169,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.68.10 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -16177,7 +16213,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -16308,7 +16344,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -16424,7 +16460,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -16540,7 +16576,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -16656,7 +16692,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -16762,6 +16798,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.73.10 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -16805,7 +16842,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -16936,7 +16973,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -17052,7 +17089,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -17158,6 +17195,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.75.11 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -17201,7 +17239,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -17332,7 +17370,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -17448,7 +17486,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -17554,6 +17592,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.75.14 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -17597,7 +17636,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -17728,7 +17767,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -17844,7 +17883,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -17950,6 +17989,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.75.17 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -17993,7 +18033,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -18124,7 +18164,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -18240,7 +18280,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -18356,7 +18396,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -18472,7 +18512,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -18578,6 +18618,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.76.10 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -18621,7 +18662,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -18752,7 +18793,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -18868,7 +18909,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -18974,6 +19015,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.76.13 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -19017,7 +19059,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -19148,7 +19190,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -19264,7 +19306,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -19370,6 +19412,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.77.11 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -19413,7 +19456,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -19544,7 +19587,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -19660,7 +19703,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -19766,6 +19809,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.77.14 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -19809,7 +19853,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -19940,7 +19984,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -20056,7 +20100,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -20172,7 +20216,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -20288,7 +20332,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -20394,6 +20438,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.77.19 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -20437,7 +20482,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -20568,7 +20613,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -20674,6 +20719,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.79.10 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -20717,7 +20763,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -20848,7 +20894,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -20954,6 +21000,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.81.10 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -20997,7 +21044,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
@@ -21128,7 +21175,7 @@ topology:
             # echo "[INIT] Importing cached images..."
             # for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 # echo "Loading $f ..."
-                # /usr/local/bin/k3s ctr images import "$f" || true
+                # /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             # done
 
             # k3s kubectl apply -f /tmp/namespace.yaml
@@ -21234,6 +21281,7 @@ topology:
                   --disable-cloud-controller \
                   --disable-network-policy \
                   --disable-helm-controller \
+                  --snapshotter native \
                   --tls-san 10.0.83.10 \
                   --kubelet-arg=cgroup-root=/ \
                   --kubelet-arg=cgroups-per-qos=false \
@@ -21277,7 +21325,7 @@ topology:
             echo "[INIT] Importing cached images..."
             for f in /var/lib/rancher/k3s/agent/images/*.tar; do
                 echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import "$f" || true
+                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
             done
 
             RETRIES=0
