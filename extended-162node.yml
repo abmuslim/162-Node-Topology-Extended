@@ -543,6 +543,14 @@ topology:
                   --kubelet-arg=node-status-update-frequency=30s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
+                  --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
+                  --kubelet-arg=housekeeping-interval=120s \
+                  --kubelet-arg=image-gc-high-threshold=100 \
+                  --kubelet-arg=image-gc-low-threshold=99 \
+                  --kube-controller-manager-arg=leader-elect=false \
+                  --kube-scheduler-arg=leader-elect=false \
+                  --kube-apiserver-arg=max-requests-inflight=50 \
+                  --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -605,7 +613,8 @@ topology:
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
             pip install kubernetes || true
-            # Install KWOK
+            # Install KWOK — delay 5 min to let node stabilize before adding virtual load
+            sleep 300
             echo "[KWOK] Installing KWOK controller..."
             k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
@@ -930,6 +939,14 @@ topology:
                   --kubelet-arg=node-status-update-frequency=30s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
+                  --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
+                  --kubelet-arg=housekeeping-interval=120s \
+                  --kubelet-arg=image-gc-high-threshold=100 \
+                  --kubelet-arg=image-gc-low-threshold=99 \
+                  --kube-controller-manager-arg=leader-elect=false \
+                  --kube-scheduler-arg=leader-elect=false \
+                  --kube-apiserver-arg=max-requests-inflight=50 \
+                  --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -992,7 +1009,8 @@ topology:
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
             pip install kubernetes || true
-            # Install KWOK
+            # Install KWOK — delay 5 min to let node stabilize before adding virtual load
+            sleep 300
             echo "[KWOK] Installing KWOK controller..."
             k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
@@ -1317,6 +1335,14 @@ topology:
                   --kubelet-arg=node-status-update-frequency=30s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
+                  --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
+                  --kubelet-arg=housekeeping-interval=120s \
+                  --kubelet-arg=image-gc-high-threshold=100 \
+                  --kubelet-arg=image-gc-low-threshold=99 \
+                  --kube-controller-manager-arg=leader-elect=false \
+                  --kube-scheduler-arg=leader-elect=false \
+                  --kube-apiserver-arg=max-requests-inflight=50 \
+                  --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -1379,7 +1405,8 @@ topology:
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
             pip install kubernetes || true
-            # Install KWOK
+            # Install KWOK — delay 5 min to let node stabilize before adding virtual load
+            sleep 300
             echo "[KWOK] Installing KWOK controller..."
             k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
@@ -1704,6 +1731,14 @@ topology:
                   --kubelet-arg=node-status-update-frequency=30s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
+                  --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
+                  --kubelet-arg=housekeeping-interval=120s \
+                  --kubelet-arg=image-gc-high-threshold=100 \
+                  --kubelet-arg=image-gc-low-threshold=99 \
+                  --kube-controller-manager-arg=leader-elect=false \
+                  --kube-scheduler-arg=leader-elect=false \
+                  --kube-apiserver-arg=max-requests-inflight=50 \
+                  --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -1766,7 +1801,8 @@ topology:
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
             pip install kubernetes || true
-            # Install KWOK
+            # Install KWOK — delay 5 min to let node stabilize before adding virtual load
+            sleep 300
             echo "[KWOK] Installing KWOK controller..."
             k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
@@ -2207,6 +2243,14 @@ topology:
                   --kubelet-arg=node-status-update-frequency=30s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
+                  --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
+                  --kubelet-arg=housekeeping-interval=120s \
+                  --kubelet-arg=image-gc-high-threshold=100 \
+                  --kubelet-arg=image-gc-low-threshold=99 \
+                  --kube-controller-manager-arg=leader-elect=false \
+                  --kube-scheduler-arg=leader-elect=false \
+                  --kube-apiserver-arg=max-requests-inflight=50 \
+                  --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -2269,7 +2313,8 @@ topology:
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
             pip install kubernetes || true
-            # Install KWOK
+            # Install KWOK — delay 5 min to let node stabilize before adding virtual load
+            sleep 300
             echo "[KWOK] Installing KWOK controller..."
             k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
@@ -2594,6 +2639,14 @@ topology:
                   --kubelet-arg=node-status-update-frequency=30s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
+                  --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
+                  --kubelet-arg=housekeeping-interval=120s \
+                  --kubelet-arg=image-gc-high-threshold=100 \
+                  --kubelet-arg=image-gc-low-threshold=99 \
+                  --kube-controller-manager-arg=leader-elect=false \
+                  --kube-scheduler-arg=leader-elect=false \
+                  --kube-apiserver-arg=max-requests-inflight=50 \
+                  --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -2656,7 +2709,8 @@ topology:
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
             pip install kubernetes || true
-            # Install KWOK
+            # Install KWOK — delay 5 min to let node stabilize before adding virtual load
+            sleep 300
             echo "[KWOK] Installing KWOK controller..."
             k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
@@ -2981,6 +3035,14 @@ topology:
                   --kubelet-arg=node-status-update-frequency=30s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
+                  --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
+                  --kubelet-arg=housekeeping-interval=120s \
+                  --kubelet-arg=image-gc-high-threshold=100 \
+                  --kubelet-arg=image-gc-low-threshold=99 \
+                  --kube-controller-manager-arg=leader-elect=false \
+                  --kube-scheduler-arg=leader-elect=false \
+                  --kube-apiserver-arg=max-requests-inflight=50 \
+                  --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -3043,7 +3105,8 @@ topology:
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
             pip install kubernetes || true
-            # Install KWOK
+            # Install KWOK — delay 5 min to let node stabilize before adding virtual load
+            sleep 300
             echo "[KWOK] Installing KWOK controller..."
             k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
@@ -3368,6 +3431,14 @@ topology:
                   --kubelet-arg=node-status-update-frequency=30s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
+                  --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
+                  --kubelet-arg=housekeeping-interval=120s \
+                  --kubelet-arg=image-gc-high-threshold=100 \
+                  --kubelet-arg=image-gc-low-threshold=99 \
+                  --kube-controller-manager-arg=leader-elect=false \
+                  --kube-scheduler-arg=leader-elect=false \
+                  --kube-apiserver-arg=max-requests-inflight=50 \
+                  --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -3430,7 +3501,8 @@ topology:
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
             pip install kubernetes || true
-            # Install KWOK
+            # Install KWOK — delay 5 min to let node stabilize before adding virtual load
+            sleep 300
             echo "[KWOK] Installing KWOK controller..."
             k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
@@ -3987,6 +4059,14 @@ topology:
                   --kubelet-arg=node-status-update-frequency=30s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
+                  --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
+                  --kubelet-arg=housekeeping-interval=120s \
+                  --kubelet-arg=image-gc-high-threshold=100 \
+                  --kubelet-arg=image-gc-low-threshold=99 \
+                  --kube-controller-manager-arg=leader-elect=false \
+                  --kube-scheduler-arg=leader-elect=false \
+                  --kube-apiserver-arg=max-requests-inflight=50 \
+                  --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -4049,7 +4129,8 @@ topology:
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
             pip install kubernetes || true
-            # Install KWOK
+            # Install KWOK — delay 5 min to let node stabilize before adding virtual load
+            sleep 300
             echo "[KWOK] Installing KWOK controller..."
             k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
@@ -4374,6 +4455,14 @@ topology:
                   --kubelet-arg=node-status-update-frequency=30s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
+                  --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
+                  --kubelet-arg=housekeeping-interval=120s \
+                  --kubelet-arg=image-gc-high-threshold=100 \
+                  --kubelet-arg=image-gc-low-threshold=99 \
+                  --kube-controller-manager-arg=leader-elect=false \
+                  --kube-scheduler-arg=leader-elect=false \
+                  --kube-apiserver-arg=max-requests-inflight=50 \
+                  --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -4436,7 +4525,8 @@ topology:
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
             pip install kubernetes || true
-            # Install KWOK
+            # Install KWOK — delay 5 min to let node stabilize before adding virtual load
+            sleep 300
             echo "[KWOK] Installing KWOK controller..."
             k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
@@ -4761,6 +4851,14 @@ topology:
                   --kubelet-arg=node-status-update-frequency=30s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
+                  --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
+                  --kubelet-arg=housekeeping-interval=120s \
+                  --kubelet-arg=image-gc-high-threshold=100 \
+                  --kubelet-arg=image-gc-low-threshold=99 \
+                  --kube-controller-manager-arg=leader-elect=false \
+                  --kube-scheduler-arg=leader-elect=false \
+                  --kube-apiserver-arg=max-requests-inflight=50 \
+                  --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -4823,7 +4921,8 @@ topology:
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
             pip install kubernetes || true
-            # Install KWOK
+            # Install KWOK — delay 5 min to let node stabilize before adding virtual load
+            sleep 300
             echo "[KWOK] Installing KWOK controller..."
             k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
@@ -5148,6 +5247,14 @@ topology:
                   --kubelet-arg=node-status-update-frequency=30s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
+                  --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
+                  --kubelet-arg=housekeeping-interval=120s \
+                  --kubelet-arg=image-gc-high-threshold=100 \
+                  --kubelet-arg=image-gc-low-threshold=99 \
+                  --kube-controller-manager-arg=leader-elect=false \
+                  --kube-scheduler-arg=leader-elect=false \
+                  --kube-apiserver-arg=max-requests-inflight=50 \
+                  --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -5210,7 +5317,8 @@ topology:
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
             pip install kubernetes || true
-            # Install KWOK
+            # Install KWOK — delay 5 min to let node stabilize before adding virtual load
+            sleep 300
             echo "[KWOK] Installing KWOK controller..."
             k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
@@ -5767,6 +5875,14 @@ topology:
                   --kubelet-arg=node-status-update-frequency=30s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
+                  --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
+                  --kubelet-arg=housekeeping-interval=120s \
+                  --kubelet-arg=image-gc-high-threshold=100 \
+                  --kubelet-arg=image-gc-low-threshold=99 \
+                  --kube-controller-manager-arg=leader-elect=false \
+                  --kube-scheduler-arg=leader-elect=false \
+                  --kube-apiserver-arg=max-requests-inflight=50 \
+                  --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -5829,7 +5945,8 @@ topology:
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
             pip install kubernetes || true
-            # Install KWOK
+            # Install KWOK — delay 5 min to let node stabilize before adding virtual load
+            sleep 300
             echo "[KWOK] Installing KWOK controller..."
             k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
@@ -6154,6 +6271,14 @@ topology:
                   --kubelet-arg=node-status-update-frequency=30s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
+                  --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
+                  --kubelet-arg=housekeeping-interval=120s \
+                  --kubelet-arg=image-gc-high-threshold=100 \
+                  --kubelet-arg=image-gc-low-threshold=99 \
+                  --kube-controller-manager-arg=leader-elect=false \
+                  --kube-scheduler-arg=leader-elect=false \
+                  --kube-apiserver-arg=max-requests-inflight=50 \
+                  --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -6216,7 +6341,8 @@ topology:
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
             pip install kubernetes || true
-            # Install KWOK
+            # Install KWOK — delay 5 min to let node stabilize before adding virtual load
+            sleep 300
             echo "[KWOK] Installing KWOK controller..."
             k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
@@ -6541,6 +6667,14 @@ topology:
                   --kubelet-arg=node-status-update-frequency=30s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
+                  --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
+                  --kubelet-arg=housekeeping-interval=120s \
+                  --kubelet-arg=image-gc-high-threshold=100 \
+                  --kubelet-arg=image-gc-low-threshold=99 \
+                  --kube-controller-manager-arg=leader-elect=false \
+                  --kube-scheduler-arg=leader-elect=false \
+                  --kube-apiserver-arg=max-requests-inflight=50 \
+                  --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -6603,7 +6737,8 @@ topology:
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
             pip install kubernetes || true
-            # Install KWOK
+            # Install KWOK — delay 5 min to let node stabilize before adding virtual load
+            sleep 300
             echo "[KWOK] Installing KWOK controller..."
             k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
@@ -6928,6 +7063,14 @@ topology:
                   --kubelet-arg=node-status-update-frequency=30s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
+                  --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
+                  --kubelet-arg=housekeeping-interval=120s \
+                  --kubelet-arg=image-gc-high-threshold=100 \
+                  --kubelet-arg=image-gc-low-threshold=99 \
+                  --kube-controller-manager-arg=leader-elect=false \
+                  --kube-scheduler-arg=leader-elect=false \
+                  --kube-apiserver-arg=max-requests-inflight=50 \
+                  --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -6990,7 +7133,8 @@ topology:
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
             pip install kubernetes || true
-            # Install KWOK
+            # Install KWOK — delay 5 min to let node stabilize before adding virtual load
+            sleep 300
             echo "[KWOK] Installing KWOK controller..."
             k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
@@ -7547,6 +7691,14 @@ topology:
                   --kubelet-arg=node-status-update-frequency=30s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
+                  --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
+                  --kubelet-arg=housekeeping-interval=120s \
+                  --kubelet-arg=image-gc-high-threshold=100 \
+                  --kubelet-arg=image-gc-low-threshold=99 \
+                  --kube-controller-manager-arg=leader-elect=false \
+                  --kube-scheduler-arg=leader-elect=false \
+                  --kube-apiserver-arg=max-requests-inflight=50 \
+                  --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -7609,7 +7761,8 @@ topology:
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
             pip install kubernetes || true
-            # Install KWOK
+            # Install KWOK — delay 5 min to let node stabilize before adding virtual load
+            sleep 300
             echo "[KWOK] Installing KWOK controller..."
             k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
@@ -7934,6 +8087,14 @@ topology:
                   --kubelet-arg=node-status-update-frequency=30s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
+                  --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
+                  --kubelet-arg=housekeeping-interval=120s \
+                  --kubelet-arg=image-gc-high-threshold=100 \
+                  --kubelet-arg=image-gc-low-threshold=99 \
+                  --kube-controller-manager-arg=leader-elect=false \
+                  --kube-scheduler-arg=leader-elect=false \
+                  --kube-apiserver-arg=max-requests-inflight=50 \
+                  --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -7996,7 +8157,8 @@ topology:
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
             pip install kubernetes || true
-            # Install KWOK
+            # Install KWOK — delay 5 min to let node stabilize before adding virtual load
+            sleep 300
             echo "[KWOK] Installing KWOK controller..."
             k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
@@ -8321,6 +8483,14 @@ topology:
                   --kubelet-arg=node-status-update-frequency=30s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
+                  --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
+                  --kubelet-arg=housekeeping-interval=120s \
+                  --kubelet-arg=image-gc-high-threshold=100 \
+                  --kubelet-arg=image-gc-low-threshold=99 \
+                  --kube-controller-manager-arg=leader-elect=false \
+                  --kube-scheduler-arg=leader-elect=false \
+                  --kube-apiserver-arg=max-requests-inflight=50 \
+                  --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -8383,7 +8553,8 @@ topology:
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
             pip install kubernetes || true
-            # Install KWOK
+            # Install KWOK — delay 5 min to let node stabilize before adding virtual load
+            sleep 300
             echo "[KWOK] Installing KWOK controller..."
             k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
@@ -8708,6 +8879,14 @@ topology:
                   --kubelet-arg=node-status-update-frequency=30s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
+                  --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
+                  --kubelet-arg=housekeeping-interval=120s \
+                  --kubelet-arg=image-gc-high-threshold=100 \
+                  --kubelet-arg=image-gc-low-threshold=99 \
+                  --kube-controller-manager-arg=leader-elect=false \
+                  --kube-scheduler-arg=leader-elect=false \
+                  --kube-apiserver-arg=max-requests-inflight=50 \
+                  --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -8770,7 +8949,8 @@ topology:
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
             pip install kubernetes || true
-            # Install KWOK
+            # Install KWOK — delay 5 min to let node stabilize before adding virtual load
+            sleep 300
             echo "[KWOK] Installing KWOK controller..."
             k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
@@ -9327,6 +9507,14 @@ topology:
                   --kubelet-arg=node-status-update-frequency=30s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
+                  --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
+                  --kubelet-arg=housekeeping-interval=120s \
+                  --kubelet-arg=image-gc-high-threshold=100 \
+                  --kubelet-arg=image-gc-low-threshold=99 \
+                  --kube-controller-manager-arg=leader-elect=false \
+                  --kube-scheduler-arg=leader-elect=false \
+                  --kube-apiserver-arg=max-requests-inflight=50 \
+                  --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -9389,7 +9577,8 @@ topology:
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
             pip install kubernetes || true
-            # Install KWOK
+            # Install KWOK — delay 5 min to let node stabilize before adding virtual load
+            sleep 300
             echo "[KWOK] Installing KWOK controller..."
             k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
@@ -9714,6 +9903,14 @@ topology:
                   --kubelet-arg=node-status-update-frequency=30s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
+                  --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
+                  --kubelet-arg=housekeeping-interval=120s \
+                  --kubelet-arg=image-gc-high-threshold=100 \
+                  --kubelet-arg=image-gc-low-threshold=99 \
+                  --kube-controller-manager-arg=leader-elect=false \
+                  --kube-scheduler-arg=leader-elect=false \
+                  --kube-apiserver-arg=max-requests-inflight=50 \
+                  --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -9776,7 +9973,8 @@ topology:
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
             pip install kubernetes || true
-            # Install KWOK
+            # Install KWOK — delay 5 min to let node stabilize before adding virtual load
+            sleep 300
             echo "[KWOK] Installing KWOK controller..."
             k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
@@ -10101,6 +10299,14 @@ topology:
                   --kubelet-arg=node-status-update-frequency=30s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
+                  --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
+                  --kubelet-arg=housekeeping-interval=120s \
+                  --kubelet-arg=image-gc-high-threshold=100 \
+                  --kubelet-arg=image-gc-low-threshold=99 \
+                  --kube-controller-manager-arg=leader-elect=false \
+                  --kube-scheduler-arg=leader-elect=false \
+                  --kube-apiserver-arg=max-requests-inflight=50 \
+                  --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -10163,7 +10369,8 @@ topology:
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
             pip install kubernetes || true
-            # Install KWOK
+            # Install KWOK — delay 5 min to let node stabilize before adding virtual load
+            sleep 300
             echo "[KWOK] Installing KWOK controller..."
             k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
@@ -10488,6 +10695,14 @@ topology:
                   --kubelet-arg=node-status-update-frequency=30s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
+                  --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
+                  --kubelet-arg=housekeeping-interval=120s \
+                  --kubelet-arg=image-gc-high-threshold=100 \
+                  --kubelet-arg=image-gc-low-threshold=99 \
+                  --kube-controller-manager-arg=leader-elect=false \
+                  --kube-scheduler-arg=leader-elect=false \
+                  --kube-apiserver-arg=max-requests-inflight=50 \
+                  --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -10550,7 +10765,8 @@ topology:
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
             pip install kubernetes || true
-            # Install KWOK
+            # Install KWOK — delay 5 min to let node stabilize before adding virtual load
+            sleep 300
             echo "[KWOK] Installing KWOK controller..."
             k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
@@ -11107,6 +11323,14 @@ topology:
                   --kubelet-arg=node-status-update-frequency=30s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
+                  --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
+                  --kubelet-arg=housekeeping-interval=120s \
+                  --kubelet-arg=image-gc-high-threshold=100 \
+                  --kubelet-arg=image-gc-low-threshold=99 \
+                  --kube-controller-manager-arg=leader-elect=false \
+                  --kube-scheduler-arg=leader-elect=false \
+                  --kube-apiserver-arg=max-requests-inflight=50 \
+                  --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -11169,7 +11393,8 @@ topology:
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
             pip install kubernetes || true
-            # Install KWOK
+            # Install KWOK — delay 5 min to let node stabilize before adding virtual load
+            sleep 300
             echo "[KWOK] Installing KWOK controller..."
             k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
@@ -11494,6 +11719,14 @@ topology:
                   --kubelet-arg=node-status-update-frequency=30s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
+                  --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
+                  --kubelet-arg=housekeeping-interval=120s \
+                  --kubelet-arg=image-gc-high-threshold=100 \
+                  --kubelet-arg=image-gc-low-threshold=99 \
+                  --kube-controller-manager-arg=leader-elect=false \
+                  --kube-scheduler-arg=leader-elect=false \
+                  --kube-apiserver-arg=max-requests-inflight=50 \
+                  --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -11556,7 +11789,8 @@ topology:
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
             pip install kubernetes || true
-            # Install KWOK
+            # Install KWOK — delay 5 min to let node stabilize before adding virtual load
+            sleep 300
             echo "[KWOK] Installing KWOK controller..."
             k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
@@ -11881,6 +12115,14 @@ topology:
                   --kubelet-arg=node-status-update-frequency=30s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
+                  --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
+                  --kubelet-arg=housekeeping-interval=120s \
+                  --kubelet-arg=image-gc-high-threshold=100 \
+                  --kubelet-arg=image-gc-low-threshold=99 \
+                  --kube-controller-manager-arg=leader-elect=false \
+                  --kube-scheduler-arg=leader-elect=false \
+                  --kube-apiserver-arg=max-requests-inflight=50 \
+                  --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -11943,7 +12185,8 @@ topology:
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
             pip install kubernetes || true
-            # Install KWOK
+            # Install KWOK — delay 5 min to let node stabilize before adding virtual load
+            sleep 300
             echo "[KWOK] Installing KWOK controller..."
             k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
@@ -12268,6 +12511,14 @@ topology:
                   --kubelet-arg=node-status-update-frequency=30s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
+                  --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
+                  --kubelet-arg=housekeeping-interval=120s \
+                  --kubelet-arg=image-gc-high-threshold=100 \
+                  --kubelet-arg=image-gc-low-threshold=99 \
+                  --kube-controller-manager-arg=leader-elect=false \
+                  --kube-scheduler-arg=leader-elect=false \
+                  --kube-apiserver-arg=max-requests-inflight=50 \
+                  --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -12330,7 +12581,8 @@ topology:
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
             pip install kubernetes || true
-            # Install KWOK
+            # Install KWOK — delay 5 min to let node stabilize before adding virtual load
+            sleep 300
             echo "[KWOK] Installing KWOK controller..."
             k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
@@ -12887,6 +13139,14 @@ topology:
                   --kubelet-arg=node-status-update-frequency=30s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
+                  --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
+                  --kubelet-arg=housekeeping-interval=120s \
+                  --kubelet-arg=image-gc-high-threshold=100 \
+                  --kubelet-arg=image-gc-low-threshold=99 \
+                  --kube-controller-manager-arg=leader-elect=false \
+                  --kube-scheduler-arg=leader-elect=false \
+                  --kube-apiserver-arg=max-requests-inflight=50 \
+                  --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -12949,7 +13209,8 @@ topology:
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
             pip install kubernetes || true
-            # Install KWOK
+            # Install KWOK — delay 5 min to let node stabilize before adding virtual load
+            sleep 300
             echo "[KWOK] Installing KWOK controller..."
             k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
@@ -13274,6 +13535,14 @@ topology:
                   --kubelet-arg=node-status-update-frequency=30s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
+                  --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
+                  --kubelet-arg=housekeeping-interval=120s \
+                  --kubelet-arg=image-gc-high-threshold=100 \
+                  --kubelet-arg=image-gc-low-threshold=99 \
+                  --kube-controller-manager-arg=leader-elect=false \
+                  --kube-scheduler-arg=leader-elect=false \
+                  --kube-apiserver-arg=max-requests-inflight=50 \
+                  --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -13336,7 +13605,8 @@ topology:
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
             pip install kubernetes || true
-            # Install KWOK
+            # Install KWOK — delay 5 min to let node stabilize before adding virtual load
+            sleep 300
             echo "[KWOK] Installing KWOK controller..."
             k3s kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
             
