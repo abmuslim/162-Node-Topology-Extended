@@ -550,7 +550,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -946,7 +946,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -1342,7 +1342,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -1738,7 +1738,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -2250,7 +2250,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -2646,7 +2646,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -3042,7 +3042,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -3438,7 +3438,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -4066,7 +4066,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -4462,7 +4462,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -4858,7 +4858,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -5254,7 +5254,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -5882,7 +5882,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -6278,7 +6278,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -6674,7 +6674,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -7070,7 +7070,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -7698,7 +7698,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -8094,7 +8094,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -8490,7 +8490,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -8886,7 +8886,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -9514,7 +9514,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -9910,7 +9910,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -10306,7 +10306,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -10702,7 +10702,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -11330,7 +11330,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -11726,7 +11726,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -12122,7 +12122,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -12518,7 +12518,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -13146,7 +13146,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -13542,7 +13542,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -13938,7 +13938,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -14334,7 +14334,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -14962,7 +14962,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -15358,7 +15358,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -15754,7 +15754,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -16150,7 +16150,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -16778,7 +16778,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -17174,7 +17174,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -17570,7 +17570,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -17966,7 +17966,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -18594,7 +18594,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -18990,7 +18990,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -19386,7 +19386,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -19782,7 +19782,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -20410,7 +20410,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -20690,7 +20690,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -20970,7 +20970,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -21250,7 +21250,7 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available<100Mi,nodefs.available<2%,imagefs.available<2%,nodefs.inodesFree<1% \
+                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
