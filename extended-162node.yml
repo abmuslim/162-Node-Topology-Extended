@@ -536,7 +536,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -928,7 +929,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -1320,7 +1322,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -1712,7 +1715,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -2224,7 +2228,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -2616,7 +2621,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -3008,7 +3014,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -3400,7 +3407,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -4032,7 +4040,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -4424,7 +4433,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -4816,7 +4826,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -5208,7 +5219,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -5840,7 +5852,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -6232,7 +6245,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -6624,7 +6638,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -7016,7 +7031,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -7648,7 +7664,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -8040,7 +8057,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -8432,7 +8450,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -8824,7 +8843,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -9456,7 +9476,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -9848,7 +9869,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -10240,7 +10262,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -10632,7 +10655,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -11264,7 +11288,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -11656,7 +11681,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -12048,7 +12074,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -12440,7 +12467,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -13072,7 +13100,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -13464,7 +13493,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -13856,7 +13886,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -14248,7 +14279,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -14880,7 +14912,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -15272,7 +15305,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -15664,7 +15698,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -16056,7 +16091,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -16688,7 +16724,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -17080,7 +17117,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -17472,7 +17510,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -17864,7 +17903,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -18496,7 +18536,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -18888,7 +18929,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -19280,7 +19322,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -19672,7 +19715,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -20304,7 +20348,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -20576,7 +20621,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -20848,7 +20894,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -21120,7 +21167,8 @@ topology:
 
             # Start K3s (with cgroup enforcement disabled)
             start_k3s() {
-                pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -f "k3s server" 2>/dev/null || true
+                pkill -9 containerd 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
