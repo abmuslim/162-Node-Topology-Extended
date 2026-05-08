@@ -552,6 +552,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -560,26 +561,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -603,6 +584,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -949,6 +939,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -957,26 +948,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -1000,6 +971,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -1346,6 +1326,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -1354,26 +1335,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -1397,6 +1358,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -1743,6 +1713,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -1751,26 +1722,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -1794,6 +1745,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -2256,6 +2216,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -2264,26 +2225,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -2307,6 +2248,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -2653,6 +2603,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -2661,26 +2612,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -2704,6 +2635,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -3050,6 +2990,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -3058,26 +2999,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -3101,6 +3022,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -3447,6 +3377,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -3455,26 +3386,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -3498,6 +3409,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -4076,6 +3996,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -4084,26 +4005,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -4127,6 +4028,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -4473,6 +4383,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -4481,26 +4392,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -4524,6 +4415,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -4870,6 +4770,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -4878,26 +4779,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -4921,6 +4802,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -5267,6 +5157,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -5275,26 +5166,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -5318,6 +5189,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -5896,6 +5776,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -5904,26 +5785,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -5947,6 +5808,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -6293,6 +6163,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -6301,26 +6172,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -6344,6 +6195,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -6690,6 +6550,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -6698,26 +6559,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -6741,6 +6582,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -7087,6 +6937,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -7095,26 +6946,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -7138,6 +6969,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -7716,6 +7556,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -7724,26 +7565,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -7767,6 +7588,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -8113,6 +7943,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -8121,26 +7952,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -8164,6 +7975,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -8510,6 +8330,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -8518,26 +8339,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -8561,6 +8362,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -8907,6 +8717,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -8915,26 +8726,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -8958,6 +8749,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -9536,6 +9336,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -9544,26 +9345,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -9587,6 +9368,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -9933,6 +9723,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -9941,26 +9732,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -9984,6 +9755,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -10330,6 +10110,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -10338,26 +10119,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -10381,6 +10142,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -10727,6 +10497,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -10735,26 +10506,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -10778,6 +10529,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -11356,6 +11116,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -11364,26 +11125,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -11407,6 +11148,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -11753,6 +11503,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -11761,26 +11512,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -11804,6 +11535,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -12150,6 +11890,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -12158,26 +11899,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -12201,6 +11922,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -12547,6 +12277,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -12555,26 +12286,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -12598,6 +12309,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -13176,6 +12896,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -13184,26 +12905,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -13227,6 +12928,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -13573,6 +13283,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -13581,26 +13292,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -13624,6 +13315,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -13970,6 +13670,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -13978,26 +13679,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -14021,6 +13702,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -14367,6 +14057,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -14375,26 +14066,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -14418,6 +14089,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -14996,6 +14676,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -15004,26 +14685,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -15047,6 +14708,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -15393,6 +15063,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -15401,26 +15072,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -15444,6 +15095,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -15790,6 +15450,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -15798,26 +15459,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -15841,6 +15482,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -16187,6 +15837,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -16195,26 +15846,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -16238,6 +15869,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -16816,6 +16456,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -16824,26 +16465,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -16867,6 +16488,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -17213,6 +16843,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -17221,26 +16852,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -17264,6 +16875,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -17610,6 +17230,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -17618,26 +17239,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -17661,6 +17262,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -18007,6 +17617,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -18015,26 +17626,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -18058,6 +17649,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -18636,6 +18236,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -18644,26 +18245,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -18687,6 +18268,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -19033,6 +18623,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -19041,26 +18632,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -19084,6 +18655,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -19430,6 +19010,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -19438,26 +19019,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -19481,6 +19042,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -19827,6 +19397,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -19835,26 +19406,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -19878,6 +19429,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -20456,6 +20016,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -20464,26 +20025,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -20507,6 +20048,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -20737,6 +20287,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -20745,26 +20296,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -20788,6 +20319,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -21018,6 +20558,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -21026,26 +20567,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -21069,6 +20590,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
@@ -21299,6 +20829,7 @@ topology:
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
                   --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
+                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -21307,26 +20838,6 @@ topology:
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-            RETRIES=0
-            until /usr/local/bin/k3s ctr version >/dev/null 2>&1; do
-                sleep 3
-                RETRIES=$((RETRIES + 1))
-                if [ $RETRIES -ge 100 ]; then
-                    echo "[RECOVERY] containerd stuck for 5min, restarting K3s..."
-                    start_k3s
-                    until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
-                    chmod 666 /etc/rancher/k3s/k3s.yaml
-                    RETRIES=0
-                fi
-            done
-            echo "Containerd is ready."
-
-            echo "[INIT] Importing cached images..."
-            for f in /var/lib/rancher/k3s/agent/images/*.tar; do
-                echo "Loading $f ..."
-                /usr/local/bin/k3s ctr images import --platform linux/amd64 "$f" || true
-            done
 
             RETRIES=0
             until kubectl get nodes 2>/dev/null | grep -q Ready; do
@@ -21350,6 +20861,15 @@ topology:
             k3s kubectl apply -f /tmp/vcpu_price.yaml
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
+
+            # Background: clean evicted/failed/unknown pods every 5 min
+            (while true; do
+                sleep 300
+                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
+                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
+                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
+                done
+            done) &
 
  
 
