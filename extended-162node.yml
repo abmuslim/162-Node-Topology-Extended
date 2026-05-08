@@ -551,12 +551,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -938,12 +947,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -1325,12 +1343,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -1712,12 +1739,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -2215,12 +2251,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -2602,12 +2647,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -2989,12 +3043,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -3376,12 +3439,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -3995,12 +4067,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -4382,12 +4463,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -4769,12 +4859,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -5156,12 +5255,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -5775,12 +5883,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -6162,12 +6279,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -6549,12 +6675,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -6936,12 +7071,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -7555,12 +7699,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -7942,12 +8095,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -8329,12 +8491,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -8716,12 +8887,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -9335,12 +9515,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -9722,12 +9911,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -10109,12 +10307,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -10496,12 +10703,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -11115,12 +11331,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -11502,12 +11727,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -11889,12 +12123,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -12276,12 +12519,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -12895,12 +13147,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -13282,12 +13543,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -13669,12 +13939,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -14056,12 +14335,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -14675,12 +14963,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -15062,12 +15359,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -15449,12 +15755,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -15836,12 +16151,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -16455,12 +16779,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -16842,12 +17175,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -17229,12 +17571,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -17616,12 +17967,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -18235,12 +18595,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -18622,12 +18991,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -19009,12 +19387,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -19396,12 +19783,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -20015,12 +20411,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -20286,12 +20691,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -20557,12 +20971,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
@@ -20828,12 +21251,21 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
-                  --kubelet-arg=eviction-hard=memory.available\<100Mi,nodefs.available\<2%,imagefs.available\<2%,nodefs.inodesFree\<1% \
-                  --kubelet-arg=eviction-pressure-transition-period=30s \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
             start_k3s
+
+            # Patch K3s kubelet config: lower eviction thresholds and transition period
+            until [ -f /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf ]; do sleep 1; done
+            sed -i 's/  nodefs.available: .*/  nodefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/  imagefs.available: .*/  imagefs.available: 1%/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i 's/evictionPressureTransitionPeriod: .*/evictionPressureTransitionPeriod: 30s/' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
+            sed -i '/evictionMinimumReclaim/,+3d' \
+                /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/00-k3s-defaults.conf
 
             until [ -f /etc/rancher/k3s/k3s.yaml ]; do sleep 2; done
             chmod 666 /etc/rancher/k3s/k3s.yaml
