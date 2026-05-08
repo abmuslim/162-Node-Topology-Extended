@@ -505,7 +505,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -921,7 +920,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -1337,7 +1335,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -1753,7 +1750,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -2295,7 +2291,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -2711,7 +2706,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -3127,7 +3121,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -3543,7 +3536,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -4211,7 +4203,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -4627,7 +4618,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -5043,7 +5033,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -5459,7 +5448,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -6127,7 +6115,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -6543,7 +6530,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -6959,7 +6945,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -7375,7 +7360,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -8043,7 +8027,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -8459,7 +8442,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -8875,7 +8857,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -9291,7 +9272,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -9959,7 +9939,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -10375,7 +10354,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -10791,7 +10769,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -11207,7 +11184,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -11875,7 +11851,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -12291,7 +12266,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -12707,7 +12681,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -13123,7 +13096,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -13791,7 +13763,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -14207,7 +14178,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -14623,7 +14593,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -15039,7 +15008,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -15707,7 +15675,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -16123,7 +16090,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -16539,7 +16505,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -16955,7 +16920,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -17623,7 +17587,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -18039,7 +18002,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -18455,7 +18417,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -18871,7 +18832,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -19539,7 +19499,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -19955,7 +19914,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -20371,7 +20329,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -20787,7 +20744,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -21455,7 +21411,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -21745,7 +21700,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -22035,7 +21989,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
@@ -22325,7 +22278,6 @@ topology:
         - /dev:/dev
         - /home/user/topology/162-Node-Topology-Extended/k3s_images:/var/lib/rancher/k3s/agent/images:ro
 
-      restart: "no"
       cmd: >
           bash -c '
             rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
