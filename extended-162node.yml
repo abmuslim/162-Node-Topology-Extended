@@ -359,12 +359,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -485,12 +479,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -512,7 +500,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -619,15 +606,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -637,7 +615,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -654,12 +631,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -780,12 +751,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -906,12 +871,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -933,7 +892,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -1040,15 +998,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -1058,7 +1007,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -1075,12 +1023,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -1201,12 +1143,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -1327,12 +1263,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -1354,7 +1284,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -1461,15 +1390,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -1479,7 +1399,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -1496,12 +1415,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -1622,12 +1535,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -1748,12 +1655,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -1775,7 +1676,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -1882,15 +1782,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -1900,7 +1791,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -1917,12 +1807,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -2043,12 +1927,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -2169,12 +2047,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -2295,12 +2167,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -2322,7 +2188,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -2429,15 +2294,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -2447,7 +2303,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -2464,12 +2319,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -2590,12 +2439,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -2716,12 +2559,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -2743,7 +2580,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -2850,15 +2686,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -2868,7 +2695,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -2885,12 +2711,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -3011,12 +2831,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -3137,12 +2951,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -3164,7 +2972,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -3271,15 +3078,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -3289,7 +3087,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -3306,12 +3103,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -3432,12 +3223,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -3558,12 +3343,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -3585,7 +3364,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -3692,15 +3470,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -3710,7 +3479,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -3727,12 +3495,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -3853,12 +3615,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -3979,12 +3735,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -4105,12 +3855,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -4231,12 +3975,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -4258,7 +3996,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -4365,15 +4102,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -4383,7 +4111,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -4400,12 +4127,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -4526,12 +4247,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -4652,12 +4367,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -4679,7 +4388,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -4786,15 +4494,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -4804,7 +4503,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -4821,12 +4519,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -4947,12 +4639,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -5073,12 +4759,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -5100,7 +4780,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -5207,15 +4886,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -5225,7 +4895,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -5242,12 +4911,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -5368,12 +5031,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -5494,12 +5151,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -5521,7 +5172,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -5628,15 +5278,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -5646,7 +5287,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -5663,12 +5303,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -5789,12 +5423,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -5915,12 +5543,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -6041,12 +5663,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -6167,12 +5783,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -6194,7 +5804,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -6301,15 +5910,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -6319,7 +5919,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -6336,12 +5935,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -6462,12 +6055,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -6588,12 +6175,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -6615,7 +6196,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -6722,15 +6302,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -6740,7 +6311,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -6757,12 +6327,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -6883,12 +6447,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -7009,12 +6567,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -7036,7 +6588,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -7143,15 +6694,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -7161,7 +6703,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -7178,12 +6719,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -7304,12 +6839,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -7430,12 +6959,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -7457,7 +6980,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -7564,15 +7086,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -7582,7 +7095,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -7599,12 +7111,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -7725,12 +7231,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -7851,12 +7351,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -7977,12 +7471,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -8103,12 +7591,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -8130,7 +7612,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -8237,15 +7718,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -8255,7 +7727,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -8272,12 +7743,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -8398,12 +7863,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -8524,12 +7983,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -8551,7 +8004,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -8658,15 +8110,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -8676,7 +8119,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -8693,12 +8135,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -8819,12 +8255,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -8945,12 +8375,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -8972,7 +8396,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -9079,15 +8502,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -9097,7 +8511,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -9114,12 +8527,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -9240,12 +8647,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -9366,12 +8767,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -9393,7 +8788,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -9500,15 +8894,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -9518,7 +8903,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -9535,12 +8919,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -9661,12 +9039,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -9787,12 +9159,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -9913,12 +9279,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -10039,12 +9399,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -10066,7 +9420,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -10173,15 +9526,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -10191,7 +9535,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -10208,12 +9551,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -10334,12 +9671,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -10460,12 +9791,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -10487,7 +9812,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -10594,15 +9918,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -10612,7 +9927,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -10629,12 +9943,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -10755,12 +10063,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -10881,12 +10183,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -10908,7 +10204,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -11015,15 +10310,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -11033,7 +10319,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -11050,12 +10335,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -11176,12 +10455,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -11302,12 +10575,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -11329,7 +10596,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -11436,15 +10702,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -11454,7 +10711,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -11471,12 +10727,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -11597,12 +10847,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -11723,12 +10967,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -11849,12 +11087,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -11975,12 +11207,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -12002,7 +11228,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -12109,15 +11334,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -12127,7 +11343,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -12144,12 +11359,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -12270,12 +11479,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -12396,12 +11599,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -12423,7 +11620,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -12530,15 +11726,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -12548,7 +11735,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -12565,12 +11751,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -12691,12 +11871,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -12817,12 +11991,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -12844,7 +12012,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -12951,15 +12118,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -12969,7 +12127,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -12986,12 +12143,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -13112,12 +12263,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -13238,12 +12383,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -13265,7 +12404,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -13372,15 +12510,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -13390,7 +12519,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -13407,12 +12535,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -13533,12 +12655,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -13659,12 +12775,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -13785,12 +12895,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -13911,12 +13015,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -13938,7 +13036,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -14045,15 +13142,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -14063,7 +13151,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -14080,12 +13167,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -14206,12 +13287,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -14332,12 +13407,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -14359,7 +13428,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -14466,15 +13534,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -14484,7 +13543,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -14501,12 +13559,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -14627,12 +13679,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -14753,12 +13799,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -14780,7 +13820,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -14887,15 +13926,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -14905,7 +13935,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -14922,12 +13951,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -15048,12 +14071,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -15174,12 +14191,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -15201,7 +14212,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -15308,15 +14318,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -15326,7 +14327,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -15343,12 +14343,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -15469,12 +14463,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -15595,12 +14583,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -15721,12 +14703,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -15847,12 +14823,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -15874,7 +14844,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -15981,15 +14950,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -15999,7 +14959,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -16016,12 +14975,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -16142,12 +15095,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -16268,12 +15215,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -16295,7 +15236,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -16402,15 +15342,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -16420,7 +15351,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -16437,12 +15367,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -16563,12 +15487,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -16689,12 +15607,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -16716,7 +15628,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -16823,15 +15734,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -16841,7 +15743,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -16858,12 +15759,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -16984,12 +15879,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -17110,12 +15999,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -17137,7 +16020,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -17244,15 +16126,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -17262,7 +16135,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -17279,12 +16151,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -17405,12 +16271,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -17531,12 +16391,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -17657,12 +16511,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -17783,12 +16631,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -17810,7 +16652,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -17917,15 +16758,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -17935,7 +16767,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -17952,12 +16783,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -18078,12 +16903,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -18204,12 +17023,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -18231,7 +17044,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -18338,15 +17150,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -18356,7 +17159,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -18373,12 +17175,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -18499,12 +17295,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -18625,12 +17415,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -18652,7 +17436,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -18759,15 +17542,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -18777,7 +17551,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -18794,12 +17567,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -18920,12 +17687,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -19046,12 +17807,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -19073,7 +17828,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -19180,15 +17934,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -19198,7 +17943,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -19215,12 +17959,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -19341,12 +18079,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -19467,12 +18199,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -19593,12 +18319,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -19719,12 +18439,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -19746,7 +18460,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -19853,15 +18566,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -19871,7 +18575,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -19888,12 +18591,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -20014,12 +18711,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -20140,12 +18831,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -20167,7 +18852,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -20274,15 +18958,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -20292,7 +18967,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -20309,12 +18983,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -20435,12 +19103,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -20561,12 +19223,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -20588,7 +19244,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -20695,15 +19350,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -20713,7 +19359,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -20730,12 +19375,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -20856,12 +19495,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -20982,12 +19615,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -21009,7 +19636,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -21116,15 +19742,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -21134,7 +19751,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -21151,12 +19767,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -21277,12 +19887,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -21403,12 +20007,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -21529,12 +20127,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -21655,12 +20247,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -21682,7 +20268,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -21789,15 +20374,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -21807,7 +20383,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -21824,12 +20399,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -21950,12 +20519,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -21977,7 +20540,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -22084,15 +20646,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -22102,7 +20655,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -22119,12 +20671,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -22245,12 +20791,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -22272,7 +20812,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -22379,15 +20918,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -22397,7 +20927,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -22414,12 +20943,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -22540,12 +21063,6 @@ topology:
             
             # echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
@@ -22567,7 +21084,6 @@ topology:
             # Put K3s SQLite database in RAM to eliminate Slow SQL
             mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
             ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
-            sleep $((RANDOM % 120))
             echo "[INIT] Preparing system..."
             ulimit -n 65536
             sysctl -w fs.inotify.max_user_instances=4096
@@ -22674,15 +21190,6 @@ topology:
             k3s kubectl apply -f /tmp/vgpu_price.yaml
             k3s kubectl apply -f /tmp/ksense-resource-offer-deployment.yaml
 
-            # Background: clean evicted/failed/unknown pods every 5 min
-            (while true; do
-                sleep 300
-                kubectl delete pods --field-selector=status.phase=Failed -A --ignore-not-found 2>/dev/null || true
-                kubectl get pods -A --no-headers 2>/dev/null | grep ContainerStatusUnknown | while read ns pod rest; do
-                    kubectl delete pod -n "$ns" "$pod" --ignore-not-found 2>/dev/null || true
-                done
-            done) &
-
  
 
             mkdir -p ~/.kube
@@ -22692,7 +21199,6 @@ topology:
 
             echo "[READY] K3s cluster is up and running on $(hostname)."
 
-            pip install kubernetes || true
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
@@ -22709,12 +21215,6 @@ topology:
             
             echo "[KWOK] Installation complete!"
             
-            while true; do
-                sync
-                echo 3 > /proc/sys/vm/drop_caches
-                sleep 100000
-            done &
-
             sleep infinity
           '
 
