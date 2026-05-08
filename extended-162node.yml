@@ -570,7 +570,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -581,6 +581,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -985,7 +991,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -996,6 +1002,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -1400,7 +1412,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -1411,6 +1423,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -1815,7 +1833,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -1826,6 +1844,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -2356,7 +2380,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -2367,6 +2391,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -2771,7 +2801,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -2782,6 +2812,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -3186,7 +3222,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -3197,6 +3233,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -3601,7 +3643,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -3612,6 +3654,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -4268,7 +4316,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -4279,6 +4327,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -4683,7 +4737,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -4694,6 +4748,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -5098,7 +5158,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -5109,6 +5169,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -5513,7 +5579,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -5524,6 +5590,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -6180,7 +6252,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -6191,6 +6263,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -6595,7 +6673,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -6606,6 +6684,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -7010,7 +7094,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -7021,6 +7105,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -7425,7 +7515,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -7436,6 +7526,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -8092,7 +8188,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -8103,6 +8199,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -8507,7 +8609,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -8518,6 +8620,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -8922,7 +9030,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -8933,6 +9041,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -9337,7 +9451,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -9348,6 +9462,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -10004,7 +10124,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -10015,6 +10135,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -10419,7 +10545,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -10430,6 +10556,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -10834,7 +10966,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -10845,6 +10977,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -11249,7 +11387,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -11260,6 +11398,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -11916,7 +12060,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -11927,6 +12071,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -12331,7 +12481,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -12342,6 +12492,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -12746,7 +12902,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -12757,6 +12913,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -13161,7 +13323,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -13172,6 +13334,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -13828,7 +13996,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -13839,6 +14007,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -14243,7 +14417,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -14254,6 +14428,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -14658,7 +14838,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -14669,6 +14849,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -15073,7 +15259,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -15084,6 +15270,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -15740,7 +15932,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -15751,6 +15943,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -16155,7 +16353,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -16166,6 +16364,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -16570,7 +16774,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -16581,6 +16785,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -16985,7 +17195,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -16996,6 +17206,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -17652,7 +17868,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -17663,6 +17879,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -18067,7 +18289,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -18078,6 +18300,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -18482,7 +18710,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -18493,6 +18721,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -18897,7 +19131,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -18908,6 +19142,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -19564,7 +19804,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -19575,6 +19815,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -19979,7 +20225,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -19990,6 +20236,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -20394,7 +20646,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -20405,6 +20657,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -20809,7 +21067,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -20820,6 +21078,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -21476,7 +21740,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -21487,6 +21751,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -21765,7 +22035,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -21776,6 +22046,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -22054,7 +22330,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -22065,6 +22341,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
@@ -22343,7 +22625,7 @@ topology:
                   --kubelet-arg=cgroups-per-qos=false \
                   --kubelet-arg=enforce-node-allocatable= \
                   --kubelet-arg=runtime-request-timeout=10m \
-                  --kubelet-arg=node-status-update-frequency=30s \
+                  --kubelet-arg=node-status-update-frequency=120s \
                   --kubelet-arg=kube-api-qps=5 \
                   --kubelet-arg=kube-api-burst=10 \
                   --datastore-endpoint "sqlite:///var/lib/rancher/k3s/server/db/state.db?_journal=WAL&_synchronous=OFF" \
@@ -22354,6 +22636,12 @@ topology:
                   --kube-scheduler-arg=leader-elect=false \
                   --kube-apiserver-arg=max-requests-inflight=50 \
                   --kube-apiserver-arg=max-mutating-requests-inflight=20 \
+                  --kube-controller-manager-arg=concurrent-deployment-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-replicaset-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-endpoint-syncs=1 \
+                  --kube-controller-manager-arg=concurrent-service-syncs=1 \
+                  --kube-controller-manager-arg=node-monitor-period=2m \
+                  --kube-controller-manager-arg=node-monitor-grace-period=10m \
                   --v=0 &
             }
             echo "[INIT] Launching optimized K3s server with relaxed cgroups..."
