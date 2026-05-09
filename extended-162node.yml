@@ -543,6 +543,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf3 \
                   --disable traefik \
@@ -936,6 +937,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf6 \
                   --disable traefik \
@@ -1329,6 +1331,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf9 \
                   --disable traefik \
@@ -1722,6 +1725,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf12 \
                   --disable traefik \
@@ -2235,6 +2239,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf16 \
                   --disable traefik \
@@ -2628,6 +2633,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf19 \
                   --disable traefik \
@@ -3021,6 +3027,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf22 \
                   --disable traefik \
@@ -3414,6 +3421,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf25 \
                   --disable traefik \
@@ -4047,6 +4055,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf30 \
                   --disable traefik \
@@ -4440,6 +4449,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf33 \
                   --disable traefik \
@@ -4833,6 +4843,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf36 \
                   --disable traefik \
@@ -5226,6 +5237,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf39 \
                   --disable traefik \
@@ -5859,6 +5871,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf44 \
                   --disable traefik \
@@ -6252,6 +6265,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf47 \
                   --disable traefik \
@@ -6645,6 +6659,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf50 \
                   --disable traefik \
@@ -7038,6 +7053,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf53 \
                   --disable traefik \
@@ -7671,6 +7687,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf58 \
                   --disable traefik \
@@ -8064,6 +8081,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf61 \
                   --disable traefik \
@@ -8457,6 +8475,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf64 \
                   --disable traefik \
@@ -8850,6 +8869,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf67 \
                   --disable traefik \
@@ -9483,6 +9503,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf72 \
                   --disable traefik \
@@ -9876,6 +9897,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf75 \
                   --disable traefik \
@@ -10269,6 +10291,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf78 \
                   --disable traefik \
@@ -10662,6 +10685,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf81 \
                   --disable traefik \
@@ -11295,6 +11319,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf86 \
                   --disable traefik \
@@ -11688,6 +11713,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf89 \
                   --disable traefik \
@@ -12081,6 +12107,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf92 \
                   --disable traefik \
@@ -12474,6 +12501,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf95 \
                   --disable traefik \
@@ -13107,6 +13135,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf100 \
                   --disable traefik \
@@ -13500,6 +13529,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf103 \
                   --disable traefik \
@@ -13893,6 +13923,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf106 \
                   --disable traefik \
@@ -14286,6 +14317,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf109 \
                   --disable traefik \
@@ -14919,6 +14951,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf114 \
                   --disable traefik \
@@ -15312,6 +15345,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf117 \
                   --disable traefik \
@@ -15705,6 +15739,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf120 \
                   --disable traefik \
@@ -16098,6 +16133,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf123 \
                   --disable traefik \
@@ -16731,6 +16767,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf128 \
                   --disable traefik \
@@ -17124,6 +17161,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf131 \
                   --disable traefik \
@@ -17517,6 +17555,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf134 \
                   --disable traefik \
@@ -17910,6 +17949,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf137 \
                   --disable traefik \
@@ -18543,6 +18583,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf142 \
                   --disable traefik \
@@ -18936,6 +18977,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf145 \
                   --disable traefik \
@@ -19329,6 +19371,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf148 \
                   --disable traefik \
@@ -19722,6 +19765,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf151 \
                   --disable traefik \
@@ -20355,6 +20399,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf156 \
                   --disable traefik \
@@ -20628,6 +20673,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf158 \
                   --disable traefik \
@@ -20901,6 +20947,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf160 \
                   --disable traefik \
@@ -21174,6 +21221,7 @@ topology:
                 rm -rf /dev/shm/k3s-$(hostname)
                 mkdir -p /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server
                 ln -sfn /dev/shm/k3s-$(hostname) /var/lib/rancher/k3s/server/db
+                export GOMAXPROCS=4
                 k3s server \
                   --node-name serf162 \
                   --disable traefik \
