@@ -628,17 +628,7 @@ topology:
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -1040,17 +1030,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -1452,17 +1432,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -1864,17 +1834,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -2396,17 +2356,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -2808,17 +2758,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -3220,17 +3160,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -3632,17 +3562,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -4284,17 +4204,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -4696,17 +4606,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -5108,17 +5008,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -5520,17 +5410,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -6172,17 +6052,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -6584,17 +6454,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -6996,17 +6856,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -7408,17 +7258,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -8060,17 +7900,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -8472,17 +8302,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -8884,17 +8704,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -9296,17 +9106,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -9948,17 +9748,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -10360,17 +10150,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -10772,17 +10552,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -11184,17 +10954,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -11836,17 +11596,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -12248,17 +11998,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -12660,17 +12400,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -13072,17 +12802,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -13724,17 +13444,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -14136,17 +13846,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -14548,17 +14248,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -14960,17 +14650,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -15612,17 +15292,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -16024,17 +15694,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -16436,17 +16096,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -16848,17 +16498,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -17500,17 +17140,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -17912,17 +17542,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -18324,17 +17944,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -18736,17 +18346,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -19388,17 +18988,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -19800,17 +19390,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -20212,17 +19792,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -20624,17 +20194,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -21276,17 +20836,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -21568,17 +21118,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -21860,17 +21400,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
@@ -22152,17 +21682,7 @@ print(json.dumps(d))
 
             echo "[KWOK] Patching KWOK controller to use hostNetwork..."
             sleep 10
-            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-spec=d['spec']['template']['spec']
-spec['hostNetwork']=True
-spec['dnsPolicy']='Default'
-for c in spec['containers']:
-    c.setdefault('env',[])
-    c['env']+=[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]
-print(json.dumps(d))
-" | kubectl apply -f - || true
+            kubectl get deployment kwok-controller -n kube-system -o json | python3 -c "import json,sys; d=json.load(sys.stdin); s=d['spec']['template']['spec']; s.update({'hostNetwork':True,'dnsPolicy':'Default'}); [c.update({'env':c.get('env',[])+[{'name':'KUBERNETES_SERVICE_HOST','value':'127.0.0.1'},{'name':'KUBERNETES_SERVICE_PORT','value':'6443'}]}) for c in s['containers']]; print(json.dumps(d))" | kubectl apply -f - || true
 
             echo "[KWOK] Waiting for KWOK controller to be ready..."
             kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
