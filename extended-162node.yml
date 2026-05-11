@@ -571,6 +571,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -1007,6 +1008,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -1443,6 +1445,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -1879,6 +1882,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -2441,6 +2445,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -2877,6 +2882,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -3313,6 +3319,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -3749,6 +3756,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -4437,6 +4445,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -4873,6 +4882,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -5309,6 +5319,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -5745,6 +5756,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -6433,6 +6445,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -6869,6 +6882,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -7305,6 +7319,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -7741,6 +7756,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -8429,6 +8445,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -8865,6 +8882,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -9301,6 +9319,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -9737,6 +9756,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -10425,6 +10445,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -10861,6 +10882,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -11297,6 +11319,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -11733,6 +11756,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -12421,6 +12445,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -12857,6 +12882,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -13293,6 +13319,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -13729,6 +13756,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -14417,6 +14445,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -14853,6 +14882,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -15289,6 +15319,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -15725,6 +15756,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -16413,6 +16445,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -16849,6 +16882,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -17285,6 +17319,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -17721,6 +17756,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -18409,6 +18445,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -18845,6 +18882,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -19281,6 +19319,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -19717,6 +19756,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -20405,6 +20445,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -20841,6 +20882,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -21277,6 +21319,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -21713,6 +21756,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -22401,6 +22445,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -22711,6 +22756,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -23021,6 +23067,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
@@ -23331,6 +23378,7 @@ topology:
                 [ -z "$KVER" ] && KVER="v1.32.4"
                 curl -fsSL "https://dl.k8s.io/release/${KVER}/bin/linux/amd64/kubectl" -o /tmp/kubectl.new && chmod +x /tmp/kubectl.new && rm -f /usr/local/bin/kubectl && mv -f /tmp/kubectl.new /usr/local/bin/kubectl || true
                 pkill -9 -f "k3s.real" 2>/dev/null || true
+                pkill -9 -x k3s 2>/dev/null || true
                 sleep 5
                 rm -rf /run/k3s /var/lib/rancher/k3s/server 2>/dev/null || true
                 rm -rf /dev/shm/k3s-$(hostname)
