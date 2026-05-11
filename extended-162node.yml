@@ -612,7 +612,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -1038,7 +1038,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -1464,7 +1464,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -1890,7 +1890,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -2442,7 +2442,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -2868,7 +2868,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -3294,7 +3294,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -3720,7 +3720,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -4398,7 +4398,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -4824,7 +4824,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -5250,7 +5250,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -5676,7 +5676,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -6354,7 +6354,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -6780,7 +6780,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -7206,7 +7206,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -7632,7 +7632,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -8310,7 +8310,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -8736,7 +8736,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -9162,7 +9162,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -9588,7 +9588,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -10266,7 +10266,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -10692,7 +10692,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -11118,7 +11118,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -11544,7 +11544,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -12222,7 +12222,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -12648,7 +12648,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -13074,7 +13074,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -13500,7 +13500,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -14178,7 +14178,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -14604,7 +14604,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -15030,7 +15030,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -15456,7 +15456,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -16134,7 +16134,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -16560,7 +16560,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -16986,7 +16986,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -17412,7 +17412,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -18090,7 +18090,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -18516,7 +18516,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -18942,7 +18942,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -19368,7 +19368,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -20046,7 +20046,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -20472,7 +20472,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -20898,7 +20898,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -21324,7 +21324,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -22002,7 +22002,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -22302,7 +22302,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -22602,7 +22602,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
@@ -22902,7 +22902,7 @@ topology:
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             RETRIES=0
-            until kubectl get nodes 2>/dev/null | grep -q Ready; do
+            until kubectl get node "$(hostname)" 2>/dev/null | tail -n +2 | grep -q " Ready "; do
                 sleep 5
                 RETRIES=$((RETRIES + 1))
                 if [ $RETRIES -ge 60 ]; then
