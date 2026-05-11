@@ -646,18 +646,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -1072,18 +1082,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -1498,18 +1518,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -1924,18 +1954,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -2476,18 +2516,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -2902,18 +2952,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -3328,18 +3388,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -3754,18 +3824,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -4432,18 +4512,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -4858,18 +4948,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -5284,18 +5384,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -5710,18 +5820,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -6388,18 +6508,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -6814,18 +6944,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -7240,18 +7380,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -7666,18 +7816,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -8344,18 +8504,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -8770,18 +8940,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -9196,18 +9376,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -9622,18 +9812,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -10300,18 +10500,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -10726,18 +10936,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -11152,18 +11372,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -11578,18 +11808,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -12256,18 +12496,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -12682,18 +12932,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -13108,18 +13368,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -13534,18 +13804,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -14212,18 +14492,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -14638,18 +14928,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -15064,18 +15364,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -15490,18 +15800,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -16168,18 +16488,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -16594,18 +16924,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -17020,18 +17360,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -17446,18 +17796,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -18124,18 +18484,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -18550,18 +18920,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -18976,18 +19356,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -19402,18 +19792,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -20080,18 +20480,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -20506,18 +20916,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -20932,18 +21352,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -21358,18 +21788,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -22036,18 +22476,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -22336,18 +22786,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -22636,18 +23096,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
@@ -22936,18 +23406,28 @@ topology:
             # Install KWOK — delay 5 min to let node stabilize before adding virtual load
             sleep 300
             echo "[KWOK] Installing KWOK controller..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
-            
-            echo "[KWOK] Waiting for KWOK controller to be ready..."
-            kubectl -n kube-system rollout status deploy/kwok-controller --timeout=300s || true
-            
-            echo "[KWOK] Applying stage-fast configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
-            
-            echo "[KWOK] Applying metrics-usage configuration..."
-            kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
-            
-            echo "[KWOK] Installation complete!"
+            KWOK_READY=0
+            for attempt in 1 2 3 4 5; do
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml || true
+                if kubectl -n kube-system get deploy kwok-controller >/dev/null 2>&1 &&
+                   kubectl -n kube-system rollout status deploy/kwok-controller --timeout=180s >/dev/null 2>&1; then
+                    KWOK_READY=1
+                    break
+                fi
+                echo "[KWOK] attempt ${attempt}/5 failed, retrying..."
+                sleep 20
+            done
+            if [ "$KWOK_READY" -eq 1 ]; then
+                echo "[KWOK] Applying stage-fast configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/stage-fast.yaml || true
+                echo "[KWOK] Applying metrics-usage configuration..."
+                kubectl apply --request-timeout=60s -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/metrics-usage.yaml || true
+                kubectl -n kube-system get deploy kwok-controller -o wide || true
+                kubectl -n kube-system get pods -l app=kwok-controller -o wide || true
+                echo "[KWOK] Installation complete!"
+            else
+                echo "[KWOK] WARNING: kwok-controller did not become ready after retries"
+            fi
             
             while true; do
                 sync
