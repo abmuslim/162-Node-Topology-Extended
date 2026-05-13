@@ -14,6 +14,29 @@ Complete Containerlab topology with 162 K3s server nodes, 27 OSPF routers, and 3
 
 ---
 
+## Branch Guide
+
+Use these branches depending on which topology mode you want:
+
+| Branch | Purpose | Base Commit | Notes |
+|--------|---------|-------------|-------|
+| `k3s-48-stable` | Stable 48 active K3s nodes | `ff0a21b` | Safe branch for normal 48-node deployments |
+| `k3s-162-start` | First full 162 active K3s version | `aa148a4` | Clean starting point for 162-node work |
+| `k3s-162-work` | Active 162-node tuning/fixes | `bd3f290` | Use this branch for latest 162-node experiments |
+
+Quick branch switch:
+
+```bash
+git fetch origin
+git switch k3s-48-stable
+# or
+git switch k3s-162-start
+# or
+git switch k3s-162-work
+```
+
+---
+
 ## Architecture
 
 ### Network Topology
