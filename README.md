@@ -147,6 +147,21 @@ This script waits for each K3s node to be Ready, then applies workload manifests
 
 ---
 
+## Known Good Marker
+
+For easy rollback/reference, use a known-good tag that points to a verified running state.
+
+Example:
+
+```bash
+git fetch --tags
+git checkout known-good-48k3s-20260514
+```
+
+If this tag is present, it means topology boot + post-bootstrap workload/KWOK deployment were verified on this branch.
+
+---
+
 ## Verification
 
 ### After 5 Minutes: Check Networking
