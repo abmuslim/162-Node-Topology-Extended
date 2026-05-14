@@ -1,0 +1,105 @@
+# 1. Service Account
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: pricing-sa
+  namespace: default
+
+---
+# 2. Cluster Role
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: pricing-role
+rules:
+- apiGroups: [""]
+  resources: ["nodes"]
+  verbs: ["get", "list", "watch"]
+- apiGroups: ["metrics.k8s.io"]
+  resources: ["nodes"]
+  verbs: ["get", "list"]
+
+---
+# 3. Cluster Role Binding
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: pricing-role-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: pricing-role
+subjects:
+- kind: ServiceAccount
+  name: pricing-sa
+  namespace: default
+
+---
+# 4. Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: storage-price
+  labels:
+    app: storage-pricing
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: storage-pricing
+  template:
+    metadata:
+      labels:
+        app: storage-pricing
+        prometheus: scrape
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8084"
+    spec:
+      hostNetwork: true
+      imagePullSecrets:
+        - name: regcred
+      serviceAccountName: pricing-sa
+      containers:
+      - name: pricing-container
+        image: zhen06199/storage_price:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8084  
+        env:
+        - name: APP_PORT
+          value: "8084"
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        - name: NODE_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
+        volumeMounts:
+        - name: json-data
+          mountPath: /opt/serfapp
+      volumes:
+      - name: json-data
+        hostPath:
+          path: /opt/serfapp
+          type: Directory
+
+          
+---
+# 5. Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: storage-price
+  labels:
+    app: storage-pricing
+spec:
+  selector:
+    app: storage-pricing
+  ports:
+  - protocol: TCP
+    port: 8084
+    targetPort: 8084
+  type: ClusterIP

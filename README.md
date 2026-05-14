@@ -90,6 +90,9 @@ Each serf node includes:
 | `ip-mapping.txt` | IP address mapping for all 162 nodes |
 | `scripts/init.sh` | Network configuration script (runs inside containers) |
 | `scripts/create_ovs_bridges.sh` | Create 37 Open vSwitch bridges |
+| `scripts/deploy_workloads_kwok_48.sh` | Post-bootstrap workload + KWOK deploy for the 48 K3s nodes |
+| `workload_manifests/` | Real workload manifests applied by the deploy script |
+| `kwok_manifests/v0.7.0/` | Local KWOK manifests applied by the deploy script |
 | `router1-27/` | FRR router configurations (daemons + frr.conf) |
 
 ---
@@ -127,42 +130,20 @@ sudo ovs-vsctl --version
 
 ### Step 1: Create OVS Bridges
 ```bash
-# Create all 37 switches
 sudo ./scripts/create_ovs_bridges.sh
-
-# Verify
-sudo ovs-vsctl list-br | wc -l
-# Expected output: 37
 ```
 
-### Step 2: Deploy Topology
+### Step 2: Deploy Topology (Max Workers 20)
 ```bash
-sudo clab deploy --reconfigure -t extended-162node.yml
+sudo clab deploy --reconfigure -t extended-162node.yml --max-workers 20
 ```
 
-**Expected Timeline:**
-- **0-5 min**: Containers starting (242 total: 162 serfs + 27 routers + 37 switches + overhead)
-- **5-10 min**: IP configuration via init.sh, K3s servers starting
-- **10-20 min**: K3s importing cached images, deploying controllers
-- **20+ min**: All 162 K3s clusters fully operational
-
-### Step 4: Monitor Deployment
-
-**In another terminal:**
+### Step 3: Deploy Workloads + KWOK Once
 ```bash
-# Watch container count
-watch -n 10 'docker ps | grep -c Running'
-
-# Watch specific node initialization
-docker logs clab-nebula-extended-serf1 --tail 20 --follow
+bash scripts/deploy_workloads_kwok_48.sh
 ```
 
-**Expected container count progression:**
-```
-Minute 1:  ~50 containers
-Minute 3:  ~200 containers
-Minute 5:  ~242 containers (all running)
-```
+This script waits for each K3s node to be Ready, then applies workload manifests and KWOK in controlled batches.
 
 ---
 
