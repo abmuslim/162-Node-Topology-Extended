@@ -62,6 +62,13 @@ spec:
               value: "300"
             - name: MZ_RESOURCE_OFFER_CSV
               value: /tmp/ksense/resource_offer.csv
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "128Mi"
+            limits:
+              cpu: "200m"
+              memory: "256Mi"
           ports:
             - name: http
               containerPort: 8080
