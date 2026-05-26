@@ -1,0 +1,170 @@
+# ---- Stage 1: Build K3s with CSI patch ----
+# Patches klog.Fatalf → klog.Errorf in the CSI volume plugin so the
+# 30-second node-registration timeout becomes a warning, not a fatal crash.
+# Build time: ~20-30 min on first run; cached on rebuilds.
+FROM golang:1.23-bookworm AS k3s-builder
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git libseccomp-dev pkg-config \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /build
+
+RUN git clone --depth=1 --branch v1.32.4+k3s1 \
+    https://github.com/k3s-io/k3s.git .
+
+# K3s does not commit its vendor dir — generate it from go.mod
+RUN go mod download
+RUN go mod vendor
+
+# Find the CSI plugin file regardless of its exact vendor subpath and patch it
+RUN find vendor -path "*/volume/csi/csi_plugin.go" | \
+    xargs sed -i 's/klog\.Fatalf(/klog.Errorf(/g'
+
+# Fail the build if the file wasn't found or patch didn't apply
+RUN found=$(find vendor -path "*/volume/csi/csi_plugin.go"); \
+    [ -n "$found" ] || (echo "ERROR: csi_plugin.go not found in vendor" && exit 1); \
+    ! grep -q 'klog\.Fatalf' $found && echo "CSI patch 1 OK: $found"
+
+# Patch 2: csi_plugin.go — extend initBackoff.Steps so the CSINode annotation
+# retry loop survives much longer under high host load.
+#
+# The initializeCSINode goroutine retries InitializeCSINodeWithAnnotation() with
+# exponential backoff: Steps=6, Duration=15ms, Factor=6.0 → ~140s total window.
+# On a host running 48+ concurrent K3s servers the API server is heavily loaded;
+# 140s of retries is often not enough and the goroutine hits:
+#   klog.Fatalf("Failed to initialize CSINode after retrying")  ← crash
+# Patch 1 above converts that Fatalf to Errorf (prevents crash). This patch
+# extends Steps from 6 to 20 to give the retry loop ~9 hours before giving up,
+# so the CSINode annotation is almost always written successfully.
+#
+# Steps=20, Duration=15ms, Factor=6.0:
+#   total ≈ 15ms × (6^6-1)/(6-1) × ... the geometric series saturates quickly
+#   because wait.Backoff caps individual sleeps at ~2 minutes; in practice the
+#   goroutine keeps retrying every ~2 min for many hours instead of giving up.
+RUN f=$(find vendor -path "*/volume/csi/csi_plugin.go" | head -1); \
+    [ -n "$f" ] || (echo "ERROR: csi_plugin.go not found" && exit 1); \
+    echo "Patching initBackoff.Steps in: $f"; \
+    grep -n "Steps:" "$f"; \
+    sed -i 's/Steps:\s*6,/Steps:    20,/' "$f"; \
+    echo "=== After patch ==="; \
+    grep -n "Steps:" "$f"; \
+    grep -q "Steps:    20," "$f" && echo "CSI patch 2 VERIFIED OK" || (echo "ERROR: Steps patch failed" && exit 1)
+
+# Pre-create an empty CSI volume-plugin directory so kubelet's plugin scanner
+# finds it immediately and registers zero drivers — the CSINode object is then
+# created empty on first boot, avoiding a second "not found" race on restart.
+RUN mkdir -p /var/lib/rancher/k3s/agent/kubelet/volumeplugins
+
+RUN GOVERSION=$(go version | awk '{print $3}') && \
+    BUILDDATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') && \
+    GOFLAGS="-mod=vendor" CGO_ENABLED=1 \
+    go build \
+    -ldflags="-w -s \
+      -X github.com/k3s-io/k3s/pkg/version.Version=v1.32.4+k3s1 \
+      -X github.com/k3s-io/k3s/pkg/version.GitCommit=patched \
+      -X github.com/k3s-io/k3s/pkg/version.UpstreamGolang=${GOVERSION} \
+      -X k8s.io/component-base/version.gitVersion=v1.32.4+k3s1 \
+      -X k8s.io/component-base/version.goVersion=${GOVERSION} \
+      -X k8s.io/component-base/version.buildDate=${BUILDDATE} \
+      -X k8s.io/client-go/pkg/version.gitVersion=v1.32.4+k3s1 \
+      -X k8s.io/client-go/pkg/version.goVersion=${GOVERSION} \
+      -X k8s.io/client-go/pkg/version.buildDate=${BUILDDATE}" \
+    -o /usr/local/bin/k3s .
+
+# ---- Stage 2: Runtime image ----
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# -----------------------------------------------------------------------------
+# Install required packages and Python dependencies in a single layer
+# -----------------------------------------------------------------------------
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    curl \
+    ca-certificates \
+    iproute2 \
+    iputils-ping \
+    net-tools \
+    vim \
+    sudo \
+    kmod \
+    iptables \
+    procps \
+    python3 \
+    python3-pip && \
+    ln -sf /usr/bin/python3 /usr/bin/python && \
+    pip3 install --no-input --no-cache-dir pandas numpy matplotlib ping3 hilbertcurve requests fastapi==0.117.1 uvicorn==0.36.0 kubernetes && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# -----------------------------------------------------------------------------
+# Install k3s (patched binary from builder stage — no curl download)
+# -----------------------------------------------------------------------------
+COPY --from=k3s-builder /usr/local/bin/k3s /usr/local/bin/k3s
+
+# -----------------------------------------------------------------------------
+# Install K3s runtime dependencies
+# Our custom-built k3s binary lacks the embedded containerd/CNI/runc that the
+# official self-extracting k3s binary bundles. Install them from system packages
+# and the official CNI plugins release so k3s finds them via PATH fallback.
+# -----------------------------------------------------------------------------
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    containerd \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN mkdir -p /opt/cni/bin && \
+    curl -fsSL https://github.com/containernetworking/plugins/releases/download/v1.6.0/cni-plugins-linux-amd64-v1.6.0.tgz | \
+    tar -xz -C /opt/cni/bin/
+
+# flannel CNI plugin is separate from containernetworking/plugins
+RUN curl -fsSL \
+    "https://github.com/flannel-io/cni-plugin/releases/download/v1.6.0-flannel1/flannel-amd64" \
+    -o /opt/cni/bin/flannel && \
+    chmod +x /opt/cni/bin/flannel
+
+# Ensure K3s can resolve CNI plugins via PATH fallback.
+ENV PATH="/opt/cni/bin:${PATH}"
+
+# Make CNI plugins findable via both PATH and stable symlinks, then fix
+# kubectl/crictl routing.
+RUN ln -sf /opt/cni/bin/host-local /usr/local/bin/host-local && \
+    ln -sf /opt/cni/bin/bridge /usr/local/bin/bridge && \
+    ln -sf /opt/cni/bin/loopback /usr/local/bin/loopback && \
+    ln -sf /opt/cni/bin/portmap /usr/local/bin/portmap && \
+    ln -sf /opt/cni/bin/firewall /usr/local/bin/firewall && \
+    ln -sf /opt/cni/bin/flannel /usr/local/bin/flannel && \
+    ln -sf /usr/local/bin/k3s /usr/local/bin/crictl && \
+    curl -fsSL "https://dl.k8s.io/release/v1.32.4/bin/linux/amd64/kubectl" \
+    -o /usr/local/bin/kubectl && \
+    chmod +x /usr/local/bin/kubectl
+
+# Wrapper: make `k3s kubectl` and `k3s ctr` work correctly.
+# The custom-built binary has broken subcommand routing for these two;
+# rename the real binary to k3s.real and put a dispatcher in its place.
+RUN mv /usr/local/bin/k3s /usr/local/bin/k3s.real && \
+    printf '#!/bin/bash\ncase "$1" in\n  kubectl)\n    shift\n    export KUBECONFIG="${KUBECONFIG:-/etc/rancher/k3s/k3s.yaml}"\n    exec kubectl "$@"\n    ;;\n  ctr)\n    shift\n    exec ctr --address /run/k3s/containerd/containerd.sock --namespace k8s.io "$@"\n    ;;\nesac\nexec /usr/local/bin/k3s.real "$@"\n' > /usr/local/bin/k3s && \
+    chmod +x /usr/local/bin/k3s
+
+# -----------------------------------------------------------------------------
+# Copy Kubernetes manifests
+# -----------------------------------------------------------------------------
+COPY ksense-resource-offer-deployment.yaml /tmp/ksense-resource-offer-deployment.yaml
+COPY ram_price.yaml /tmp/ram_price.yaml
+COPY storage_price.yaml /tmp/storage_price.yaml
+COPY vcpu_price.yaml /tmp/vcpu_price.yaml
+COPY vgpu_price.yaml /tmp/vgpu_price.yaml
+COPY deployment.yaml /tmp/deployment.yaml
+COPY rbac.yaml /tmp/rbac.yaml
+COPY namespace.yaml /tmp/namespace.yaml
+COPY serfapp /opt/serfapp
+# -----------------------------------------------------------------------------
+# Note: slim image excludes bundled /opt/k3s-images cache.
+# Mount tar files at runtime if offline image import is needed.
+# -----------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------
+# Default command
+# -----------------------------------------------------------------------------
+CMD ["sleep", "infinity"]
